@@ -1,8 +1,8 @@
 __pycache__/
 *.pyc
+*.egg-info/
 .venv/
 .env
 .publisher-state.json
 staging/
 raw-private/
-
