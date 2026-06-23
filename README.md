@@ -26,3 +26,5 @@ python -m venv .venv
 - `config/channels.json`: approved public communities and collection limits
 
 No Slack integration is included. Keep the GitHub repository private and follow Reddit's current developer/data terms.
+
+Collection can run through the included GitHub Actions schedule or locally through `scripts/install_daily_task.ps1`. The GitHub workflow uses API secrets when present and otherwise uses the public JSON collector.
