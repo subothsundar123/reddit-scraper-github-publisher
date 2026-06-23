@@ -1,0 +1,26 @@
+{
+  "collection_date": "2026-06-23",
+  "scope": "Public Reddit discussions relevant to trading APIs, algo workflows and strategy builders",
+  "queries": [
+    "India broker API websocket reliability Python SDK option chain",
+    "historical options data backtesting Greeks data quality",
+    "strategy builder no-code backtesting paper trading execution",
+    "partial fills order reconciliation latency slippage liquidity",
+    "static IP TOTP API authentication automated trading",
+    "Claude MCP AI trading research backtesting",
+    "scanner indicator API news sentiment market data",
+    "broker platform feature expectations India"
+  ],
+  "communities": [
+    "IndiaAlgoTrading",
+    "IndianStockMarket",
+    "IndianStreetBets",
+    "algotrading"
+  ],
+  "methodology": "Search-engine discovery followed by direct review of public Reddit result pages. Text is stored as a concise research summary. Unknown vote/comment metrics remain zero and must not be interpreted as engagement.",
+  "limitations": [
+    "This supplements rather than replaces an authenticated Reddit API collection.",
+    "Search-engine discovery is relevance-ranked and is not a complete census.",
+    "Some discussions are historical but were collected on 2026-06-23 because they remain directly relevant to product expectations."
+  ]
+}

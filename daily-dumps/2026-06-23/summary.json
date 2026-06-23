@@ -1,0 +1,25 @@
+{
+  "collection_date": "2026-06-23",
+  "source": "reddit_web_research",
+  "posts": 46,
+  "comments": 12,
+  "subreddits": {
+    "IndiaAlgoTrading": 22,
+    "IndianStockMarket": 6,
+    "IndianStreetBets": 1,
+    "algotrading": 17
+  },
+  "source_methods": {
+    "web_search_review": 46
+  },
+  "evidence_quality": {
+    "direct_public_page_summary": 39,
+    "direct_public_page_review": 7
+  },
+  "engagement": {
+    "post_score_sum": 0,
+    "comment_score_sum": 0,
+    "reported_comment_sum": 37
+  },
+  "privacy": "Public text retained for analysis; Reddit usernames replaced with stable one-way hashes."
+}

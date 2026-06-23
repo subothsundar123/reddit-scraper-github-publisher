@@ -10,6 +10,7 @@ import pathlib
 import subprocess
 import sys
 import time
+from collections import Counter
 from typing import Any, Iterable
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -104,6 +105,9 @@ def package_dump(input_path: pathlib.Path, collection_date: str, source: str = "
                 "url": raw.get("url"),
                 "author_hash": _anon(raw.get("author")),
                 "collected_on": collection_date,
+                "source_method": raw.get("source_method") or "reddit_collector",
+                "research_query": raw.get("research_query"),
+                "evidence_quality": raw.get("evidence_quality") or "direct_collection",
             }
             posts.append(row)
             subreddit_counts[sub] = subreddit_counts.get(sub, 0) + 1
@@ -121,6 +125,8 @@ def package_dump(input_path: pathlib.Path, collection_date: str, source: str = "
         "posts": len(posts),
         "comments": len(comments),
         "subreddits": subreddit_counts,
+        "source_methods": dict(Counter(p.get("source_method") or "unknown" for p in posts)),
+        "evidence_quality": dict(Counter(p.get("evidence_quality") or "unknown" for p in posts)),
         "engagement": {
             "post_score_sum": sum(p["score"] for p in posts),
             "comment_score_sum": sum(c["score"] for c in comments),
@@ -248,6 +254,7 @@ def main() -> None:
     p = sub.add_parser("package")
     p.add_argument("--input", type=pathlib.Path, required=True)
     p.add_argument("--date", default=dt.date.today().isoformat())
+    p.add_argument("--source", default="reddit")
     sub.add_parser("validate")
     pub = sub.add_parser("publish"); pub.add_argument("--push", action="store_true")
     daily = sub.add_parser("daily")
@@ -257,7 +264,7 @@ def main() -> None:
     if args.command == "collect":
         use_api = args.mode == "api" or (args.mode == "auto" and os.getenv("REDDIT_CLIENT_ID"))
         print((collect_api if use_api else collect_public)(args.config, args.output))
-    elif args.command == "package": print(package_dump(args.input, args.date))
+    elif args.command == "package": print(package_dump(args.input, args.date, args.source))
     elif args.command == "validate": validate()
     elif args.command == "publish": git_publish(args.push)
     elif args.command == "daily":
