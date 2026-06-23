@@ -19,6 +19,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -e .
+      - name: Configure publisher identity
+        run: |
+          git config user.name "reddit-insights-publisher"
+          git config user.email "reddit-insights-publisher@users.noreply.github.com"
       - name: Collect, package and commit
         env:
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
@@ -29,4 +33,3 @@ jobs:
         run: insights-publisher daily --mode auto
       - name: Push new snapshot
         run: git push origin main
-
