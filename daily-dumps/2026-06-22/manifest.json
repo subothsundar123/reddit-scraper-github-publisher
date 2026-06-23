@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "collection_date": "2026-06-22",
-  "generated_at": "2026-06-23T08:32:31.446492+00:00",
+  "generated_at": "2026-06-23T09:05:41.202902+00:00",
   "files": [
     {
       "path": "daily-dumps/2026-06-22/posts.jsonl.gz",
@@ -15,8 +15,8 @@
     },
     {
       "path": "daily-dumps/2026-06-22/summary.json",
-      "sha256": "40ff1286ca974da14fcd891b093582aee56eb7c222191c20243b592abfecaf72",
-      "bytes": 552
+      "sha256": "2665b1e98ebed8441191a1f4fd7a62c9550f12fd938046320878668997e83c89",
+      "bytes": 531
     }
   ]
 }

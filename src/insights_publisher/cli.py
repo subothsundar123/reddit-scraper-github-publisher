@@ -21,7 +21,7 @@ def _json(path: pathlib.Path) -> Any:
 
 def _write_json(path: pathlib.Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    path.write_bytes((json.dumps(value, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
 
 
 def _sha(path: pathlib.Path) -> str:
@@ -270,4 +270,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -90,11 +90,11 @@ catalog = {
 out = ROOT / "product-catalog"
 (out / "history").mkdir(parents=True, exist_ok=True)
 text = json.dumps(catalog, indent=2, ensure_ascii=False) + "\n"
-(out / "current.json").write_text(text, encoding="utf-8")
-(out / "history" / "1.0.0.json").write_text(text, encoding="utf-8")
+(out / "current.json").write_bytes(text.encode("utf-8"))
+(out / "history" / "1.0.0.json").write_bytes(text.encode("utf-8"))
 sha = hashlib.sha256((out / "current.json").read_bytes()).hexdigest()
-(out / "manifest.json").write_text(json.dumps({
+(out / "manifest.json").write_bytes((json.dumps({
     "current_version": "1.0.0", "path": "product-catalog/current.json", "sha256": sha,
     "feature_count": len(catalog["features"]), "updated_at": catalog["updated_at"],
-}, indent=2) + "\n", encoding="utf-8")
+}, indent=2) + "\n").encode("utf-8"))
 print(f"Wrote {len(catalog['features'])} catalog entries")
