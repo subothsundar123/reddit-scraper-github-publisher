@@ -1,0 +1,21 @@
+{
+  "collection_date": "2026-06-22",
+  "source": "reddit",
+  "posts": 276,
+  "comments": 1720,
+  "subreddits": {
+    "IndiaInvestments": 36,
+    "IndianStreetBets": 40,
+    "IndianStockMarket": 40,
+    "IndiaAlgoTrading": 40,
+    "DalalStreetTalks": 40,
+    "NSEbets": 40,
+    "IndiaOptionsSelling": 40
+  },
+  "engagement": {
+    "post_score_sum": 22442,
+    "comment_score_sum": 11494,
+    "reported_comment_sum": 4034
+  },
+  "privacy": "Public text retained for analysis; Reddit usernames replaced with stable one-way hashes."
+}

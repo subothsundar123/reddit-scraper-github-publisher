@@ -1,0 +1,3711 @@
+{
+  "catalog_version": "1.0.0",
+  "updated_at": "2026-06-23T08:33:13.122732+00:00",
+  "status_definitions": {
+    "available": "Available now on the stated surface",
+    "upcoming": "Documented as upcoming; do not call generally available",
+    "partial": "Some capability exists but scope/access needs qualification",
+    "internal_unverified": "Known from internal context; requires owner confirmation before external claims",
+    "not_available": "Gap or proposed capability"
+  },
+  "features": [
+    {
+      "id": "gap-basket-brokerage-calculator",
+      "name": "Basket brokerage calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Multi-leg strategies have multiple legs and charges.",
+      "user_benefit": "Clear strategy-level cost before execution.",
+      "priority": "high",
+      "aliases": [
+        "Basket brokerage calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 35
+      }
+    },
+    {
+      "id": "gap-brokerage-and-charges-calculator",
+      "name": "Brokerage and charges calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Margin estimation exists, but traders also need brokerage, taxes, STT, exchange charges, GST, and stamp duty.",
+      "user_benefit": "Accurate breakeven and net P&L estimation.",
+      "priority": "high",
+      "aliases": [
+        "Brokerage and charges calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 34
+      }
+    },
+    {
+      "id": "gap-expiry-obligation-calculator",
+      "name": "Expiry obligation calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Expiry can create settlement obligations.",
+      "user_benefit": "Helps avoid surprise expiry risk.",
+      "priority": "high",
+      "aliases": [
+        "Expiry obligation calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 39
+      }
+    },
+    {
+      "id": "gap-greeks-scenario-calculator",
+      "name": "Greeks scenario calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Users may want theoretical greeks for custom price, volatility, and time scenarios.",
+      "user_benefit": "Useful for strategy simulation.",
+      "priority": "medium",
+      "aliases": [
+        "Greeks scenario calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 43
+      }
+    },
+    {
+      "id": "gap-implied-volatility-calculator",
+      "name": "Implied volatility calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Converts option price into IV for custom scenarios.",
+      "user_benefit": "Useful for options research.",
+      "priority": "medium",
+      "aliases": [
+        "Implied volatility calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 44
+      }
+    },
+    {
+      "id": "gap-liquidity-score-calculator",
+      "name": "Liquidity score calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Scores instrument liquidity using spread, volume, OI, and depth.",
+      "user_benefit": "Helps users avoid illiquid contracts.",
+      "priority": "medium",
+      "aliases": [
+        "Liquidity score calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 42
+      }
+    },
+    {
+      "id": "gap-option-payoff-calculator",
+      "name": "Option payoff calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Traders need payoff before placing option trades.",
+      "user_benefit": "Better risk understanding.",
+      "priority": "high",
+      "aliases": [
+        "Option payoff calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 36
+      }
+    },
+    {
+      "id": "gap-physical-settlement-calculator",
+      "name": "Physical settlement calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Stock options can create physical settlement obligations.",
+      "user_benefit": "Important for compliance and risk.",
+      "priority": "high",
+      "aliases": [
+        "Physical settlement calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 40
+      }
+    },
+    {
+      "id": "gap-risk-reward-calculator",
+      "name": "Risk/reward calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Shows max profit, max loss, and reward/risk ratio.",
+      "user_benefit": "Helps compare trades.",
+      "priority": "high",
+      "aliases": [
+        "Risk/reward calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 38
+      }
+    },
+    {
+      "id": "gap-slippage-calculator",
+      "name": "Slippage calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Estimates likely execution impact using spread, depth, and quantity.",
+      "user_benefit": "Useful for active traders and algos.",
+      "priority": "medium",
+      "aliases": [
+        "Slippage calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 41
+      }
+    },
+    {
+      "id": "gap-strategy-breakeven-calculator",
+      "name": "Strategy breakeven calculator",
+      "category": "Calculators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Multi-leg strategies can have multiple breakevens.",
+      "user_benefit": "Helps avoid manual calculation mistakes.",
+      "priority": "high",
+      "aliases": [
+        "Strategy breakeven calculator"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 37
+      }
+    },
+    {
+      "id": "gap-atm-straddle-price",
+      "name": "ATM Straddle Price",
+      "category": "Derived Options Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "ATM call plus put premium can be calculated from option chain data.",
+      "user_benefit": "Useful as a simple expected-move and volatility reference for intraday and expiry trading.",
+      "priority": "high",
+      "aliases": [
+        "ATM Straddle Price"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 69
+      }
+    },
+    {
+      "id": "gap-iv-rank-iv-percentile",
+      "name": "IV Rank / IV Percentile",
+      "category": "Derived Options Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Compares current implied volatility with historical IV levels.",
+      "user_benefit": "Helps option buyers/sellers decide if volatility is relatively high or low.",
+      "priority": "high",
+      "aliases": [
+        "IV Rank / IV Percentile"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 68
+      }
+    },
+    {
+      "id": "gap-iv-skew",
+      "name": "IV Skew",
+      "category": "Derived Options Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Measures IV difference across strikes.",
+      "user_benefit": "Helps users understand option pricing imbalance and strategy opportunities.",
+      "priority": "medium",
+      "aliases": [
+        "IV Skew"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 71
+      }
+    },
+    {
+      "id": "gap-max-pain",
+      "name": "Max Pain",
+      "category": "Derived Options Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Max pain can be calculated using option chain strikes and open interest.",
+      "user_benefit": "Useful for expiry-level option dashboards.",
+      "priority": "medium",
+      "aliases": [
+        "Max Pain"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 70
+      }
+    },
+    {
+      "id": "gap-oi-change",
+      "name": "OI Change",
+      "category": "Derived Options Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Open interest change can be calculated from current and previous OI fields.",
+      "user_benefit": "Helps F&O users track fresh buildup or unwinding activity.",
+      "priority": "high",
+      "aliases": [
+        "OI Change"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 66
+      }
+    },
+    {
+      "id": "gap-pcr",
+      "name": "PCR",
+      "category": "Derived Options Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Put-call ratio can be calculated from option chain OI or volume.",
+      "user_benefit": "Useful for option sentiment and expiry analysis.",
+      "priority": "high",
+      "aliases": [
+        "PCR"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 67
+      }
+    },
+    {
+      "id": "gap-price-oi-buildup-classification",
+      "name": "Price + OI Buildup Classification",
+      "category": "Derived Options Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Combines price movement and OI change to classify long buildup, short buildup, short covering, and long unwinding.",
+      "user_benefit": "Gives option/futures traders ready-made interpretation instead of raw fields only.",
+      "priority": "high",
+      "aliases": [
+        "Price + OI Buildup Classification"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 65
+      }
+    },
+    {
+      "id": "gap-adx-dmi",
+      "name": "ADX / DMI",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "ADX and DMI measure trend strength and directional movement.",
+      "user_benefit": "Helps users filter trending versus sideways markets.",
+      "priority": "medium",
+      "aliases": [
+        "ADX / DMI"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 62
+      }
+    },
+    {
+      "id": "gap-atr",
+      "name": "ATR",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "ATR measures volatility from OHLC data.",
+      "user_benefit": "Helps users set stop-loss distance, target levels, and position sizing.",
+      "priority": "high",
+      "aliases": [
+        "ATR"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 57
+      }
+    },
+    {
+      "id": "gap-bollinger-bands",
+      "name": "Bollinger Bands",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Bands can be calculated from moving average and standard deviation.",
+      "user_benefit": "Useful for volatility, breakout, and mean-reversion strategies.",
+      "priority": "medium",
+      "aliases": [
+        "Bollinger Bands"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 61
+      }
+    },
+    {
+      "id": "gap-macd",
+      "name": "MACD",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "MACD combines moving averages to show trend and momentum changes.",
+      "user_benefit": "Useful for trend confirmation and signal generation.",
+      "priority": "medium",
+      "aliases": [
+        "MACD"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 60
+      }
+    },
+    {
+      "id": "gap-obv",
+      "name": "OBV",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "On Balance Volume combines price direction and volume.",
+      "user_benefit": "Helps confirm price moves using volume flow.",
+      "priority": "medium",
+      "aliases": [
+        "OBV"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 64
+      }
+    },
+    {
+      "id": "gap-pivot-points-cpr",
+      "name": "Pivot Points / CPR",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Intraday levels can be calculated from previous OHLC values.",
+      "user_benefit": "Very popular among Indian intraday traders for support/resistance planning.",
+      "priority": "high",
+      "aliases": [
+        "Pivot Points / CPR"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 58
+      }
+    },
+    {
+      "id": "gap-rsi",
+      "name": "RSI",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "RSI is a widely used momentum indicator calculated from price changes.",
+      "user_benefit": "Helps users identify overbought/oversold conditions and momentum shifts.",
+      "priority": "high",
+      "aliases": [
+        "RSI"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 54
+      }
+    },
+    {
+      "id": "gap-sma-ema",
+      "name": "SMA / EMA",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Moving averages can be calculated from OHLC data and are one of the most commonly used trend indicators.",
+      "user_benefit": "Users can build trend strategies faster without implementing basic indicator logic.",
+      "priority": "high",
+      "aliases": [
+        "SMA / EMA"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 55
+      }
+    },
+    {
+      "id": "gap-stochastic-rsi",
+      "name": "Stochastic RSI",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Momentum oscillator derived from RSI values.",
+      "user_benefit": "Useful for short-term momentum and reversal signals.",
+      "priority": "medium",
+      "aliases": [
+        "Stochastic RSI"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 63
+      }
+    },
+    {
+      "id": "gap-supertrend",
+      "name": "Supertrend",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Popular trend-following indicator derived from ATR and price.",
+      "user_benefit": "Useful for simple trend strategies and retail algo examples.",
+      "priority": "high",
+      "aliases": [
+        "Supertrend"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 56
+      }
+    },
+    {
+      "id": "gap-vwap",
+      "name": "VWAP",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "VWAP uses price and volume to show average traded price for the session.",
+      "user_benefit": "Very useful for intraday traders, execution quality, and institutional-style reference levels.",
+      "priority": "high",
+      "aliases": [
+        "VWAP"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 53
+      }
+    },
+    {
+      "id": "gap-volume-sma-relative-volume",
+      "name": "Volume SMA / Relative Volume",
+      "category": "Derived Technical Indicators",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Compares current volume with historical average volume.",
+      "user_benefit": "Helps detect unusual participation and volume breakouts.",
+      "priority": "high",
+      "aliases": [
+        "Volume SMA / Relative Volume"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 59
+      }
+    },
+    {
+      "id": "nubra-balance-metrics",
+      "name": "Balance metrics",
+      "category": "Fundamentals",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Debt to equity, current ratio, quick ratio",
+      "notes": "Useful for risk and quality checks.",
+      "aliases": [
+        "Balance metrics",
+        "Debt to equity, current ratio, quick ratio"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 50
+      }
+    },
+    {
+      "id": "nubra-balance-sheet",
+      "name": "Balance sheet",
+      "category": "Fundamentals",
+      "status": "upcoming",
+      "availability": "announced/upcoming",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Historical balance sheet data",
+      "notes": "Available in upcoming SDK.",
+      "aliases": [
+        "Balance sheet",
+        "Historical balance sheet data"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 55
+      }
+    },
+    {
+      "id": "nubra-banking-metrics",
+      "name": "Banking metrics",
+      "category": "Fundamentals",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "CASA, NIM",
+      "notes": "Useful for banking stock analysis.",
+      "aliases": [
+        "Banking metrics",
+        "CASA, NIM"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 53
+      }
+    },
+    {
+      "id": "nubra-cash-flow",
+      "name": "Cash flow",
+      "category": "Fundamentals",
+      "status": "upcoming",
+      "availability": "announced/upcoming",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Operating, investing, financing cash flows",
+      "notes": "Available in upcoming SDK.",
+      "aliases": [
+        "Cash flow",
+        "Operating, investing, financing cash flows"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 54
+      }
+    },
+    {
+      "id": "nubra-corporate-actions",
+      "name": "Corporate actions",
+      "category": "Fundamentals",
+      "status": "upcoming",
+      "availability": "announced/upcoming",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Dividends, bonus, splits, rights, buybacks, mergers/demergers fields",
+      "notes": "Available in upcoming SDK.",
+      "aliases": [
+        "Corporate actions",
+        "Dividends, bonus, splits, rights, buybacks, mergers/demergers fields"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 59
+      }
+    },
+    {
+      "id": "nubra-fundamentals-type",
+      "name": "Fundamentals type",
+      "category": "Fundamentals",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Standalone / consolidated",
+      "notes": "Useful for correct financial comparison.",
+      "aliases": [
+        "Fundamentals type",
+        "Standalone / consolidated"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 58
+      }
+    },
+    {
+      "id": "nubra-growth-metrics",
+      "name": "Growth metrics",
+      "category": "Fundamentals",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "EBIT growth, PAT growth, EPS growth",
+      "notes": "Useful for fundamental momentum analysis.",
+      "aliases": [
+        "EBIT growth, PAT growth, EPS growth",
+        "Growth metrics"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 51
+      }
+    },
+    {
+      "id": "nubra-key-ratios",
+      "name": "Key ratios",
+      "category": "Fundamentals",
+      "status": "upcoming",
+      "availability": "announced/upcoming",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "P/E, P/B, ROE, EPS, ROCE, etc.",
+      "notes": "Available in upcoming SDK.",
+      "aliases": [
+        "Key ratios",
+        "P/E, P/B, ROE, EPS, ROCE, etc."
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 48
+      }
+    },
+    {
+      "id": "nubra-market-data-metrics",
+      "name": "Market data metrics",
+      "category": "Fundamentals",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Market cap, book value, face value",
+      "notes": "Useful for valuation screens.",
+      "aliases": [
+        "Market cap, book value, face value",
+        "Market data metrics"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 52
+      }
+    },
+    {
+      "id": "nubra-peer-comparison",
+      "name": "Peer comparison",
+      "category": "Fundamentals",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Peers in key ratios request",
+      "notes": "Useful for comparing companies within the same sector.",
+      "aliases": [
+        "Peer comparison",
+        "Peers in key ratios request"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 62
+      }
+    },
+    {
+      "id": "nubra-profit-and-loss",
+      "name": "Profit and loss",
+      "category": "Fundamentals",
+      "status": "upcoming",
+      "availability": "announced/upcoming",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Annual and quarterly P&L",
+      "notes": "Available in upcoming SDK.",
+      "aliases": [
+        "Annual and quarterly P&L",
+        "Profit and loss"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 56
+      }
+    },
+    {
+      "id": "nubra-profitability-ratios",
+      "name": "Profitability ratios",
+      "category": "Fundamentals",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Net profit margin, PAT margin, ROA",
+      "notes": "Useful for stock screening.",
+      "aliases": [
+        "Net profit margin, PAT margin, ROA",
+        "Profitability ratios"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 49
+      }
+    },
+    {
+      "id": "nubra-result-type",
+      "name": "Result type",
+      "category": "Fundamentals",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Annual / quarterly",
+      "notes": "Useful for financial analysis.",
+      "aliases": [
+        "Annual / quarterly",
+        "Result type"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 57
+      }
+    },
+    {
+      "id": "nubra-shareholding-pattern",
+      "name": "Shareholding pattern",
+      "category": "Fundamentals",
+      "status": "upcoming",
+      "availability": "announced/upcoming",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Promoter, MF, retail, FII, domestic institution data",
+      "notes": "Available in upcoming SDK.",
+      "aliases": [
+        "Promoter, MF, retail, FII, domestic institution data",
+        "Shareholding pattern"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 61
+      }
+    },
+    {
+      "id": "nubra-upcoming-events-flag",
+      "name": "Upcoming events flag",
+      "category": "Fundamentals",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Corporate action upcoming event indicator",
+      "notes": "Useful for event tracking.",
+      "aliases": [
+        "Corporate action upcoming event indicator",
+        "Upcoming events flag"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 60
+      }
+    },
+    {
+      "id": "nubra-20-level-quote-depth",
+      "name": "20-level quote depth",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Market quote depth from 1 to 20 levels",
+      "notes": "Documented through quote(ref_id, levels), where levels typically supports 1 to 20.",
+      "aliases": [
+        "20-level quote depth",
+        "Market quote depth from 1 to 20 levels"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 82
+      }
+    },
+    {
+      "id": "nubra-atm-strike",
+      "name": "ATM strike",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "At-the-money strike",
+      "notes": "Useful for option strategy building.",
+      "aliases": [
+        "ATM strike",
+        "At-the-money strike"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 12
+      }
+    },
+    {
+      "id": "nubra-batch-historical-query",
+      "name": "Batch historical query",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Multiple queries in one request",
+      "notes": "Useful for fetching multiple instruments or mixed data points together.",
+      "aliases": [
+        "Batch historical query",
+        "Multiple queries in one request"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 29
+      }
+    },
+    {
+      "id": "gap-bulk-quote-api",
+      "name": "Bulk quote API",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Scanners and watchlists need quotes for many symbols in one request.",
+      "user_benefit": "Faster dashboards, scanners, and multi-symbol monitoring.",
+      "priority": "high",
+      "aliases": [
+        "Bulk quote API"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 5
+      }
+    },
+    {
+      "id": "nubra-ce-pe-data",
+      "name": "CE / PE data",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Call and put side data",
+      "notes": "Available in option chain response.",
+      "aliases": [
+        "CE / PE data",
+        "Call and put side data"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 13
+      }
+    },
+    {
+      "id": "gap-continuous-futures-data",
+      "name": "Continuous futures data",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Futures contracts expire, so backtesting needs a continuous adjusted series.",
+      "user_benefit": "Easier futures strategy testing.",
+      "priority": "medium",
+      "aliases": [
+        "Continuous futures data"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 13
+      }
+    },
+    {
+      "id": "nubra-current-price",
+      "name": "Current price",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Underlying current price",
+      "notes": "Useful for index/commodity/underlying price lookup.",
+      "aliases": [
+        "Current price",
+        "Underlying current price"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 8
+      }
+    },
+    {
+      "id": "nubra-eod-bhavcopy-reports",
+      "name": "EOD bhavcopy reports",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "NSE EOD reports in CSV/JSON",
+      "notes": "REST API supports bhavcopy/report types for FO, options, CM, security-wise, price data, and price range reports.",
+      "aliases": [
+        "EOD bhavcopy reports",
+        "NSE EOD reports in CSV/JSON"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 87
+      }
+    },
+    {
+      "id": "gap-earnings-result-calendar",
+      "name": "Earnings/result calendar",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Traders need upcoming result dates.",
+      "user_benefit": "Helps avoid or plan event-based trades.",
+      "priority": "medium",
+      "aliases": [
+        "Earnings/result calendar"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 17
+      }
+    },
+    {
+      "id": "gap-exchange-announcements",
+      "name": "Exchange announcements",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Traders need company and exchange updates inside trading workflows.",
+      "user_benefit": "Helps avoid event risk.",
+      "priority": "medium",
+      "aliases": [
+        "Exchange announcements"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 18
+      }
+    },
+    {
+      "id": "gap-exchange-holiday-trading-calendar-api",
+      "name": "Exchange holiday / trading calendar API",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Algo systems need official trading calendars.",
+      "user_benefit": "Helps scheduling, backtesting, and automated jobs.",
+      "priority": "low",
+      "aliases": [
+        "Exchange holiday / trading calendar API"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 24
+      }
+    },
+    {
+      "id": "nubra-exchange-support",
+      "name": "Exchange support",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "NSE, BSE, MCX",
+      "notes": "Supported across market data and reference data flows.",
+      "aliases": [
+        "Exchange support",
+        "NSE, BSE, MCX"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 9
+      }
+    },
+    {
+      "id": "gap-expired-instruments-master",
+      "name": "Expired Instruments Master",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Expired options historical data exists, but users also need a searchable master for expired contracts.",
+      "user_benefit": "Helps users resolve old option/future contracts correctly for backtesting and audits.",
+      "priority": "high",
+      "aliases": [
+        "Expired Instruments Master"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 7
+      }
+    },
+    {
+      "id": "gap-fii-dii-data",
+      "name": "FII/DII data",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Institutional activity is widely tracked by Indian traders.",
+      "user_benefit": "Helps market sentiment analysis.",
+      "priority": "medium",
+      "aliases": [
+        "FII/DII data"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 16
+      }
+    },
+    {
+      "id": "nubra-futures-mode-in-multi-strike",
+      "name": "Futures mode in multi-strike",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Futures data by expiry",
+      "notes": "Useful for futures OI and expiry comparison.",
+      "aliases": [
+        "Futures data by expiry",
+        "Futures mode in multi-strike"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 35
+      }
+    },
+    {
+      "id": "gap-global-market-economic-indicators",
+      "name": "Global Market / Economic Indicators",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Other brokers provide global instruments or macro/economic indicators that traders use for context.",
+      "user_benefit": "Helps users build macro-aware dashboards and market sentiment workflows.",
+      "priority": "low",
+      "aliases": [
+        "Global Market / Economic Indicators"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 22
+      }
+    },
+    {
+      "id": "nubra-historical-iv",
+      "name": "Historical IV",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "iv_mid",
+      "notes": "Available for options.",
+      "aliases": [
+        "Historical IV",
+        "iv_mid"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 27
+      }
+    },
+    {
+      "id": "nubra-historical-ohlc",
+      "name": "Historical OHLC",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Open, high, low, close",
+      "notes": "Available through historical_data().",
+      "aliases": [
+        "Historical OHLC",
+        "Open, high, low, close"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 23
+      }
+    },
+    {
+      "id": "nubra-historical-oi",
+      "name": "Historical OI",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "cumulative_oi",
+      "notes": "Available for futures and options.",
+      "aliases": [
+        "Historical OI",
+        "cumulative_oi"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 25
+      }
+    },
+    {
+      "id": "gap-historical-bid-ask-quote-tick-archive",
+      "name": "Historical bid/ask quote-tick archive",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Depth snapshots and realtime streams exist, but historical bid/ask quote ticks are useful for spread and liquidity research.",
+      "user_benefit": "Helps estimate slippage and analyze liquidity over time.",
+      "priority": "medium",
+      "aliases": [
+        "Historical bid/ask quote-tick archive"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 15
+      }
+    },
+    {
+      "id": "nubra-historical-data",
+      "name": "Historical data",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Historical time series",
+      "notes": "Available for stocks, indices, futures, and options.",
+      "aliases": [
+        "Historical data",
+        "Historical time series"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 22
+      }
+    },
+    {
+      "id": "gap-historical-data-availability-api",
+      "name": "Historical data availability API",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Users need to know the earliest available date by symbol, instrument type, and timeframe.",
+      "user_benefit": "Reduces support queries and helps backtesters plan correctly.",
+      "priority": "medium",
+      "aliases": [
+        "Historical data availability API"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 20
+      }
+    },
+    {
+      "id": "nubra-historical-greeks",
+      "name": "Historical greeks",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Delta, gamma, theta, vega",
+      "notes": "Available for options.",
+      "aliases": [
+        "Delta, gamma, theta, vega",
+        "Historical greeks"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 28
+      }
+    },
+    {
+      "id": "nubra-historical-index-value",
+      "name": "Historical index value",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "value field",
+      "notes": "Available for index data.",
+      "aliases": [
+        "Historical index value",
+        "value field"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 26
+      }
+    },
+    {
+      "id": "gap-historical-option-chain-snapshot-by-date",
+      "name": "Historical option-chain snapshot by date",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Historical option contract data exists, but strategy backtests often need the full chain as it existed on a past date.",
+      "user_benefit": "Enables realistic option strategy backtesting.",
+      "priority": "high",
+      "aliases": [
+        "Historical option-chain snapshot by date"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 6
+      }
+    },
+    {
+      "id": "gap-historical-tick-by-tick-trade-archive",
+      "name": "Historical tick-by-tick trade archive",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Realtime streams exist, but pro research users may need stored tick-level trade history.",
+      "user_benefit": "Enables advanced intraday research, execution modelling, and microstructure analysis.",
+      "priority": "medium",
+      "aliases": [
+        "Historical tick-by-tick trade archive"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 14
+      }
+    },
+    {
+      "id": "nubra-historical-volume",
+      "name": "Historical volume",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "cumulative_volume",
+      "notes": "Available for stocks, futures, and options.",
+      "aliases": [
+        "Historical volume",
+        "cumulative_volume"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 24
+      }
+    },
+    {
+      "id": "nubra-implied-volatility",
+      "name": "Implied volatility",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Option IV",
+      "notes": "Available in option chain.",
+      "aliases": [
+        "Implied volatility",
+        "Option IV"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 17
+      }
+    },
+    {
+      "id": "gap-index-constituents",
+      "name": "Index constituents",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Users need to know which stocks belong to each index.",
+      "user_benefit": "Enables index basket, breadth, and sector analysis.",
+      "priority": "medium",
+      "aliases": [
+        "Index constituents"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 11
+      }
+    },
+    {
+      "id": "gap-index-weights",
+      "name": "Index weights",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Index weight data is needed for serious index analysis.",
+      "user_benefit": "Helps understand index movement drivers.",
+      "priority": "low",
+      "aliases": [
+        "Index weights"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 21
+      }
+    },
+    {
+      "id": "nubra-ltp-data",
+      "name": "LTP data",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Last traded price",
+      "notes": "Available inside quote response.",
+      "aliases": [
+        "LTP data",
+        "Last traded price"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 5
+      }
+    },
+    {
+      "id": "nubra-ltq-data",
+      "name": "LTQ data",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Last traded quantity",
+      "notes": "Available inside order book response.",
+      "aliases": [
+        "LTQ data",
+        "Last traded quantity"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 6
+      }
+    },
+    {
+      "id": "nubra-lot-size",
+      "name": "Lot size",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Contract lot size",
+      "notes": "Available in option chain and instrument data.",
+      "aliases": [
+        "Contract lot size",
+        "Lot size"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 15
+      }
+    },
+    {
+      "id": "gap-market-status-api",
+      "name": "Market Status API",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Systems need to know whether the market is open, closed, pre-open, or in a special session.",
+      "user_benefit": "Useful for algo scheduling and preventing incorrect assumptions during non-trading periods.",
+      "priority": "low",
+      "aliases": [
+        "Market Status API"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 23
+      }
+    },
+    {
+      "id": "gap-market-breadth-data",
+      "name": "Market breadth data",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Advance/decline, unchanged, new highs/lows, and similar breadth fields are widely used.",
+      "user_benefit": "Gives market-wide strength/weakness view.",
+      "priority": "high",
+      "aliases": [
+        "Market breadth data"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 8
+      }
+    },
+    {
+      "id": "nubra-market-data-socket",
+      "name": "Market data socket",
+      "category": "Market Data",
+      "status": "upcoming",
+      "availability": "announced/upcoming",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Subscribe / unsubscribe support",
+      "notes": "Available in upcoming SDK ticker module.",
+      "aliases": [
+        "Market data socket",
+        "Subscribe / unsubscribe support"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 36
+      }
+    },
+    {
+      "id": "nubra-multi-strike-iv-and-greeks",
+      "name": "Multi-strike IV and greeks",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "IV, delta, gamma, theta, vega",
+      "notes": "Useful for option dashboards and strategy analytics.",
+      "aliases": [
+        "IV, delta, gamma, theta, vega",
+        "Multi-strike IV and greeks"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 34
+      }
+    },
+    {
+      "id": "nubra-multi-strike-oi",
+      "name": "Multi-strike OI",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Strike-wise OI snapshot",
+      "notes": "Useful for option chain analytics.",
+      "aliases": [
+        "Multi-strike OI",
+        "Strike-wise OI snapshot"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 32
+      }
+    },
+    {
+      "id": "nubra-multi-strike-data",
+      "name": "Multi-strike data",
+      "category": "Market Data",
+      "status": "upcoming",
+      "availability": "announced/upcoming",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Option/futures snapshot across strikes",
+      "notes": "Available in upcoming SDK.",
+      "aliases": [
+        "Multi-strike data",
+        "Option/futures snapshot across strikes"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 31
+      }
+    },
+    {
+      "id": "nubra-multi-strike-volume",
+      "name": "Multi-strike volume",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Strike-wise volume snapshot",
+      "notes": "Useful for activity tracking.",
+      "aliases": [
+        "Multi-strike volume",
+        "Strike-wise volume snapshot"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 33
+      }
+    },
+    {
+      "id": "gap-news-feed",
+      "name": "News feed",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Market-moving news affects intraday and swing trades.",
+      "user_benefit": "Better decision support.",
+      "priority": "medium",
+      "aliases": [
+        "News feed"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 19
+      }
+    },
+    {
+      "id": "nubra-open-interest",
+      "name": "Open interest",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Current OI",
+      "notes": "Available in option chain.",
+      "aliases": [
+        "Current OI",
+        "Open interest"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 19
+      }
+    },
+    {
+      "id": "nubra-option-ltp",
+      "name": "Option LTP",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Option last traded price",
+      "notes": "Available for each option contract.",
+      "aliases": [
+        "Option LTP",
+        "Option last traded price"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 16
+      }
+    },
+    {
+      "id": "nubra-option-chain",
+      "name": "Option chain",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Full option chain by underlying",
+      "notes": "Available for instruments like NIFTY, BANKNIFTY, etc.",
+      "aliases": [
+        "Full option chain by underlying",
+        "Option chain"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 10
+      }
+    },
+    {
+      "id": "nubra-option-expiries",
+      "name": "Option expiries",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "All available expiries",
+      "notes": "Returned in option chain response.",
+      "aliases": [
+        "All available expiries",
+        "Option expiries"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 11
+      }
+    },
+    {
+      "id": "nubra-option-greeks",
+      "name": "Option greeks",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Delta, gamma, theta, vega",
+      "notes": "Available in option chain and historical data fields.",
+      "aliases": [
+        "Delta, gamma, theta, vega",
+        "Option greeks"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 18
+      }
+    },
+    {
+      "id": "nubra-option-volume",
+      "name": "Option volume",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Strike-wise volume",
+      "notes": "Available in option chain.",
+      "aliases": [
+        "Option volume",
+        "Strike-wise volume"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 21
+      }
+    },
+    {
+      "id": "nubra-order-book-depth",
+      "name": "Order book depth",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Bid / ask levels",
+      "notes": "Supports depth based on the levels parameter.",
+      "aliases": [
+        "Bid / ask levels",
+        "Order book depth"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 4
+      }
+    },
+    {
+      "id": "nubra-order-update-socket",
+      "name": "Order update socket",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Order update stream",
+      "notes": "Useful for order status monitoring.",
+      "aliases": [
+        "Order update socket",
+        "Order update stream"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 39
+      }
+    },
+    {
+      "id": "gap-pre-open-market-data",
+      "name": "Pre-open market data",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Traders track indicative open price and imbalance before market open.",
+      "user_benefit": "Better gap and opening strategy decisions.",
+      "priority": "medium",
+      "aliases": [
+        "Pre-open market data"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 9
+      }
+    },
+    {
+      "id": "nubra-previous-open-interest",
+      "name": "Previous open interest",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Previous OI",
+      "notes": "Available in option chain.",
+      "aliases": [
+        "Previous OI",
+        "Previous open interest"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 20
+      }
+    },
+    {
+      "id": "gap-ready-made-corporate-action-adjusted-ohlc-candles",
+      "name": "Ready-made corporate-action adjusted OHLC candles",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Corporate action data can help, but users benefit from adjusted candle series directly.",
+      "user_benefit": "Cleaner long-term stock charts and backtests.",
+      "priority": "medium",
+      "aliases": [
+        "Ready-made corporate-action adjusted OHLC candles"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 12
+      }
+    },
+    {
+      "id": "nubra-realtime-greeks-stream",
+      "name": "Realtime Greeks stream",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Live option Greeks by option ref_id",
+      "notes": "Documented under realtime Greeks Data stream.",
+      "aliases": [
+        "Live option Greeks by option ref_id",
+        "Realtime Greeks stream"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 84
+      }
+    },
+    {
+      "id": "nubra-realtime-ohlcv-stream",
+      "name": "Realtime OHLCV stream",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Live candle buckets by symbol and interval",
+      "notes": "Documented under realtime OHLCV Data stream.",
+      "aliases": [
+        "Live candle buckets by symbol and interval",
+        "Realtime OHLCV stream"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 85
+      }
+    },
+    {
+      "id": "nubra-realtime-option-chain-stream",
+      "name": "Realtime option chain stream",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Live option-chain updates by underlying and expiry",
+      "notes": "Documented under realtime Options Chain Data stream.",
+      "aliases": [
+        "Live option-chain updates by underlying and expiry",
+        "Realtime option chain stream"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 86
+      }
+    },
+    {
+      "id": "nubra-realtime-order-book-stream",
+      "name": "Realtime order book stream",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Live market-depth updates by ref_id",
+      "notes": "Documented under realtime Order Book Data stream.",
+      "aliases": [
+        "Live market-depth updates by ref_id",
+        "Realtime order book stream"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 83
+      }
+    },
+    {
+      "id": "nubra-realtime-quote",
+      "name": "Realtime quote",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Quote by ref_id",
+      "notes": "Used to fetch live quote data for a specific instrument.",
+      "aliases": [
+        "Quote by ref_id",
+        "Realtime quote"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 3
+      }
+    },
+    {
+      "id": "gap-sector-and-industry-classification",
+      "name": "Sector and industry classification",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Traders need to group stocks by sector/industry.",
+      "user_benefit": "Enables sector scanners and rotation models.",
+      "priority": "medium",
+      "aliases": [
+        "Sector and industry classification"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 10
+      }
+    },
+    {
+      "id": "nubra-strike-price",
+      "name": "Strike price",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Strike-wise option data",
+      "notes": "Available for each option contract.",
+      "aliases": [
+        "Strike price",
+        "Strike-wise option data"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 14
+      }
+    },
+    {
+      "id": "nubra-time-intervals",
+      "name": "Time intervals",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "1m, 5m, 15m, 1h, 1d, 1w, 1mth, 1y",
+      "notes": "Covered in market data documentation.",
+      "aliases": [
+        "1m, 5m, 15m, 1h, 1d, 1w, 1mth, 1y",
+        "Time intervals"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 30
+      }
+    },
+    {
+      "id": "gap-top-gainers-top-losers-api",
+      "name": "Top Gainers / Top Losers API",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Users need ready-made market movers for equity and derivatives instead of calculating them manually across the full universe. This data is already shown in the Nubra retail platform, so the main work is exposing it through API.",
+      "user_benefit": "Helps traders discover momentum opportunities quickly and build scanners/watchlists.",
+      "priority": "high",
+      "aliases": [
+        "Top Gainers / Top Losers API"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 4
+      }
+    },
+    {
+      "id": "gap-upper-lower-circuit-limits",
+      "name": "Upper / Lower Circuit Limits",
+      "category": "Market Data",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Users need the current exchange-defined price bands for each instrument.",
+      "user_benefit": "Helps validate order prices, avoid rejections, and build safer algo/risk checks.",
+      "priority": "high",
+      "aliases": [
+        "Upper / Lower Circuit Limits"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 3
+      }
+    },
+    {
+      "id": "nubra-volume",
+      "name": "Volume",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Traded volume",
+      "notes": "Available in quote/order book response.",
+      "aliases": [
+        "Traded volume",
+        "Volume"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 7
+      }
+    },
+    {
+      "id": "nubra-websocket-depth-controls",
+      "name": "WebSocket depth controls",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Change order book depth",
+      "notes": "Useful for live market data dashboards.",
+      "aliases": [
+        "Change order book depth",
+        "WebSocket depth controls"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 37
+      }
+    },
+    {
+      "id": "nubra-websocket-interval-controls",
+      "name": "WebSocket interval controls",
+      "category": "Market Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Change interval for data type",
+      "notes": "Useful for live OHLCV updates.",
+      "aliases": [
+        "Change interval for data type",
+        "WebSocket interval controls"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 38
+      }
+    },
+    {
+      "id": "gap-expected-move",
+      "name": "Expected move",
+      "category": "Option Analytics",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Range estimate derived from option pricing.",
+      "user_benefit": "Helps define likely price range.",
+      "priority": "high",
+      "aliases": [
+        "Expected move"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 27
+      }
+    },
+    {
+      "id": "gap-historical-volatility",
+      "name": "Historical volatility",
+      "category": "Option Analytics",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Needed to compare realized volatility versus option IV.",
+      "user_benefit": "Helps evaluate option pricing.",
+      "priority": "high",
+      "aliases": [
+        "Historical volatility"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 29
+      }
+    },
+    {
+      "id": "gap-iv-term-structure",
+      "name": "IV term structure",
+      "category": "Option Analytics",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Shows IV across expiries.",
+      "user_benefit": "Helps calendar spread and volatility analysis.",
+      "priority": "medium",
+      "aliases": [
+        "IV term structure"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 30
+      }
+    },
+    {
+      "id": "gap-option-payoff-data",
+      "name": "Option payoff data",
+      "category": "Option Analytics",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "P&L across spot range for single-leg options.",
+      "user_benefit": "Helps users understand risk before trade.",
+      "priority": "high",
+      "aliases": [
+        "Option payoff data"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 25
+      }
+    },
+    {
+      "id": "gap-probability-itm-otm",
+      "name": "Probability ITM / OTM",
+      "category": "Option Analytics",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Helps estimate probability of an option expiring in/out of the money.",
+      "user_benefit": "Useful for strategy evaluation.",
+      "priority": "high",
+      "aliases": [
+        "Probability ITM / OTM"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 28
+      }
+    },
+    {
+      "id": "gap-realized-volatility",
+      "name": "Realized volatility",
+      "category": "Option Analytics",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Actual volatility over selected past windows.",
+      "user_benefit": "Useful for volatility models.",
+      "priority": "medium",
+      "aliases": [
+        "Realized volatility"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 32
+      }
+    },
+    {
+      "id": "gap-straddle-strangle-scanner",
+      "name": "Straddle / strangle scanner",
+      "category": "Option Analytics",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Finds active premium and volatility opportunities.",
+      "user_benefit": "Helps option sellers and volatility traders.",
+      "priority": "medium",
+      "aliases": [
+        "Straddle / strangle scanner"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 31
+      }
+    },
+    {
+      "id": "gap-strategy-payoff-chart-data",
+      "name": "Strategy payoff chart data",
+      "category": "Option Analytics",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Multi-leg strategy payoff output.",
+      "user_benefit": "Useful for straddles, spreads, condors, butterflies.",
+      "priority": "high",
+      "aliases": [
+        "Strategy payoff chart data"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 26
+      }
+    },
+    {
+      "id": "gap-volatility-surface",
+      "name": "Volatility surface",
+      "category": "Option Analytics",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "IV across strikes and expiries.",
+      "user_benefit": "Advanced option analytics for pro users.",
+      "priority": "low",
+      "aliases": [
+        "Volatility surface"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 33
+      }
+    },
+    {
+      "id": "nubra-dataframe-export",
+      "name": "Dataframe export",
+      "category": "Reference Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Instrument master as dataframe",
+      "notes": "Useful for Python users and analysis workflows.",
+      "aliases": [
+        "Dataframe export",
+        "Instrument master as dataframe"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 47
+      }
+    },
+    {
+      "id": "nubra-isin-filter",
+      "name": "ISIN filter",
+      "category": "Reference Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Lookup by ISIN",
+      "notes": "Useful for equity instrument identification.",
+      "aliases": [
+        "ISIN filter",
+        "Lookup by ISIN"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 46
+      }
+    },
+    {
+      "id": "nubra-instrument-filters",
+      "name": "Instrument filters",
+      "category": "Reference Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Exchange, asset, derivative type, asset type",
+      "notes": "Helps narrow down the instrument universe.",
+      "aliases": [
+        "Exchange, asset, derivative type, asset type",
+        "Instrument filters"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 44
+      }
+    },
+    {
+      "id": "nubra-instrument-master",
+      "name": "Instrument master",
+      "category": "Reference Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Get instruments list",
+      "notes": "Helps users discover tradable instruments.",
+      "aliases": [
+        "Get instruments list",
+        "Instrument master"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 43
+      }
+    },
+    {
+      "id": "nubra-nubra-name-lookup",
+      "name": "Nubra name lookup",
+      "category": "Reference Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Lookup by Nubra internal name",
+      "notes": "Useful for exact instrument resolution.",
+      "aliases": [
+        "Lookup by Nubra internal name",
+        "Nubra name lookup"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 42
+      }
+    },
+    {
+      "id": "nubra-options-filters",
+      "name": "Options filters",
+      "category": "Reference Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Expiry, strike price, option type",
+      "notes": "Useful for options selection.",
+      "aliases": [
+        "Expiry, strike price, option type",
+        "Options filters"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 45
+      }
+    },
+    {
+      "id": "nubra-ref-id-lookup",
+      "name": "Ref ID lookup",
+      "category": "Reference Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Instrument lookup by ref_id",
+      "notes": "Important for placing orders and fetching quote data.",
+      "aliases": [
+        "Instrument lookup by ref_id",
+        "Ref ID lookup"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 40
+      }
+    },
+    {
+      "id": "nubra-symbol-lookup",
+      "name": "Symbol lookup",
+      "category": "Reference Data",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Instrument lookup by symbol",
+      "notes": "Useful for simple user workflows.",
+      "aliases": [
+        "Instrument lookup by symbol",
+        "Symbol lookup"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 41
+      }
+    },
+    {
+      "id": "gap-advanced-trader-analytics",
+      "name": "Advanced trader analytics",
+      "category": "Supplemental product context",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": "P&L and order-history analytics built over stored order data",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "PnL analytics",
+        "order history analytics",
+        "Advanced trader analytics"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-automated-totp-login",
+      "name": "Automated TOTP login",
+      "category": "Supplemental product context",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Automated login flow using TOTP",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "TOTP",
+        "automated login",
+        "Automated TOTP login"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-developer-ai-support-assistant",
+      "name": "Developer AI support assistant",
+      "category": "Supplemental product context",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "Documentation"
+      ],
+      "capability": "Documentation assistant for developer questions",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "AI chatbot",
+        "support chatbot",
+        "Developer AI support assistant"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "gap-historical-coverage-directory",
+      "name": "Historical coverage directory",
+      "category": "Supplemental product context",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": "Shows earliest available date by symbol, instrument and interval with a requirement box",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "data availability",
+        "historical range",
+        "suggestion box",
+        "Historical coverage directory"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-multi-session-support",
+      "name": "Multi-session support",
+      "category": "Supplemental product context",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Multiple concurrent API sessions",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "multi session",
+        "sessions",
+        "Multi-session support"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-news-api",
+      "name": "News API",
+      "category": "Supplemental product context",
+      "status": "internal_unverified",
+      "availability": "internal/not publicly exposed",
+      "surfaces": [
+        "Internal API"
+      ],
+      "capability": "Market news data usable directly and by MCP",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "market news",
+        "news feed",
+        "News API"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-nubra-mcp",
+      "name": "Nubra MCP",
+      "category": "Supplemental product context",
+      "status": "partial",
+      "availability": "internal/early",
+      "surfaces": [
+        "MCP"
+      ],
+      "capability": "AI/MCP access to Nubra knowledge and capabilities",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "AI integration",
+        "Claude",
+        "MCP server",
+        "Nubra MCP"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-nubra-uat",
+      "name": "Nubra UAT",
+      "category": "Supplemental product context",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "UAT",
+        "API/SDK"
+      ],
+      "capability": "Paper/forward testing sandbox",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "paper trading",
+        "sandbox",
+        "forward testing",
+        "Nubra UAT"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-nubraoss-backtesting-engine",
+      "name": "NubraOSS backtesting engine",
+      "category": "Supplemental product context",
+      "status": "available",
+      "availability": "open-source",
+      "surfaces": [
+        "NubraOSS"
+      ],
+      "capability": "Open-source backtesting capability",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "backtest",
+        "backtesting engine",
+        "NubraOSS backtesting engine"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-oms-v3-advanced-execution",
+      "name": "OMS V3 advanced execution",
+      "category": "Supplemental product context",
+      "status": "internal_unverified",
+      "availability": "internal/confirm before public claim",
+      "surfaces": [
+        "OMS V3"
+      ],
+      "capability": "Multi-leg execution, targets, stop loss, trailing stop loss and timed execution",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "multi-leg",
+        "trailing stop",
+        "timed execution",
+        "OMS V3 advanced execution"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-primary-and-secondary-static-ip",
+      "name": "Primary and secondary static IP",
+      "category": "Supplemental product context",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Primary/secondary IP support for automated trading",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "static IP",
+        "secondary IP",
+        "IP whitelisting",
+        "Primary and secondary static IP"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "gap-public-websocket-health-dashboard",
+      "name": "Public WebSocket health dashboard",
+      "category": "Supplemental product context",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": "Public status and reliability dashboard for realtime streams",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "status page",
+        "websocket dashboard",
+        "uptime",
+        "Public WebSocket health dashboard"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "gap-static-ip-update-api",
+      "name": "Static-IP update API",
+      "category": "Supplemental product context",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": "Expose the existing static-IP update capability as an API endpoint",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "update IP endpoint",
+        "IP API",
+        "Static-IP update API"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "gap-visual-strategy-builder",
+      "name": "Visual strategy builder",
+      "category": "Supplemental product context",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": "No-code condition, risk and execution workflow",
+      "notes": "Confirmed in project context; internal/unverified items must not be presented as public without validation.",
+      "aliases": [
+        "strategy builder",
+        "no-code algo",
+        "Visual strategy builder"
+      ],
+      "source": {
+        "type": "project_context",
+        "label": "approved product-insights discussions"
+      }
+    },
+    {
+      "id": "nubra-cancel-flexi-order",
+      "name": "Cancel flexi order",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Cancel basket order",
+      "notes": "Available in trading SDK.",
+      "aliases": [
+        "Cancel basket order",
+        "Cancel flexi order"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 79
+      }
+    },
+    {
+      "id": "nubra-cancel-multiple-orders",
+      "name": "Cancel multiple orders",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Bulk cancel",
+      "notes": "Available in trading SDK.",
+      "aliases": [
+        "Bulk cancel",
+        "Cancel multiple orders"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 80
+      }
+    },
+    {
+      "id": "nubra-cancel-order",
+      "name": "Cancel order",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Cancel single order",
+      "notes": "Available in trading SDK.",
+      "aliases": [
+        "Cancel order",
+        "Cancel single order"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 78
+      }
+    },
+    {
+      "id": "nubra-executed-orders",
+      "name": "Executed orders",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Executed order filter",
+      "notes": "Useful for trade confirmation.",
+      "aliases": [
+        "Executed order filter",
+        "Executed orders"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 68
+      }
+    },
+    {
+      "id": "nubra-flexi-basket-state",
+      "name": "Flexi basket state",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Basket-level details including orders, basket params, LTP and P&L",
+      "notes": "get_flexi_order() returns current-day basket state and can filter by tag.",
+      "aliases": [
+        "Basket-level details including orders, basket params, LTP and P&L",
+        "Flexi basket state"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 91
+      }
+    },
+    {
+      "id": "nubra-flexi-order",
+      "name": "Flexi order",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Basket/flexi order placement",
+      "notes": "Available in trading SDK.",
+      "aliases": [
+        "Basket/flexi order placement",
+        "Flexi order"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 74
+      }
+    },
+    {
+      "id": "nubra-funds",
+      "name": "Funds",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Funds and margin snapshot",
+      "notes": "Useful before placing trades.",
+      "aliases": [
+        "Funds",
+        "Funds and margin snapshot"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 65
+      }
+    },
+    {
+      "id": "nubra-get-flexi-order",
+      "name": "Get flexi order",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Flexi order retrieval",
+      "notes": "Useful for basket tracking.",
+      "aliases": [
+        "Flexi order retrieval",
+        "Get flexi order"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 75
+      }
+    },
+    {
+      "id": "nubra-hedge-benefit-in-margin",
+      "name": "Hedge benefit in margin",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Margin benefit / hedge benefit component",
+      "notes": "Margin response includes margin_benefit.",
+      "aliases": [
+        "Hedge benefit in margin",
+        "Margin benefit / hedge benefit component"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 90
+      }
+    },
+    {
+      "id": "nubra-holdings",
+      "name": "Holdings",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Current holdings",
+      "notes": "Useful for delivery portfolio view.",
+      "aliases": [
+        "Current holdings",
+        "Holdings"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 64
+      }
+    },
+    {
+      "id": "nubra-leg-level-margin-breakdown",
+      "name": "Leg-level margin breakdown",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Per-leg margin details",
+      "notes": "get_margin() supports with_legs and returns leg_margin when requested.",
+      "aliases": [
+        "Leg-level margin breakdown",
+        "Per-leg margin details"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 89
+      }
+    },
+    {
+      "id": "nubra-live-orders",
+      "name": "Live orders",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Live order filter",
+      "notes": "Useful for open order monitoring.",
+      "aliases": [
+        "Live order filter",
+        "Live orders"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 67
+      }
+    },
+    {
+      "id": "nubra-margin-api",
+      "name": "Margin API",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Margin calculation",
+      "notes": "Available in trading SDK.",
+      "aliases": [
+        "Margin API",
+        "Margin calculation"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 81
+      }
+    },
+    {
+      "id": "nubra-modify-flexi-order",
+      "name": "Modify flexi order",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Modify basket order",
+      "notes": "Available in trading SDK.",
+      "aliases": [
+        "Modify basket order",
+        "Modify flexi order"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 77
+      }
+    },
+    {
+      "id": "nubra-modify-order",
+      "name": "Modify order",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Modify single order",
+      "notes": "Available in trading SDK.",
+      "aliases": [
+        "Modify order",
+        "Modify single order"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 76
+      }
+    },
+    {
+      "id": "nubra-multi-order",
+      "name": "Multi order",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Multiple order placement",
+      "notes": "Available in trading SDK.",
+      "aliases": [
+        "Multi order",
+        "Multiple order placement"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 73
+      }
+    },
+    {
+      "id": "nubra-order-by-status",
+      "name": "Order by status",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Status filter in installed SDK",
+      "notes": "Useful for order management.",
+      "aliases": [
+        "Order by status",
+        "Status filter in installed SDK"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 70
+      }
+    },
+    {
+      "id": "nubra-order-by-tag",
+      "name": "Order by tag",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Tag-based order filtering",
+      "notes": "Useful for strategy/order grouping.",
+      "aliases": [
+        "Order by tag",
+        "Tag-based order filtering"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 69
+      }
+    },
+    {
+      "id": "nubra-orders",
+      "name": "Orders",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Order book",
+      "notes": "Useful for current-day order monitoring.",
+      "aliases": [
+        "Order book",
+        "Orders"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 66
+      }
+    },
+    {
+      "id": "nubra-portfolio-aware-margin",
+      "name": "Portfolio-aware margin",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Margin estimation with existing portfolio offsets",
+      "notes": "get_margin() supports with_portfolio=True.",
+      "aliases": [
+        "Margin estimation with existing portfolio offsets",
+        "Portfolio-aware margin"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 88
+      }
+    },
+    {
+      "id": "nubra-positions",
+      "name": "Positions",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Current positions",
+      "notes": "Useful for portfolio and risk monitoring.",
+      "aliases": [
+        "Current positions",
+        "Positions"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 63
+      }
+    },
+    {
+      "id": "nubra-single-order",
+      "name": "Single order",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Single order placement",
+      "notes": "Available in trading SDK.",
+      "aliases": [
+        "Single order",
+        "Single order placement"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 72
+      }
+    },
+    {
+      "id": "nubra-symbol-order-filters",
+      "name": "Symbol/order filters",
+      "category": "Trading / Portfolio",
+      "status": "available",
+      "availability": "public",
+      "surfaces": [
+        "API/SDK"
+      ],
+      "capability": "Symbol, delivery type, exchange filters",
+      "notes": "Useful for searching order book.",
+      "aliases": [
+        "Symbol, delivery type, exchange filters",
+        "Symbol/order filters"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what we have",
+        "row": 71
+      }
+    },
+    {
+      "id": "gap-backtest-ready-data-export-api",
+      "name": "Backtest-ready data export API",
+      "category": "Workflow / Trading",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Users need clean downloadable datasets for research.",
+      "user_benefit": "Faster strategy development.",
+      "priority": "medium",
+      "aliases": [
+        "Backtest-ready data export API"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 51
+      }
+    },
+    {
+      "id": "gap-historical-order-tag-lookup",
+      "name": "Historical order-tag lookup",
+      "category": "Workflow / Trading",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Current-day tag lookup exists, but multi-day strategies need older tag retrieval.",
+      "user_benefit": "Helps track overnight and past strategies.",
+      "priority": "high",
+      "aliases": [
+        "Historical order-tag lookup"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 47
+      }
+    },
+    {
+      "id": "gap-multi-day-order-history",
+      "name": "Multi-day order history",
+      "category": "Workflow / Trading",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Users need older order records from API.",
+      "user_benefit": "Better reconciliation and analytics.",
+      "priority": "high",
+      "aliases": [
+        "Multi-day order history"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 48
+      }
+    },
+    {
+      "id": "gap-p-l-based-exit-api",
+      "name": "P&L Based Exit API",
+      "category": "Workflow / Trading",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Users need to configure automatic exits based on daily account-level P&L or strategy-tag-level P&L.",
+      "user_benefit": "Helps enforce risk limits, auto-square off positions, and manage strategy-wise losses/profits without manual monitoring.",
+      "priority": "high",
+      "aliases": [
+        "P&L Based Exit API"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 45
+      }
+    },
+    {
+      "id": "gap-scanner-apis",
+      "name": "Scanner APIs",
+      "category": "Workflow / Trading",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Top gainers, losers, volume shockers, OI shockers, gap up/down.",
+      "user_benefit": "Helps traders find opportunities.",
+      "priority": "medium",
+      "aliases": [
+        "Scanner APIs"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 52
+      }
+    },
+    {
+      "id": "gap-strategy-level-p-l-by-tag",
+      "name": "Strategy-level P&L by tag",
+      "category": "Workflow / Trading",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Algo users group orders by strategy/tag.",
+      "user_benefit": "Easier strategy performance tracking.",
+      "priority": "high",
+      "aliases": [
+        "Strategy-level P&L by tag"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 49
+      }
+    },
+    {
+      "id": "gap-tradebook-multi-day-trade-history",
+      "name": "Tradebook / Multi-day Trade History",
+      "category": "Workflow / Trading",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Users need actual fills/trades across multiple days, not only current-day orders.",
+      "user_benefit": "Improves reconciliation, strategy analytics, tax/audit support, and multi-day tracking.",
+      "priority": "high",
+      "aliases": [
+        "Tradebook / Multi-day Trade History"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 46
+      }
+    },
+    {
+      "id": "gap-webhook-callback-for-fills-order-updates",
+      "name": "Webhook callback for fills/order updates",
+      "category": "Workflow / Trading",
+      "status": "not_available",
+      "availability": "proposed",
+      "surfaces": [],
+      "capability": null,
+      "notes": "Realtime order update socket exists, but hosted platforms often prefer webhook callbacks instead of maintaining client sockets.",
+      "user_benefit": "Enables event-driven trading systems and backend integrations.",
+      "priority": "medium",
+      "aliases": [
+        "Webhook callback for fills/order updates"
+      ],
+      "source": {
+        "type": "workbook",
+        "file": "Nubra API data (1).xlsx",
+        "sheet": "what can be added",
+        "row": 50
+      }
+    }
+  ]
+}

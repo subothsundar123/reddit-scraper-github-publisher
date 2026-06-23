@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Nubra Feature Catalog",
+  "type": "object",
+  "required": ["catalog_version", "status_definitions", "features"],
+  "properties": {
+    "catalog_version": {"type": "string"},
+    "features": {"type": "array", "items": {"type": "object", "required": ["id", "name", "status", "aliases", "source"]}}
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "subreddits": [
+    "IndiaInvestments",
+    "IndianStreetBets",
+    "IndianStockMarket",
+    "IndiaAlgoTrading",
+    "DalalStreetTalks",
+    "NSEbets",
+    "IndiaOptionsSelling"
+  ],
+  "sorts": ["hot", "new", "top"],
+  "limit_per_sort": 100,
+  "comment_limit": 100,
+  "collection_frequency": "daily"
+}
+

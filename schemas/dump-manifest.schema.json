@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reddit Insights Dump Manifest",
+  "type": "object",
+  "required": ["schema_version", "collection_date", "files"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "collection_date": {"type": "string", "format": "date"},
+    "files": {"type": "array", "items": {"type": "object", "required": ["path", "sha256", "bytes"]}}
+  }
+}
+

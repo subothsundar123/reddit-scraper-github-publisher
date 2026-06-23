@@ -1,0 +1,2 @@
+[console_scripts]
+insights-publisher = insights_publisher.cli:main
