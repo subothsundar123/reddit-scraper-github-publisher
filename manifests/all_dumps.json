@@ -12,7 +12,13 @@
       "manifest": "daily-dumps/2026-06-23/manifest.json",
       "posts": 46,
       "comments": 12
+    },
+    {
+      "collection_date": "2026-06-24",
+      "manifest": "daily-dumps/2026-06-24/manifest.json",
+      "posts": 45,
+      "comments": 0
     }
   ],
-  "updated_at": "2026-06-23T09:21:23.967430+00:00"
+  "updated_at": "2026-06-24T07:29:21.460513+00:00"
 }

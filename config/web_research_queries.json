@@ -1,5 +1,5 @@
 {
-  "collection_date": "2026-06-23",
+  "collection_date": "2026-06-24",
   "scope": "Public Reddit discussions relevant to trading APIs, algo workflows and strategy builders",
   "queries": [
     "India broker API websocket reliability Python SDK option chain",
@@ -9,18 +9,23 @@
     "static IP TOTP API authentication automated trading",
     "Claude MCP AI trading research backtesting",
     "scanner indicator API news sentiment market data",
-    "broker platform feature expectations India"
+    "broker platform feature expectations India",
+    "point-in-time data survivorship bias and backtest-to-live parity",
+    "portfolio tracking trade journals and order-history analytics",
+    "AI trading research market context and strategy validation"
   ],
   "communities": [
     "IndiaAlgoTrading",
     "IndianStockMarket",
     "IndianStreetBets",
-    "algotrading"
+    "algotrading",
+    "IndiaInvestments",
+    "NSEbets"
   ],
-  "methodology": "Search-engine discovery followed by direct review of public Reddit result pages. Text is stored as a concise research summary. Unknown vote/comment metrics remain zero and must not be interpreted as engagement.",
+  "methodology": "Direct review of public Reddit RSS entries, filtered to previously unseen product-relevant discussions. Text is stored as a concise research summary. Unknown vote/comment metrics remain zero and must not be interpreted as engagement.",
   "limitations": [
     "This supplements rather than replaces an authenticated Reddit API collection.",
-    "Search-engine discovery is relevance-ranked and is not a complete census.",
-    "Some discussions are historical but were collected on 2026-06-23 because they remain directly relevant to product expectations."
+    "RSS availability is rate-limited and is not a complete census of every configured community.",
+    "Some discussions predate the collection date but were collected on 2026-06-24 because they remain directly relevant to product expectations."
   ]
 }
