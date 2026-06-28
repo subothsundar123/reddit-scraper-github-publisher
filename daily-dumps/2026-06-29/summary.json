@@ -1,15 +1,16 @@
 {
   "collection_date": "2026-06-29",
-  "source": "reddit",
+  "source": "multi_channel_enriched",
   "posts": 0,
   "comments": 0,
-  "signals": 299,
+  "signals": 319,
   "subreddits": {},
   "source_methods": {},
   "signal_sources": {
     "github": 195,
     "hacker_news": 97,
-    "broker_docs": 7
+    "broker_docs": 7,
+    "manual_web_research": 20
   },
   "signal_channels": {
     "FiniexTestingIDE": 4,
@@ -154,7 +155,16 @@
     "Fyers API": 1,
     "Angel One SmartAPI": 1,
     "ICICI Direct Breeze API": 1,
-    "Shoonya API": 1
+    "Shoonya API": 1,
+    "SEBI algo rules": 3,
+    "Broker API positioning": 2,
+    "Broker API pricing": 1,
+    "Broker API comparisons": 1,
+    "Telegram public channel": 1,
+    "Reddit IndiaAlgoTrading": 8,
+    "Reddit IndianStockMarket": 2,
+    "Legal/compliance research": 1,
+    "Global API benchmark": 1
   },
   "evidence_quality": {},
   "engagement": {
