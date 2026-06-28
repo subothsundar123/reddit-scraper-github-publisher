@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "github": {
+    "enabled": true,
+    "max_results_per_query": 25,
+    "queries": [
+      "broker api websocket historical data backtesting language:Python",
+      "trading api websocket order execution language:Python",
+      "algo trading India broker API",
+      "option chain API Greeks backtesting",
+      "kite connect websocket historical data",
+      "upstox api websocket historical data",
+      "dhanhq api websocket order",
+      "fyers api websocket order",
+      "angel one smartapi websocket"
+    ]
+  },
+  "hacker_news": {
+    "enabled": true,
+    "max_results_per_query": 20,
+    "queries": [
+      "trading API",
+      "broker API",
+      "market data API",
+      "backtesting engine",
+      "websocket market data"
+    ]
+  },
+  "broker_docs": {
+    "enabled": true,
+    "pages": [
+      {
+        "name": "Zerodha Kite Connect",
+        "url": "https://kite.trade/docs/connect/v3/"
+      },
+      {
+        "name": "Upstox Developer API",
+        "url": "https://upstox.com/developer/api-documentation/"
+      },
+      {
+        "name": "DhanHQ API",
+        "url": "https://dhanhq.co/docs/v2/"
+      },
+      {
+        "name": "Fyers API",
+        "url": "https://myapi.fyers.in/docs/"
+      },
+      {
+        "name": "Angel One SmartAPI",
+        "url": "https://smartapi.angelone.in/docs"
+      },
+      {
+        "name": "ICICI Direct Breeze API",
+        "url": "https://api.icicidirect.com/breezeapi/documents/index.html"
+      },
+      {
+        "name": "Shoonya API",
+        "url": "https://github.com/Shoonya-Dev/ShoonyaApi-py"
+      }
+    ]
+  }
+}

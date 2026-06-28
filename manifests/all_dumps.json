@@ -18,7 +18,14 @@
       "manifest": "daily-dumps/2026-06-24/manifest.json",
       "posts": 45,
       "comments": 0
+    },
+    {
+      "collection_date": "2026-06-28",
+      "manifest": "daily-dumps/2026-06-28/manifest.json",
+      "posts": 0,
+      "comments": 0,
+      "signals": 299
     }
   ],
-  "updated_at": "2026-06-24T07:29:21.460513+00:00"
+  "updated_at": "2026-06-28T17:46:24.199685+00:00"
 }

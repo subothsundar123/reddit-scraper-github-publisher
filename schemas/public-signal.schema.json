@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Public product signal",
+  "type": "object",
+  "required": ["id", "source", "channel", "item_type", "collected_on", "title", "body", "url", "engagement"],
+  "properties": {
+    "id": {"type": "string"},
+    "source": {"type": "string"},
+    "channel": {"type": "string"},
+    "item_type": {"type": "string"},
+    "external_id": {"type": ["string", "null"]},
+    "collected_on": {"type": "string"},
+    "created_at": {"type": ["string", "number", "null"]},
+    "title": {"type": "string"},
+    "body": {"type": "string"},
+    "url": {"type": "string"},
+    "author_hash": {"type": ["string", "null"]},
+    "engagement": {"type": "object"},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "segment": {"type": "string"},
+    "competitors": {"type": "array", "items": {"type": "string"}},
+    "evidence_quality": {"type": "string"},
+    "source_method": {"type": "string"}
+  }
+}
