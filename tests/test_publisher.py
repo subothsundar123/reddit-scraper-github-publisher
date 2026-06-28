@@ -26,5 +26,10 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertGreater(len(catalog["features"]), 100)
         self.assertIn("internal_unverified", catalog["status_definitions"])
 
-if __name__ == "__main__": unittest.main()
+    def test_public_signal_schema_exists(self):
+        schema = json.loads((ROOT / "schemas/public-signal.schema.json").read_text())
+        self.assertIn("source", schema["required"])
+        cfg = json.loads((ROOT / "config/public_signal_sources.json").read_text())
+        self.assertIn("github", cfg)
 
+if __name__ == "__main__": unittest.main()
