@@ -1,16 +1,19 @@
 {
   "collection_date": "2026-06-29",
-  "source": "multi_channel_enriched",
+  "source": "feature_market_enriched",
   "posts": 0,
   "comments": 0,
-  "signals": 319,
+  "signals": 341,
   "subreddits": {},
   "source_methods": {},
   "signal_sources": {
     "github": 195,
     "hacker_news": 97,
     "broker_docs": 7,
-    "manual_web_research": 20
+    "manual_web_research": 20,
+    "nubra_feature_input": 13,
+    "competitor_feature_research": 6,
+    "market_expectation_research": 3
   },
   "signal_channels": {
     "FiniexTestingIDE": 4,
@@ -164,7 +167,19 @@
     "Reddit IndiaAlgoTrading": 8,
     "Reddit IndianStockMarket": 2,
     "Legal/compliance research": 1,
-    "Global API benchmark": 1
+    "Global API benchmark": 1,
+    "Revamp Marketing Features": 5,
+    "Strategies Appstore": 4,
+    "FO Analytics on Nubra": 4,
+    "Sensibull": 1,
+    "Dhan": 1,
+    "Opstra": 1,
+    "AlgoTest": 1,
+    "TradingView": 1,
+    "StockEdge": 1,
+    "Options education and user expectations": 1,
+    "Options analytics alternatives": 1,
+    "Reddit and API dump synthesis": 1
   },
   "evidence_quality": {},
   "engagement": {
