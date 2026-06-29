@@ -1,9 +1,9 @@
 {
   "collection_date": "2026-06-29",
-  "source": "feature_market_enriched",
+  "source": "retail_feature_research_enriched",
   "posts": 0,
   "comments": 0,
-  "signals": 341,
+  "signals": 359,
   "subreddits": {},
   "source_methods": {},
   "signal_sources": {
@@ -13,7 +13,8 @@
     "manual_web_research": 20,
     "nubra_feature_input": 13,
     "competitor_feature_research": 6,
-    "market_expectation_research": 3
+    "market_expectation_research": 3,
+    "retail_reddit_feature_research": 18
   },
   "signal_channels": {
     "FiniexTestingIDE": 4,
@@ -179,7 +180,10 @@
     "StockEdge": 1,
     "Options education and user expectations": 1,
     "Options analytics alternatives": 1,
-    "Reddit and API dump synthesis": 1
+    "Reddit and API dump synthesis": 1,
+    "r/IndianStockMarket": 8,
+    "r/IndiaOptionsSelling": 7,
+    "r/IndianStreetBets": 3
   },
   "evidence_quality": {},
   "engagement": {
