@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-29T10:03:58.651324+00:00",
+  "generated_at": "2026-06-29T11:22:07.183843+00:00",
   "scope": "retail_only_upcoming_features",
   "excluded": [
     "API/SDK-only features",
     "MCP/internal connector features"
   ],
-  "count": 15,
+  "count": 17,
   "features": [
     {
       "id": "nubra-fo-analytics-against-price",
@@ -133,6 +133,35 @@
       }
     },
     {
+      "id": "nubra-option-chain-call-put-view",
+      "category": "Retail App / Option Chain",
+      "name": "Call View and Put View in option chain",
+      "status": "upcoming",
+      "availability": "user_confirmed_new_build",
+      "surfaces": [
+        "Mobile App",
+        "Option chain"
+      ],
+      "capability": "Dedicated Call View and Put View so traders can focus on one side of the option chain while still switching quickly between calls and puts.",
+      "notes": "User clarified Call view and Put view should be included in the upcoming retail feature list.",
+      "user_benefit": "Helps option buyers, sellers and OI traders reduce visual clutter and focus on the side of the chain relevant to the current trade idea.",
+      "priority": "high",
+      "aliases": [
+        "Call view",
+        "Put view",
+        "Calls view",
+        "Puts view",
+        "Call and Put view",
+        "Call side view",
+        "Put side view"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-06-29",
+        "notes": "User clarified Call view, Put view, payoff and analysis on the face, and persona types: Option sellers, Option buyers, Investor and OI trader."
+      }
+    },
+    {
       "id": "nubra-option-chain-custom-layout",
       "category": "Retail App / Option Chain",
       "name": "Custom option-chain layout",
@@ -152,7 +181,12 @@
         "reorder variables",
         "cut the noise",
         "trader view",
-        "Custom option-chain layout"
+        "Custom option-chain layout",
+        "Call view",
+        "Put view",
+        "Calls view",
+        "Puts view",
+        "Call and Put view"
       ],
       "source": {
         "type": "source_documents",
@@ -244,7 +278,12 @@
         "Show PCR",
         "Show Max Pain",
         "Highlight ITM Options",
-        "VWAP column"
+        "VWAP column",
+        "Call view",
+        "Put view",
+        "Calls view",
+        "Puts view",
+        "Call and Put view"
       ],
       "source": {
         "type": "screenshot_user_input",
@@ -296,9 +335,9 @@
         "Home customization",
         "Option chain"
       ],
-      "capability": "Persona-based experience such as Investor mode and trader-oriented modes that can change visible tools, defaults and guidance.",
-      "notes": "Screenshots/context show Investor mode and user mentioned trader persona-based settings in the new build. Treat as upcoming until public rollout is confirmed.",
-      "user_benefit": "Reduces clutter and makes Nubra feel purpose-built for investor, option buyer, option seller and active trader journeys.",
+      "capability": "Persona-based experience for Option Sellers, Option Buyers, Investors and OI Traders, changing visible tools, defaults, layouts and guidance.",
+      "notes": "User clarified persona types as Option sellers, Option buyers, Investor and OI trader. Treat as upcoming until public rollout is confirmed.",
+      "user_benefit": "Reduces clutter and makes Nubra feel purpose-built for investor, option buyer, option seller and OI-based trader journeys.",
       "priority": "high",
       "aliases": [
         "Investor mode",
@@ -306,12 +345,19 @@
         "Persona settings",
         "Persona-based settings",
         "Mode selector",
-        "User persona"
+        "User persona",
+        "Option Seller persona",
+        "Option Buyer persona",
+        "Investor persona",
+        "OI Trader persona",
+        "OI trader",
+        "Option sellers",
+        "Option buyers"
       ],
       "source": {
-        "type": "screenshot_user_input",
-        "file": "Screenshot_2026-06-29 option-chain new build",
-        "notes": "User-provided new-build screenshots and app context v1.1.90"
+        "type": "user_input",
+        "file": "conversation_2026-06-29",
+        "notes": "User clarified Call view, Put view, payoff and analysis on the face, and persona types: Option sellers, Option buyers, Investor and OI trader."
       }
     },
     {
@@ -407,6 +453,36 @@
           "STRATEGIES APPSTORE.pdf"
         ],
         "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-payoff-analysis-on-face",
+      "category": "Retail App / Strategies",
+      "name": "Payoff and analysis on the face",
+      "status": "upcoming",
+      "availability": "user_confirmed_new_build",
+      "surfaces": [
+        "Mobile App",
+        "Strategies",
+        "Option chain"
+      ],
+      "capability": "Show payoff and key strategy analysis upfront on strategy cards or the main interaction surface without forcing the trader to open a deeper details page.",
+      "notes": "User clarified payoff and analysis on the face should be included. This extends risk-first strategy cards and strategy discovery.",
+      "user_benefit": "Lets traders judge risk, reward, breakeven, probability and margin impact faster before entering or editing a strategy.",
+      "priority": "high",
+      "aliases": [
+        "payoff on face",
+        "analysis on face",
+        "payoff and analysis on the face",
+        "visible payoff",
+        "front-facing analysis",
+        "strategy card analysis",
+        "payoff upfront"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-06-29",
+        "notes": "User clarified Call view, Put view, payoff and analysis on the face, and persona types: Option sellers, Option buyers, Investor and OI trader."
       }
     },
     {

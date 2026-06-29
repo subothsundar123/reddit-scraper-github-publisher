@@ -2,7 +2,7 @@
 
 Scope: retail app features only. API/SDK-only and MCP/internal connector features are excluded.
 
-Total features: 15
+Total features: 17
 
 ## Retail App / F&O Analytics
 
@@ -44,6 +44,15 @@ Total features: 15
 
 ## Retail App / Option Chain
 
+### Call View and Put View in option chain
+
+- Status: upcoming / user_confirmed_new_build
+- Surfaces: Mobile App, Option chain
+- Capability: Dedicated Call View and Put View so traders can focus on one side of the option chain while still switching quickly between calls and puts.
+- User benefit: Helps option buyers, sellers and OI traders reduce visual clutter and focus on the side of the chain relevant to the current trade idea.
+- Source note: User clarified Call view and Put view should be included in the upcoming retail feature list.
+- Keywords: Call view, Put view, Calls view, Puts view, Call and Put view, Call side view, Put side view
+
 ### Custom option-chain layout
 
 - Status: upcoming / source_document_evidence
@@ -51,7 +60,7 @@ Total features: 15
 - Capability: Customise/customize the option-chain layout, reorder variables and save the chain layout by trading need.
 - User benefit: Lets users cut noise and build a chain view for their style instead of using the same default screen.
 - Source note: Includes exact source keyword: customise your own layout; reorder variables accordingly.
-- Keywords: customise your own layout, customize your own layout, custom layout, reorder variables, cut the noise, trader view, Custom option-chain layout
+- Keywords: customise your own layout, customize your own layout, custom layout, reorder variables, cut the noise, trader view, Custom option-chain layout, Call view, Put view, Calls view, Puts view, Call and Put view
 
 ### Option Buyer mode in option chain
 
@@ -78,7 +87,7 @@ Total features: 15
 - Capability: Configurable option-chain settings and filters including OI bars, PCR, total OI, max pain, ITM highlighting, today high/low, VWAP, premium, OI, OI buildup, volume, volume spike, IV, IV change, Greeks, bid-ask spread and OI concentration.
 - User benefit: Lets different trader personas tune the option chain to their strategy instead of forcing one default layout.
 - Source note: Screenshots show Settings and Filters tabs with toggles and filters for core option-chain data, columns and Greeks.
-- Keywords: Option chain filters, Customize option chain, OI filter, Premium filter, IV filter, Greeks filter, Bid ask spread filter, OI concentration, Show OI bars, Show PCR, Show Max Pain, Highlight ITM Options
+- Keywords: Option chain filters, Customize option chain, OI filter, Premium filter, IV filter, Greeks filter, Bid ask spread filter, OI concentration, Show OI bars, Show PCR, Show Max Pain, Highlight ITM Options, VWAP column, Call view
 
 ### Total Call OI and Total Put OI on option chain
 
@@ -95,10 +104,10 @@ Total features: 15
 
 - Status: upcoming / new_build_evidence
 - Surfaces: Mobile App, Compass, Home customization, Option chain
-- Capability: Persona-based experience such as Investor mode and trader-oriented modes that can change visible tools, defaults and guidance.
-- User benefit: Reduces clutter and makes Nubra feel purpose-built for investor, option buyer, option seller and active trader journeys.
-- Source note: Screenshots/context show Investor mode and user mentioned trader persona-based settings in the new build. Treat as upcoming until public rollout is confirmed.
-- Keywords: Investor mode, Trader mode, Persona settings, Persona-based settings, Mode selector, User persona
+- Capability: Persona-based experience for Option Sellers, Option Buyers, Investors and OI Traders, changing visible tools, defaults, layouts and guidance.
+- User benefit: Reduces clutter and makes Nubra feel purpose-built for investor, option buyer, option seller and OI-based trader journeys.
+- Source note: User clarified persona types as Option sellers, Option buyers, Investor and OI trader. Treat as upcoming until public rollout is confirmed.
+- Keywords: Investor mode, Trader mode, Persona settings, Persona-based settings, Mode selector, User persona, Option Seller persona, Option Buyer persona, Investor persona, OI Trader persona, OI trader, Option sellers, Option buyers
 
 ### Homepage customisation
 
@@ -131,6 +140,15 @@ Total features: 15
 - Source note: Strategies Appstore document says pick strikes and expiries and watch risk update live.
 - Keywords: risk update live, live risk update, leg by leg, build any strategy, pick strikes and expiries, risk recalculate live, Live strategy risk recalculation while building legs
 
+### Payoff and analysis on the face
+
+- Status: upcoming / user_confirmed_new_build
+- Surfaces: Mobile App, Strategies, Option chain
+- Capability: Show payoff and key strategy analysis upfront on strategy cards or the main interaction surface without forcing the trader to open a deeper details page.
+- User benefit: Lets traders judge risk, reward, breakeven, probability and margin impact faster before entering or editing a strategy.
+- Source note: User clarified payoff and analysis on the face should be included. This extends risk-first strategy cards and strategy discovery.
+- Keywords: payoff on face, analysis on face, payoff and analysis on the face, visible payoff, front-facing analysis, strategy card analysis, payoff upfront
+
 ### Strategy Appstore taxonomy by market view, trader outcome and instrument set
 
 - Status: upcoming / source_document_evidence
@@ -138,7 +156,7 @@ Total features: 15
 - Capability: Classify pre-built strategies by Market View, Trader Outcome and Instrument Set. Market views include Bullish, Bearish, Sideways and Big News. Trader outcomes include Income, Hedge, Directional, Volatility and Arbitrage. Instrument sets include Stock, Future and Option.
 - User benefit: Makes the strategy library easier to browse by intent rather than only by strategy name.
 - Source note: Revamp sheet explicitly lists Market View, Trader Outcome and Instrument Set taxonomy.
-- Keywords: market view, bullish, bearish, sideways, big news, trader outcome, income, hedge, directional, volatility, arbitrage, instrument set
+- Keywords: market view, bullish, bearish, sideways, big news, trader outcome, income, hedge, directional, volatility, arbitrage, instrument set, stock, future
 
 ## Retail App / Trading
 

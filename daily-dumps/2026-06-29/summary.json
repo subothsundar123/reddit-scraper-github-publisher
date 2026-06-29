@@ -1,16 +1,16 @@
 {
   "collection_date": "2026-06-29",
-  "source": "retail_feature_research_enriched_manual_market_research",
+  "source": "retail_feature_research_enriched_manual_market_research_user_clarified",
   "posts": 0,
   "comments": 0,
-  "signals": 436,
+  "signals": 439,
   "subreddits": {},
   "source_methods": {
     "github_search_api": 195,
     "hacker_news_algolia_api": 97,
     "broker_docs_page_fetch": 7,
     "web_search_review": 28,
-    "manual_feature_input": 28,
+    "manual_feature_input": 31,
     "manual_analysis_synthesis": 1,
     "retail_reddit_web_review": 18,
     "manual_web_research": 62
@@ -20,7 +20,7 @@
     "hacker_news": 97,
     "broker_docs": 7,
     "manual_web_research": 33,
-    "nubra_feature_input": 28,
+    "nubra_feature_input": 31,
     "competitor_feature_research": 6,
     "market_expectation_research": 3,
     "retail_reddit_feature_research": 32,
@@ -246,7 +246,8 @@
     "NSE option chain": 1,
     "Research360 option chain education": 1,
     "Google Play AI stock screener": 1,
-    "IMATE AI research": 1
+    "IMATE AI research": 1,
+    "User clarified upcoming retail features": 3
   },
   "evidence_quality": {
     "public_github_api": 195,
@@ -271,7 +272,8 @@
     "community_product_announcement": 1,
     "competitor_help_page": 3,
     "education_page": 4,
-    "public_reddit_listing": 1
+    "public_reddit_listing": 1,
+    "user_clarified_feature_input": 3
   },
   "engagement": {
     "post_score_sum": 0,
