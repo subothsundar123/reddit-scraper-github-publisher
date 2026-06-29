@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "updated_at": "2026-06-23T09:05:40.813634+00:00",
+  "updated_at": "2026-06-29T09:44:18.504118+00:00",
   "status_definitions": {
     "available": "Available now on the stated surface",
     "upcoming": "Documented as upcoming; do not call generally available",
@@ -3705,6 +3705,124 @@
         "file": "Nubra API data (1).xlsx",
         "sheet": "what can be added",
         "row": 50
+      }
+    },
+    {
+      "id": "nubra-retail-persona-modes",
+      "name": "Trader persona-based app modes/settings",
+      "category": "Retail App / Personalization",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Compass",
+        "Home customization",
+        "Option chain"
+      ],
+      "capability": "Persona-based experience such as Investor mode and trader-oriented modes that can change visible tools, defaults and guidance.",
+      "notes": "Screenshots/context show Investor mode and user mentioned trader persona-based settings in the new build. Treat as upcoming until public rollout is confirmed.",
+      "user_benefit": "Reduces clutter and makes Nubra feel purpose-built for investor, option buyer, option seller and active trader journeys.",
+      "priority": "high",
+      "aliases": [
+        "Investor mode",
+        "Trader mode",
+        "Persona settings",
+        "Persona-based settings",
+        "Mode selector",
+        "User persona"
+      ],
+      "source": {
+        "type": "screenshot_user_input",
+        "file": "Screenshot_2026-06-29 option-chain new build",
+        "notes": "User-provided new-build screenshots and app context v1.1.90"
+      }
+    },
+    {
+      "id": "nubra-option-chain-buyer-mode",
+      "name": "Option Buyer mode in option chain",
+      "category": "Retail App / Option Chain",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Option chain"
+      ],
+      "capability": "Option-chain mode optimized for option buyers, visible as Option Buyer in the option-chain header.",
+      "notes": "Screenshot shows Option Buyer mode selected in the option-chain header.",
+      "user_benefit": "Helps buyers focus on premium, momentum, liquidity, ITM/OTM visibility and relevant strike selection without manually configuring every column.",
+      "priority": "high",
+      "aliases": [
+        "Option Buyer",
+        "Buyer mode",
+        "Option chain buyer preset",
+        "Buyer preset"
+      ],
+      "source": {
+        "type": "screenshot_user_input",
+        "file": "Screenshot_2026-06-29-15-11-04 option buyer mode",
+        "notes": "Header shows Option Buyer dropdown on option chain"
+      }
+    },
+    {
+      "id": "nubra-option-chain-seller-mode",
+      "name": "Option Seller mode in option chain",
+      "category": "Retail App / Option Chain",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Option chain"
+      ],
+      "capability": "Option-chain mode/preset expected for option sellers, complementary to Option Buyer mode.",
+      "notes": "User confirmed Option Seller mode exists in the new build. Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Helps sellers focus on OI concentration, IV, theta, bid-ask spread, liquidity, margin/risk and strike safety instead of using a generic chain.",
+      "priority": "high",
+      "aliases": [
+        "Option Seller",
+        "Seller mode",
+        "Option chain seller preset",
+        "Seller preset"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-06-29",
+        "notes": "User confirmed option seller mode in option chain"
+      }
+    },
+    {
+      "id": "nubra-option-chain-custom-filters-columns",
+      "name": "Option-chain customization, filters and column controls",
+      "category": "Retail App / Option Chain",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Option chain",
+        "Customize sheet"
+      ],
+      "capability": "Configurable option-chain settings and filters including OI bars, PCR, total OI, max pain, ITM highlighting, today high/low, VWAP, premium, OI, OI buildup, volume, volume spike, IV, IV change, Greeks, bid-ask spread and OI concentration.",
+      "notes": "Screenshots show Settings and Filters tabs with toggles and filters for core option-chain data, columns and Greeks.",
+      "user_benefit": "Lets different trader personas tune the option chain to their strategy instead of forcing one default layout.",
+      "priority": "high",
+      "aliases": [
+        "Option chain filters",
+        "Customize option chain",
+        "OI filter",
+        "Premium filter",
+        "IV filter",
+        "Greeks filter",
+        "Bid ask spread filter",
+        "OI concentration",
+        "Show OI bars",
+        "Show PCR",
+        "Show Max Pain",
+        "Highlight ITM Options",
+        "VWAP column"
+      ],
+      "source": {
+        "type": "screenshot_user_input",
+        "file": "Screenshot_2026-06-29-15-11-01 and Screenshot_2026-06-29-15-10-58",
+        "notes": "Customize settings and filters tabs in option chain"
       }
     }
   ]

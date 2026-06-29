@@ -1,16 +1,16 @@
 {
   "collection_date": "2026-06-29",
-  "source": "retail_feature_research_enriched_fii_dii",
+  "source": "retail_feature_research_enriched_fii_dii_new_build",
   "posts": 0,
   "comments": 0,
-  "signals": 380,
+  "signals": 384,
   "subreddits": {},
   "source_methods": {
     "github_search_api": 195,
     "hacker_news_algolia_api": 97,
     "broker_docs_page_fetch": 7,
     "web_search_review": 28,
-    "manual_feature_input": 13,
+    "manual_feature_input": 17,
     "manual_analysis_synthesis": 1,
     "retail_reddit_web_review": 18,
     "manual_web_research": 21
@@ -20,7 +20,7 @@
     "hacker_news": 97,
     "broker_docs": 7,
     "manual_web_research": 33,
-    "nubra_feature_input": 13,
+    "nubra_feature_input": 17,
     "competitor_feature_research": 6,
     "market_expectation_research": 3,
     "retail_reddit_feature_research": 26
@@ -206,7 +206,10 @@
     "Sahi FII-DII explainer": 1,
     "StockEdge shareholding explainer": 1,
     "r/IndiaInvestments": 1,
-    "Nubra product interpretation": 1
+    "Nubra product interpretation": 1,
+    "Mobile App / Compass / personalization": 1,
+    "Option chain": 2,
+    "Option chain / Customize sheet": 1
   },
   "evidence_quality": {
     "public_github_api": 195,
@@ -225,7 +228,8 @@
     "app_store_listing": 1,
     "publisher_public_page": 1,
     "public_reddit_discussion": 8,
-    "internal_synthesis_from_public_sources": 1
+    "internal_synthesis_from_public_sources": 1,
+    "user_provided_screenshot": 4
   },
   "engagement": {
     "post_score_sum": 0,
