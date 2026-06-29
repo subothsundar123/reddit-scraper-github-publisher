@@ -15,8 +15,8 @@
     },
     {
       "path": "daily-dumps/2026-06-29/summary.json",
-      "sha256": "59e057a39469c2f912e6e2fc939468a38a67a392afb4164f30c85e5fc2f432cd",
-      "bytes": 8224
+      "sha256": "ecfcc416ca78d71abb4ec6e06e55c80f4b2ff3b34822938252ff030ac37dfb4c",
+      "bytes": 7940
     },
     {
       "path": "daily-dumps/2026-06-29/signals.jsonl.gz",
