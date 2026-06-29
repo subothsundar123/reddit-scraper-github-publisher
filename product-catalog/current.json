@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "updated_at": "2026-06-29T09:44:18.504118+00:00",
+  "updated_at": "2026-06-29T09:54:24.557280+00:00",
   "status_definitions": {
     "available": "Available now on the stated surface",
     "upcoming": "Documented as upcoming; do not call generally available",
@@ -3823,6 +3823,363 @@
         "type": "screenshot_user_input",
         "file": "Screenshot_2026-06-29-15-11-01 and Screenshot_2026-06-29-15-10-58",
         "notes": "Customize settings and filters tabs in option chain"
+      }
+    },
+    {
+      "id": "nubra-option-chain-custom-layout",
+      "name": "Custom option-chain layout",
+      "category": "Retail App / Option Chain",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "Customise/customize the option-chain layout, reorder variables and save the chain layout by trading need.",
+      "notes": "Includes exact source keyword: customise your own layout; reorder variables accordingly.",
+      "user_benefit": "Lets users cut noise and build a chain view for their style instead of using the same default screen.",
+      "priority": "high",
+      "aliases": [
+        "customise your own layout",
+        "customize your own layout",
+        "custom layout",
+        "reorder variables",
+        "cut the noise",
+        "trader view",
+        "Custom option-chain layout"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-total-call-put-oi",
+      "name": "Total Call OI and Total Put OI on option chain",
+      "category": "Retail App / Option Chain",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "Show total call OI and total put OI with PCR, Max Pain and strike ladder context.",
+      "notes": "Revamp sheet mentions total call and put OI; screenshot confirms Total Put label.",
+      "user_benefit": "Improves quick read of call/put positioning and market pressure.",
+      "priority": "high",
+      "aliases": [
+        "total call",
+        "total put",
+        "total call oi",
+        "total put oi",
+        "call oi",
+        "put oi",
+        "Total Call OI and Total Put OI on option chain"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-one-click-trade-bid-ask",
+      "name": "One-click trade with bid/ask across strikes",
+      "category": "Retail App / Trading",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "One-click trade actions directly from bid/ask or LTP cells across option-chain strikes.",
+      "notes": "Revamp sheet mentions one click trade with Bid and Ask across strikes and one-click mode across the app.",
+      "user_benefit": "Reduces execution friction for active traders while keeping risk controls visible.",
+      "priority": "high",
+      "aliases": [
+        "one click trade",
+        "one-click trade",
+        "bid ask trade",
+        "bid and ask across strikes",
+        "one click mode",
+        "one-click mode across the app",
+        "One-click trade with bid/ask across strikes"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-fo-analytics-actionables",
+      "name": "Buy/sell actionables inside F&O Analytics",
+      "category": "Retail App / F&O Analytics",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "Actionable buy/sell entry points from F&O analytics views, connected to option chain and trading surfaces.",
+      "notes": "Revamp sheet mentions buy/sell actionables in F&O Analytics.",
+      "user_benefit": "Turns analytics from passive charts into a trade workflow.",
+      "priority": "medium",
+      "aliases": [
+        "buy/sell actionables",
+        "buy sell actionables",
+        "actionables",
+        "f&o analytics actionables",
+        "Buy/sell actionables inside F&O Analytics"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-strategy-taxonomy-market-outcome-instrument",
+      "name": "Strategy Appstore taxonomy by market view, trader outcome and instrument set",
+      "category": "Retail App / Strategies",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "Classify pre-built strategies by Market View, Trader Outcome and Instrument Set. Market views include Bullish, Bearish, Sideways and Big News. Trader outcomes include Income, Hedge, Directional, Volatility and Arbitrage. Instrument sets include Stock, Future and Option.",
+      "notes": "Revamp sheet explicitly lists Market View, Trader Outcome and Instrument Set taxonomy.",
+      "user_benefit": "Makes the strategy library easier to browse by intent rather than only by strategy name.",
+      "priority": "high",
+      "aliases": [
+        "market view",
+        "bullish",
+        "bearish",
+        "sideways",
+        "big news",
+        "trader outcome",
+        "income",
+        "hedge",
+        "directional",
+        "volatility",
+        "arbitrage",
+        "instrument set",
+        "stock",
+        "future",
+        "option",
+        "Strategy Appstore taxonomy by market view, trader outcome and instrument set"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-scalper-tradingview-template-customisation",
+      "name": "Scalper and Trading View template customisation",
+      "category": "Retail App / Scalper & Trading View",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "Save templates/customisations for Scalper and Trading View style workflows.",
+      "notes": "Revamp sheet mentions Scalper & Trading View new customisation - save templates.",
+      "user_benefit": "Helps active users keep preferred layouts and reduce repeated setup.",
+      "priority": "medium",
+      "aliases": [
+        "scalper",
+        "trading view",
+        "save templates",
+        "template customisation",
+        "template customization",
+        "saved templates",
+        "Scalper and Trading View template customisation"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-homepage-customisation",
+      "name": "Homepage customisation",
+      "category": "Retail App / Personalization",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "Customise/customize homepage widgets and shortcuts around the user persona and preferred workflows.",
+      "notes": "Revamp sheet mentions homepage customisation.",
+      "user_benefit": "Improves discovery of tools like option chain, strategies, F&O analytics, sector heatmap and FII-DII.",
+      "priority": "medium",
+      "aliases": [
+        "homepage customisation",
+        "homepage customization",
+        "home screen customization",
+        "home customisation",
+        "home customization",
+        "Homepage customisation"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-fo-analytics-against-price",
+      "name": "F&O analytics plotted against price",
+      "category": "Retail App / F&O Analytics",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "Plot OI, IV, premium and volume against the live underlying price for every F&O stock.",
+      "notes": "FO Analytics document repeatedly positions metrics plotted against price as the key value.",
+      "user_benefit": "Shows relationships between price and positioning instead of isolated numbers.",
+      "priority": "high",
+      "aliases": [
+        "plotted against price",
+        "against price",
+        "oi vs spot",
+        "iv vs spot",
+        "premium vs spot",
+        "volume vs price",
+        "every metric plotted against price",
+        "F&O analytics plotted against price"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-straddle-strangle-premium-chart",
+      "name": "Straddle and strangle premium charts",
+      "category": "Retail App / F&O Analytics",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "Chart straddle premium and strangle premium against the underlying to track decay, expansion and seller opportunity.",
+      "notes": "FO Analytics document includes straddle and strangle premium charting.",
+      "user_benefit": "Directly supports option sellers running non-directional premium strategies.",
+      "priority": "high",
+      "aliases": [
+        "straddle premium",
+        "strangle premium",
+        "premium chart",
+        "straddle premium chart",
+        "strangle premium chart",
+        "Straddle and strangle premium charts"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-futures-expiry-analytics",
+      "name": "Futures analytics by expiry",
+      "category": "Retail App / F&O Analytics",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "Show OI, volume and price across every futures expiry in one view.",
+      "notes": "FO Analytics document calls this the full futures picture by expiry.",
+      "user_benefit": "Helps traders understand rollover, positioning and expiry-wise futures pressure.",
+      "priority": "medium",
+      "aliases": [
+        "futures picture",
+        "full futures picture",
+        "futures by expiry",
+        "oi volume price by expiry",
+        "expiry-wise futures",
+        "Futures analytics by expiry"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-live-strategy-risk-recalculation",
+      "name": "Live strategy risk recalculation while building legs",
+      "category": "Retail App / Strategies",
+      "status": "upcoming",
+      "availability": "source_document_evidence",
+      "surfaces": [
+        "Mobile App"
+      ],
+      "capability": "When users build a strategy leg by leg, risk updates live including payoff, max profit, max loss, breakeven, probability and margin impact.",
+      "notes": "Strategies Appstore document says pick strikes and expiries and watch risk update live.",
+      "user_benefit": "Makes custom strategy building safer and more understandable before execution.",
+      "priority": "high",
+      "aliases": [
+        "risk update live",
+        "live risk update",
+        "leg by leg",
+        "build any strategy",
+        "pick strikes and expiries",
+        "risk recalculate live",
+        "Live strategy risk recalculation while building legs"
+      ],
+      "source": {
+        "type": "source_documents",
+        "files": [
+          "Revamp- Marketing Features - Sheet1.pdf",
+          "FO_Analytics_on_Nubra.docx",
+          "STRATEGIES APPSTORE.pdf"
+        ],
+        "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
       }
     }
   ]
