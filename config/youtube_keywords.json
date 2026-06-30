@@ -3,6 +3,13 @@
   "enabled": true,
   "api_key_env": "YOUTUBE_API_KEY",
   "collection_note": "Text-only YouTube collection for product insights. No thumbnails or video media are stored.",
+  "seo_seed_keywords": {
+    "enabled": true,
+    "path": "marketing-keywords/current.json",
+    "max_retail": 25,
+    "max_api": 15,
+    "bucket": "marketing_seo_priority"
+  },
   "limits": {
     "max_queries_per_partition": 20,
     "max_videos_per_query": 5,

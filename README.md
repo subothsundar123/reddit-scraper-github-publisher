@@ -43,6 +43,23 @@ $env:YOUTUBE_API_KEY="your-youtube-data-api-key"
 
 YouTube collection is intentionally text-only. It does not download videos, images or thumbnails. Keywords live in `config/youtube_keywords.json` and are split into `retail` and `api` partitions so downstream analysis can keep retail app demand separate from API/algo/developer demand.
 
+Marketing SEO keyword intelligence lives in:
+
+```text
+marketing-keywords/current.json
+marketing-keywords/manifest.json
+```
+
+This catalog is derived from the Nubra priority keyword workbook and keeps a compact, high-signal subset:
+
+- priority competitor page clusters
+- priority SEO keywords
+- option-chain keyword list
+- programmatic page ideas
+- compact retail/API search seeds
+
+YouTube collection automatically adds the compact SEO seed keywords from this catalog, so marketing priority terms also influence daily public-signal discovery without sending the full keyword universe into every collection run.
+
 ## Daily automation
 
 GitHub Actions runs the publisher every day at **02:00 Asia/Kolkata** using `.github/workflows/daily-collection.yml`.

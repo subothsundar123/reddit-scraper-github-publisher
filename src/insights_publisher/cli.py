@@ -470,6 +470,23 @@ def _flatten_youtube_keywords(cfg: dict[str, Any]) -> list[dict[str, str]]:
                 count += 1
             if count >= limit:
                 break
+    seo_cfg = cfg.get("seo_seed_keywords") or {}
+    if seo_cfg.get("enabled", False):
+        try:
+            catalog = _json(ROOT / seo_cfg.get("path", "marketing-keywords/current.json"))
+            bucket = str(seo_cfg.get("bucket") or "marketing_seo_priority")
+            for partition, max_items in (("retail", int(seo_cfg.get("max_retail", 25))), ("api_algo", int(seo_cfg.get("max_api", 15)))):
+                source_key = "api_algo" if partition == "api_algo" else "retail"
+                for seed in (catalog.get("search_seed_keywords") or {}).get(source_key, [])[:max_items]:
+                    rows.append({
+                        "partition": "api" if partition == "api_algo" else "retail",
+                        "segment": partition,
+                        "bucket": bucket,
+                        "keyword": str(seed.get("keyword") or ""),
+                    })
+        except (OSError, json.JSONDecodeError, TypeError, ValueError):
+            pass
+    rows = [row for row in rows if row.get("keyword")]
     return rows
 
 
@@ -786,7 +803,7 @@ def validate() -> None:
 
 def git_publish(push: bool) -> None:
     validate()
-    subprocess.run(["git", "add", "daily-dumps", "manifests", "product-catalog", "schemas", "config"], cwd=ROOT, check=True)
+    subprocess.run(["git", "add", "daily-dumps", "manifests", "product-catalog", "marketing-keywords", "schemas", "config"], cwd=ROOT, check=True)
     status = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
     if status.returncode:
         subprocess.run(["git", "commit", "-m", f"data: publish insights snapshot {dt.date.today().isoformat()}"], cwd=ROOT, check=True)

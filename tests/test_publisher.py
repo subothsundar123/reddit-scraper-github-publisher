@@ -37,12 +37,22 @@ class PublishedSnapshotTests(unittest.TestCase):
         cfg = json.loads((ROOT / "config/youtube_keywords.json").read_text())
         self.assertIn("retail", cfg["partitions"])
         self.assertIn("api", cfg["partitions"])
+        self.assertTrue(cfg["seo_seed_keywords"]["enabled"])
         retail_keywords = json.dumps(cfg["partitions"]["retail"]["keyword_buckets"]).lower()
         api_keywords = json.dumps(cfg["partitions"]["api"]["keyword_buckets"]).lower()
         self.assertIn("nubra", retail_keywords)
         self.assertIn("nubra", api_keywords)
         self.assertIn("option chain", retail_keywords)
         self.assertIn("websocket", api_keywords)
+
+    def test_seo_keyword_catalog_exists(self):
+        manifest = json.loads((ROOT / "marketing-keywords/manifest.json").read_text(encoding="utf-8"))
+        catalog = json.loads((ROOT / "marketing-keywords/current.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["path"], "marketing-keywords/current.json")
+        self.assertGreaterEqual(manifest["priority_keyword_count"], 1000)
+        self.assertGreaterEqual(manifest["option_chain_keyword_count"], 500)
+        self.assertIn("search_seed_keywords", catalog)
+        self.assertGreaterEqual(len(catalog["search_seed_keywords"]["retail"]), 50)
 
     def test_youtube_collector_skips_without_key(self):
         from insights_publisher.cli import collect_youtube_signals
