@@ -1,0 +1,255 @@
+{
+  "schema_version": "1.0",
+  "enabled": true,
+  "api_key_env": "YOUTUBE_API_KEY",
+  "collection_note": "Text-only YouTube collection for product insights. No thumbnails or video media are stored.",
+  "limits": {
+    "max_queries_per_partition": 20,
+    "max_videos_per_query": 5,
+    "max_comments_per_video": 80,
+    "max_recent_comments_per_video": 40,
+    "published_after_days": 365,
+    "request_pause_seconds": 0.15
+  },
+  "partitions": {
+    "retail": {
+      "segment": "retail",
+      "description": "Retail trading app, option-chain, F&O analytics, strategy, investor and broker-comparison signals.",
+      "keyword_buckets": {
+        "nubra_direct": [
+          "Nubra trading app",
+          "Nubra options trading",
+          "Nubra option chain",
+          "Nubra strategy builder",
+          "Nubra vs Zerodha",
+          "Nubra vs Dhan",
+          "Nubra vs Sensibull"
+        ],
+        "option_chain_fno_analytics": [
+          "option chain trading app India",
+          "best option chain app India",
+          "option chain OI analysis India",
+          "open interest analysis Nifty",
+          "OI buildup option chain",
+          "PCR max pain option chain",
+          "Nifty option chain analysis",
+          "Bank Nifty option chain analysis",
+          "option chain filters",
+          "IV Greeks option chain",
+          "bid ask spread option chain",
+          "option chain for option buyers",
+          "option chain for option sellers"
+        ],
+        "strategy_payoff_execution": [
+          "options strategy builder India",
+          "best options strategy builder",
+          "option strategy payoff chart",
+          "options payoff graph India",
+          "strategy builder with execution",
+          "basket order option strategy",
+          "option strategy app India",
+          "Sensibull strategy builder",
+          "Opstra strategy builder",
+          "strategy builder for Nifty options"
+        ],
+        "option_buyer_persona": [
+          "option buying strategy India",
+          "best app for option buying",
+          "option buyer trading setup",
+          "scalping option buying app",
+          "Nifty option buying strategy",
+          "option buying risk management",
+          "intraday option buying setup"
+        ],
+        "option_seller_persona": [
+          "option selling strategy India",
+          "best app for option selling",
+          "option selling margin calculator",
+          "option selling payoff",
+          "hedged option selling strategy",
+          "weekly option selling strategy",
+          "short straddle short strangle India",
+          "option seller risk management"
+        ],
+        "oi_trader_scalper": [
+          "OI based trading strategy",
+          "open interest trading strategy",
+          "volume spike trading strategy",
+          "option chain scalping",
+          "Nifty scalping strategy",
+          "Bank Nifty scalping strategy",
+          "OI volume breakout strategy",
+          "liquidity in options trading"
+        ],
+        "investor_portfolio": [
+          "best stock market app India portfolio analysis",
+          "portfolio analytics app India",
+          "stock portfolio tracker India",
+          "FII DII data analysis",
+          "fundamental analysis app India",
+          "stock screener app India",
+          "long term investing app India"
+        ],
+        "broker_comparison": [
+          "Zerodha vs Dhan",
+          "Zerodha vs Fyers",
+          "Dhan vs Fyers",
+          "best broker for options trading India",
+          "best trading app India",
+          "Zerodha review options trading",
+          "Dhan review options trading",
+          "Fyers review options trading",
+          "Angel One trading app review",
+          "Groww vs Zerodha"
+        ],
+        "alerts_scanners_automation": [
+          "stock market alerts app India",
+          "option chain alerts",
+          "OI alert app India",
+          "price alert trading app",
+          "volume spike alert app",
+          "options scanner India",
+          "stock scanner India",
+          "trading bot India"
+        ],
+        "education_confusion": [
+          "how to read option chain",
+          "how to use PCR in trading",
+          "how to use max pain",
+          "how to use open interest",
+          "how to select option strike price",
+          "how to choose call or put",
+          "how to do option selling safely",
+          "how to backtest option strategy"
+        ]
+      }
+    },
+    "api": {
+      "segment": "api_algo",
+      "description": "API, algo, developer, market-data, WebSocket, execution, SDK and automation signals.",
+      "keyword_buckets": {
+        "nubra_direct": [
+          "Nubra API",
+          "Nubra broker API",
+          "Nubra algo trading",
+          "Nubra websocket",
+          "Nubra historical data API",
+          "Nubra vs Kite Connect",
+          "Nubra vs Dhan API",
+          "Nubra vs Fyers API"
+        ],
+        "broker_api": [
+          "best broker API India",
+          "broker API for algo trading India",
+          "trading API India",
+          "stock market API India",
+          "Indian broker API comparison",
+          "Zerodha Kite Connect API",
+          "Dhan API",
+          "Fyers API",
+          "Angel One SmartAPI",
+          "Upstox API",
+          "Shoonya API",
+          "broker API review India"
+        ],
+        "websocket_market_data": [
+          "broker websocket API India",
+          "trading websocket API India",
+          "live market data API India",
+          "real time market data API India",
+          "NSE websocket API",
+          "option chain websocket API",
+          "market data websocket reliability",
+          "Kite Connect websocket",
+          "Dhan websocket API",
+          "Fyers websocket API"
+        ],
+        "historical_backtesting": [
+          "historical market data API India",
+          "NSE historical data API",
+          "options historical data API India",
+          "intraday historical data API India",
+          "backtesting API India",
+          "algo trading backtesting India",
+          "historical option chain data India",
+          "minute data API India",
+          "tick data API India"
+        ],
+        "order_execution_oms": [
+          "order placement API India",
+          "trading order API India",
+          "basket order API India",
+          "multi leg order API India",
+          "option strategy execution API",
+          "algo order execution India",
+          "broker API order latency",
+          "trading API order failure",
+          "OMS trading API India"
+        ],
+        "sdk_developer_experience": [
+          "trading API Python SDK India",
+          "broker API Python India",
+          "Kite Connect Python",
+          "Dhan API Python",
+          "Fyers API Python",
+          "SmartAPI Python",
+          "trading API documentation India",
+          "broker API documentation",
+          "algo trading SDK India",
+          "broker API examples"
+        ],
+        "auth_login_automation": [
+          "broker API login automation",
+          "TOTP broker API India",
+          "automated login trading API",
+          "broker API access token",
+          "trading API token refresh",
+          "static IP broker API",
+          "multi session trading API",
+          "API authentication broker India"
+        ],
+        "algo_strategy_automation": [
+          "algo trading India",
+          "algorithmic trading API India",
+          "automated trading India API",
+          "trading bot India broker API",
+          "Nifty algo trading API",
+          "options algo trading India",
+          "strategy automation broker API",
+          "rule based trading API India"
+        ],
+        "paper_sandbox_uat": [
+          "paper trading API India",
+          "trading API sandbox India",
+          "broker API test environment",
+          "algo trading paper trading India",
+          "mock trading API India",
+          "UAT trading API",
+          "backtest to paper trade API"
+        ],
+        "developer_pain_points": [
+          "Kite Connect API issues",
+          "Dhan API issues",
+          "Fyers API issues",
+          "SmartAPI issues",
+          "broker API websocket disconnect",
+          "trading API error codes",
+          "broker API rate limit",
+          "broker API downtime",
+          "market data API delayed",
+          "broker API support issues"
+        ],
+        "ai_mcp_developer_tools": [
+          "AI trading assistant API",
+          "Claude trading MCP",
+          "MCP trading API",
+          "AI stock market API",
+          "trading API AI assistant",
+          "algo trading with AI",
+          "AI strategy builder trading",
+          "LLM trading assistant India"
+        ]
+      }
+    }
+  }
+}

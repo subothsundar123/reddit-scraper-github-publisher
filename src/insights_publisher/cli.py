@@ -57,6 +57,9 @@ TOPIC_TAGS = {
     "backtesting": ["backtest", "backtesting", "strategy test"],
     "order_execution": ["order", "execution", "fill", "oms", "basket", "gtt"],
     "options_analytics": ["option", "greeks", "payoff", "iv", "open interest", "option chain"],
+    "option_chain": ["option chain", "pcr", "max pain", "oi buildup", "oi concentration"],
+    "strategy_builder": ["strategy builder", "payoff", "breakeven", "probability of profit", "strategy appstore"],
+    "trader_personas": ["option buyer", "option seller", "oi trader", "investor mode", "scalper"],
     "developer_onboarding": ["docs", "documentation", "quickstart", "sdk", "sample", "auth", "login"],
     "market_data": ["market data", "quote", "tick", "ltp", "depth"],
     "automation": ["algo", "automation", "strategy", "bot"],
@@ -66,6 +69,7 @@ TOPIC_TAGS = {
 
 
 COMPETITOR_ALIASES = {
+    "Nubra": ["nubra", "zanskar"],
     "Zerodha": ["zerodha", "kite connect", "kite.trade"],
     "Upstox": ["upstox"],
     "Dhan": ["dhan", "dhanhq"],
@@ -414,12 +418,284 @@ def collect_broker_doc_signals(cfg: dict[str, Any], collection_date: str) -> lis
     return rows
 
 
+def _int(value: Any) -> int:
+    try:
+        return int(float(value or 0))
+    except (TypeError, ValueError):
+        return 0
+
+
+def _published_after(days: int | None) -> str | None:
+    if not days:
+        return None
+    since = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=max(1, int(days)))
+    return since.isoformat().replace("+00:00", "Z")
+
+
+def _days_since(value: str | None) -> float:
+    if not value:
+        return 1.0
+    try:
+        published = dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return 1.0
+    return max(1.0, (dt.datetime.now(dt.timezone.utc) - published).total_seconds() / 86400)
+
+
+def _youtube_get(session: Any, api_key: str, path: str, params: dict[str, Any]) -> dict[str, Any]:
+    params = {**params, "key": api_key}
+    response = session.get(f"https://www.googleapis.com/youtube/v3/{path}", params=params, timeout=30)
+    if response.status_code in {403, 429}:
+        raise RuntimeError(f"YouTube API quota or permission issue: {response.status_code}")
+    response.raise_for_status()
+    return response.json()
+
+
+def _flatten_youtube_keywords(cfg: dict[str, Any]) -> list[dict[str, str]]:
+    limit = int(cfg.get("limits", {}).get("max_queries_per_partition", 20))
+    rows: list[dict[str, str]] = []
+    for partition, part_cfg in (cfg.get("partitions") or {}).items():
+        segment = part_cfg.get("segment") or ("api_algo" if partition == "api" else "retail")
+        count = 0
+        for bucket, keywords in (part_cfg.get("keyword_buckets") or {}).items():
+            for keyword in keywords:
+                if count >= limit:
+                    break
+                rows.append({
+                    "partition": partition,
+                    "segment": segment,
+                    "bucket": bucket,
+                    "keyword": str(keyword),
+                })
+                count += 1
+            if count >= limit:
+                break
+    return rows
+
+
+def _comment_signal_type(text: str) -> str:
+    lower = text.lower()
+    if any(term in lower for term in ("please add", "need", "want", "missing", "feature", "can you add")):
+        return "feature_request"
+    if any(term in lower for term in ("problem", "issue", "slow", "delay", "not working", "confusing", "difficult")):
+        return "pain_point"
+    if any(term in lower for term in ("zerodha", "dhan", "fyers", "sensibull", "opstra", "upstox", "angel")):
+        return "competitor_comparison"
+    if "?" in text or any(term in lower for term in ("how", "why", "which", "what is", "best")):
+        return "question"
+    return "general"
+
+
+def _youtube_video_comments(
+    session: Any,
+    api_key: str,
+    video_id: str,
+    max_relevant: int,
+    max_recent: int,
+    pause: float,
+) -> list[dict[str, Any]]:
+    comments: dict[str, dict[str, Any]] = {}
+    for order, limit in (("relevance", max_relevant), ("time", max_recent)):
+        if limit <= 0:
+            continue
+        page_token = None
+        while len([c for c in comments.values() if c.get("order") == order]) < limit:
+            params = {
+                "part": "snippet",
+                "videoId": video_id,
+                "maxResults": min(100, limit),
+                "order": order,
+                "textFormat": "plainText",
+            }
+            if page_token:
+                params["pageToken"] = page_token
+            try:
+                payload = _youtube_get(session, api_key, "commentThreads", params)
+            except Exception:
+                break
+            for item in payload.get("items", []):
+                snippet = ((item.get("snippet") or {}).get("topLevelComment") or {}).get("snippet") or {}
+                comment_id = ((item.get("snippet") or {}).get("topLevelComment") or {}).get("id") or item.get("id")
+                text = snippet.get("textDisplay") or snippet.get("textOriginal") or ""
+                if not comment_id or not text:
+                    continue
+                comments.setdefault(str(comment_id), {
+                    "comment_id": str(comment_id),
+                    "text": text[:1200],
+                    "likes": _int(snippet.get("likeCount")),
+                    "published_at": snippet.get("publishedAt"),
+                    "updated_at": snippet.get("updatedAt"),
+                    "order": order,
+                    "signal_type": _comment_signal_type(text),
+                    "feature_mentions": _tags(text),
+                    "competitor_mentions": _competitors(text),
+                })
+            page_token = payload.get("nextPageToken")
+            if not page_token:
+                break
+            time.sleep(pause)
+    return sorted(comments.values(), key=lambda row: (row["likes"], row["published_at"] or ""), reverse=True)
+
+
+def _youtube_comment_summary(comments: list[dict[str, Any]]) -> dict[str, Any]:
+    types = Counter(comment.get("signal_type") or "general" for comment in comments)
+    features = Counter(tag for comment in comments for tag in comment.get("feature_mentions", []))
+    competitors = Counter(name for comment in comments for name in comment.get("competitor_mentions", []))
+    recent_cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=30)
+    recent_count = 0
+    for comment in comments:
+        published = comment.get("published_at")
+        if not published:
+            continue
+        try:
+            if dt.datetime.fromisoformat(published.replace("Z", "+00:00")) >= recent_cutoff:
+                recent_count += 1
+        except ValueError:
+            pass
+    return {
+        "comment_signal_types": dict(types),
+        "feature_mentions": dict(features.most_common(12)),
+        "competitor_mentions": dict(competitors.most_common(12)),
+        "recent_comment_count": recent_count,
+        "question_count": types.get("question", 0),
+        "feature_request_count": types.get("feature_request", 0),
+        "pain_point_count": types.get("pain_point", 0),
+    }
+
+
+def collect_youtube_signals(config_path: pathlib.Path, output_path: pathlib.Path, collection_date: str) -> pathlib.Path:
+    import requests
+    cfg = _json(config_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    rows: dict[str, dict[str, Any]] = {}
+    if not cfg.get("enabled", True):
+        output_path.write_text("", encoding="utf-8")
+        return output_path
+    api_key = os.getenv(cfg.get("api_key_env") or "YOUTUBE_API_KEY")
+    if not api_key:
+        output_path.write_text("", encoding="utf-8")
+        print("Skipping YouTube collection: set YOUTUBE_API_KEY to enable it.", file=sys.stderr)
+        return output_path
+
+    limits = cfg.get("limits") or {}
+    max_videos = min(50, int(limits.get("max_videos_per_query", 5)))
+    max_comments = int(limits.get("max_comments_per_video", 80))
+    max_recent = int(limits.get("max_recent_comments_per_video", 40))
+    pause = float(limits.get("request_pause_seconds", 0.15))
+    published_after = _published_after(limits.get("published_after_days"))
+    session = requests.Session()
+    session.headers["User-Agent"] = "product-insights-youtube-agent/1.0"
+
+    for item in _flatten_youtube_keywords(cfg):
+        params: dict[str, Any] = {
+            "part": "snippet",
+            "type": "video",
+            "q": item["keyword"],
+            "maxResults": max_videos,
+            "order": "relevance",
+            "relevanceLanguage": "en",
+            "safeSearch": "none",
+        }
+        if published_after:
+            params["publishedAfter"] = published_after
+        search = _youtube_get(session, api_key, "search", params)
+        ids = [
+            (result.get("id") or {}).get("videoId")
+            for result in search.get("items", [])
+            if (result.get("id") or {}).get("videoId")
+        ]
+        if not ids:
+            time.sleep(pause)
+            continue
+        videos = _youtube_get(session, api_key, "videos", {
+            "part": "snippet,statistics",
+            "id": ",".join(ids),
+            "maxResults": len(ids),
+        })
+        for video in videos.get("items", []):
+            video_id = video.get("id")
+            snippet = video.get("snippet") or {}
+            stats = video.get("statistics") or {}
+            title = snippet.get("title") or ""
+            description = snippet.get("description") or ""
+            channel = snippet.get("channelTitle") or snippet.get("channelId") or "youtube"
+            published_at = snippet.get("publishedAt")
+            comments = _youtube_video_comments(session, api_key, str(video_id), max_comments, max_recent, pause)
+            summary = _youtube_comment_summary(comments)
+            views = _int(stats.get("viewCount"))
+            likes = _int(stats.get("likeCount"))
+            comment_count = _int(stats.get("commentCount"))
+            age_days = _days_since(published_at)
+            body_parts = [
+                f"Partition: {item['partition']}",
+                f"Keyword bucket: {item['bucket']}",
+                f"Matched keyword: {item['keyword']}",
+                f"Description: {description[:1800]}",
+                "Top comments:",
+            ]
+            for comment in comments[:25]:
+                body_parts.append(f"- [{comment['signal_type']}; likes {comment['likes']}] {comment['text'][:450]}")
+            body = "\n".join(body_parts)
+            row = _signal(
+                source="youtube",
+                channel=channel,
+                item_type="video_comment_thread",
+                collected_on=collection_date,
+                external_id=video_id,
+                created_at=published_at,
+                title=title,
+                body=body[:9000],
+                url=f"https://www.youtube.com/watch?v={video_id}",
+                engagement={
+                    "views": views,
+                    "likes": likes,
+                    "comments": comment_count,
+                    "views_per_day": round(views / age_days, 2),
+                    "comments_per_day": round(comment_count / age_days, 2),
+                    "engagement_rate": round((likes + comment_count) / views, 6) if views else 0,
+                    **summary,
+                },
+                evidence_quality="public_youtube_api",
+                source_method="youtube_data_api",
+            )
+            row.update({
+                "platform_partition": item["partition"],
+                "segment": item["segment"],
+                "keyword_bucket": item["bucket"],
+                "matched_keyword": item["keyword"],
+                "video_metrics": {
+                    "views": views,
+                    "likes": likes,
+                    "comment_count": comment_count,
+                    "published_at": published_at,
+                    "views_per_day": round(views / age_days, 2),
+                    "comments_per_day": round(comment_count / age_days, 2),
+                    "engagement_rate": round((likes + comment_count) / views, 6) if views else 0,
+                },
+                "comment_summary": summary,
+                "comments_sample": comments[:50],
+            })
+            rows[row["id"]] = row
+        time.sleep(pause)
+
+    with output_path.open("w", encoding="utf-8") as f:
+        for row in rows.values():
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    return output_path
+
+
 def collect_public_signals(config_path: pathlib.Path, output_path: pathlib.Path, collection_date: str) -> pathlib.Path:
     cfg = _json(config_path)
     rows: list[dict[str, Any]] = []
     rows.extend(collect_github_signals(cfg.get("github", {}), collection_date))
     rows.extend(collect_hacker_news_signals(cfg.get("hacker_news", {}), collection_date))
     rows.extend(collect_broker_doc_signals(cfg.get("broker_docs", {}), collection_date))
+    youtube_cfg = cfg.get("youtube", {})
+    if youtube_cfg.get("enabled", False):
+        youtube_config = ROOT / youtube_cfg.get("config", "config/youtube_keywords.json")
+        youtube_output = output_path.parent / f"youtube_signals_{collection_date}.jsonl"
+        collect_youtube_signals(youtube_config, youtube_output, collection_date)
+        rows.extend(_load_signals(youtube_output))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as f:
         for row in rows:
@@ -529,6 +805,10 @@ def main() -> None:
     sig.add_argument("--config", type=pathlib.Path, default=ROOT / "config" / "public_signal_sources.json")
     sig.add_argument("--output", type=pathlib.Path)
     sig.add_argument("--date", default=dt.date.today().isoformat())
+    y = sub.add_parser("collect-youtube")
+    y.add_argument("--config", type=pathlib.Path, default=ROOT / "config" / "youtube_keywords.json")
+    y.add_argument("--output", type=pathlib.Path)
+    y.add_argument("--date", default=dt.date.today().isoformat())
     p = sub.add_parser("package")
     p.add_argument("--input", type=pathlib.Path, required=True)
     p.add_argument("--date", default=dt.date.today().isoformat())
@@ -547,6 +827,9 @@ def main() -> None:
     elif args.command == "collect-signals":
         output = args.output or ROOT / "staging" / f"public_signals_{args.date}.jsonl"
         print(collect_public_signals(args.config, output, args.date))
+    elif args.command == "collect-youtube":
+        output = args.output or ROOT / "staging" / f"youtube_signals_{args.date}.jsonl"
+        print(collect_youtube_signals(args.config, output, args.date))
     elif args.command == "package": print(package_dump(args.input, args.date, args.source, args.signals))
     elif args.command == "validate": validate()
     elif args.command == "publish": git_publish(args.push)

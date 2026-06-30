@@ -8,6 +8,16 @@ It also supports credential-free public signal collection from:
 - Hacker News public search results
 - Broker/API public documentation pages
 
+It can also collect text-only YouTube signals when a `YOUTUBE_API_KEY` is configured:
+
+- video title and description
+- channel name and video URL
+- publish date, views, likes and comment count
+- views/day, comments/day and engagement rate
+- top/recent comments
+- comment-level feature requests, pain points, questions and competitor mentions
+- separate retail and API/algo partitions, including Nubra-specific searches
+
 ## Daily operation
 
 ```powershell
@@ -23,6 +33,15 @@ To collect only public multi-channel signals:
 ```powershell
 .\.venv\Scripts\insights-publisher collect-signals --date 2026-06-28
 ```
+
+To collect only YouTube text signals:
+
+```powershell
+$env:YOUTUBE_API_KEY="your-youtube-data-api-key"
+.\.venv\Scripts\insights-publisher collect-youtube --date 2026-06-30
+```
+
+YouTube collection is intentionally text-only. It does not download videos, images or thumbnails. Keywords live in `config/youtube_keywords.json` and are split into `retail` and `api` partitions so downstream analysis can keep retail app demand separate from API/algo/developer demand.
 
 To package an existing scraper result:
 

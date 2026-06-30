@@ -31,5 +31,27 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertIn("source", schema["required"])
         cfg = json.loads((ROOT / "config/public_signal_sources.json").read_text())
         self.assertIn("github", cfg)
+        self.assertIn("youtube", cfg)
+
+    def test_youtube_keywords_are_partitioned(self):
+        cfg = json.loads((ROOT / "config/youtube_keywords.json").read_text())
+        self.assertIn("retail", cfg["partitions"])
+        self.assertIn("api", cfg["partitions"])
+        retail_keywords = json.dumps(cfg["partitions"]["retail"]["keyword_buckets"]).lower()
+        api_keywords = json.dumps(cfg["partitions"]["api"]["keyword_buckets"]).lower()
+        self.assertIn("nubra", retail_keywords)
+        self.assertIn("nubra", api_keywords)
+        self.assertIn("option chain", retail_keywords)
+        self.assertIn("websocket", api_keywords)
+
+    def test_youtube_collector_skips_without_key(self):
+        from insights_publisher.cli import collect_youtube_signals
+        import os
+        import tempfile
+        os.environ.pop("YOUTUBE_API_KEY", None)
+        out = pathlib.Path(tempfile.mkdtemp()) / "youtube.jsonl"
+        collect_youtube_signals(ROOT / "config/youtube_keywords.json", out, "2026-06-30")
+        self.assertTrue(out.exists())
+        self.assertEqual(out.read_text(encoding="utf-8"), "")
 
 if __name__ == "__main__": unittest.main()
