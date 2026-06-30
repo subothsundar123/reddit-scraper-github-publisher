@@ -43,6 +43,44 @@ $env:YOUTUBE_API_KEY="your-youtube-data-api-key"
 
 YouTube collection is intentionally text-only. It does not download videos, images or thumbnails. Keywords live in `config/youtube_keywords.json` and are split into `retail` and `api` partitions so downstream analysis can keep retail app demand separate from API/algo/developer demand.
 
+## Daily automation
+
+GitHub Actions runs the publisher every day at **02:00 Asia/Kolkata** using `.github/workflows/daily-collection.yml`.
+
+For YouTube to be included in the shared dump, add this repository secret:
+
+```text
+YOUTUBE_API_KEY
+```
+
+Path in GitHub:
+
+```text
+Repository → Settings → Secrets and variables → Actions → New repository secret
+```
+
+Once the secret is present, the scheduled job collects:
+
+- Reddit posts/comments
+- GitHub public issues/PR signals
+- Hacker News public search signals
+- broker/API public docs
+- YouTube text signals split into retail and API/algo partitions
+
+The daily output is still written to:
+
+```text
+daily-dumps/YYYY-MM-DD/
+```
+
+and indexed in:
+
+```text
+manifests/all_dumps.json
+```
+
+Connector users receive the new YouTube data automatically after their connector refreshes or runs `/update-insights-data`.
+
 To package an existing scraper result:
 
 ```powershell
