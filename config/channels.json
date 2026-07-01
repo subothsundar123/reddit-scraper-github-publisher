@@ -11,6 +11,24 @@
   "sorts": ["hot", "new", "top"],
   "limit_per_sort": 100,
   "comment_limit": 100,
+  "search_queries": [
+    "Nubra",
+    "Nubra trading app",
+    "Nubra broker review",
+    "watchlist auto refresh broker",
+    "OMS order presets",
+    "best fill price NSE",
+    "instant withdrawal broker India",
+    "AI stock scanner India",
+    "option buyer mode",
+    "option seller mode",
+    "strategy level stop loss",
+    "iceberg GTT AMO orders",
+    "option chain alerts",
+    "bid ask on chart"
+  ],
+  "search_limit_per_query": 25,
+  "search_comment_limit": 30,
+  "search_time_filter": "month",
   "collection_frequency": "daily"
 }
-

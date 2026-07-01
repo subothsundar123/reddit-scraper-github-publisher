@@ -4,7 +4,9 @@ Use this checklist before merging a manual research file.
 
 ## Coverage
 
-- [ ] Direct Nubra mentions
+- [ ] Broad Nubra brand sweep completed across public web, Reddit, YouTube and indexed social results
+- [ ] Relevant Nubra mentions retained even when they introduce a new topic outside the predefined keyword list
+- [ ] Targeted Nubra and generic retail feature searches completed
 - [ ] Retail trading app/product discussions
 - [ ] API/algo/developer discussions
 - [ ] YouTube/social comments or indexed social signals
@@ -22,6 +24,7 @@ Use this checklist before merging a manual research file.
 - [ ] Source method is specific
 - [ ] Evidence quality is clear
 - [ ] Signal title/body are concise and useful
+- [ ] Feature IDs, personas and intent are populated or can be inferred from the saved text
 
 ## Merge
 

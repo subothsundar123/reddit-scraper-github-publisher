@@ -57,6 +57,30 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertIn("option chain", retail_keywords)
         self.assertIn("websocket", api_keywords)
 
+    def test_retail_feature_searches_include_brand_sweep_and_rotation(self):
+        from insights_publisher.cli import _flatten_youtube_keywords
+        cfg = json.loads((ROOT / "config/youtube_keywords.json").read_text(encoding="utf-8"))
+        feature_cfg = json.loads((ROOT / "config/retail_feature_keywords.json").read_text(encoding="utf-8"))
+        self.assertIn("Nubra", feature_cfg["broad_nubra_queries"])
+        self.assertGreaterEqual(len(feature_cfg["feature_buckets"]), 10)
+        rows = _flatten_youtube_keywords(cfg, "2026-07-01")
+        brand = [row for row in rows if row["bucket"] == "nubra_brand_sweep"]
+        feature_rows = [row for row in rows if row["bucket"].startswith("retail_feature_")]
+        retail_base_buckets = {
+            row["bucket"] for row in rows
+            if row["partition"] == "retail"
+            and not row["bucket"].startswith("retail_feature_")
+            and row["bucket"] not in {"nubra_brand_sweep", "marketing_seo_priority"}
+        }
+        self.assertEqual(len(brand), 5)
+        self.assertEqual(len(feature_rows), 30)
+        self.assertGreaterEqual(len(retail_base_buckets), 8)
+
+    def test_reddit_search_queries_include_broad_nubra_sweep(self):
+        cfg = json.loads((ROOT / "config/channels.json").read_text(encoding="utf-8"))
+        self.assertIn("Nubra", cfg["search_queries"])
+        self.assertIn("option chain alerts", cfg["search_queries"])
+
     def test_seo_keyword_catalog_exists(self):
         manifest = json.loads((ROOT / "marketing-keywords/manifest.json").read_text(encoding="utf-8"))
         catalog = json.loads((ROOT / "marketing-keywords/current.json").read_text(encoding="utf-8"))
@@ -85,6 +109,26 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertEqual(row["segment"], "retail")
         self.assertIn("option_chain", row["tags"])
         self.assertIn("Nubra", row["competitors"])
+
+    def test_feature_persona_and_intent_classification(self):
+        from insights_publisher.cli import _is_nubra_market_relevant, _normalize_signal_row
+        row = _normalize_signal_row({
+            "title": "Option sellers need strategy-level stop loss",
+            "body": "Please add P&L based SL TP for the full strategy portfolio.",
+            "url": "https://example.com/request",
+        }, "2026-07-01")
+        self.assertIn("nubra-strategy-level-risk-controls", row["feature_ids"])
+        self.assertIn("option_seller", row["personas"])
+        self.assertEqual(row["signal_type"], "feature_request")
+        funds_row = _normalize_signal_row({
+            "title": "Need instant withdrawal",
+            "body": "Please add instant payout for unused trading funds.",
+            "url": "https://example.com/funds",
+        }, "2026-07-01")
+        self.assertIn("nubra-instant-fund-movement", funds_row["feature_ids"])
+        self.assertNotIn("nubra-flexible-brokerage", funds_row["feature_ids"])
+        self.assertTrue(_is_nubra_market_relevant("Nubra option trading app review"))
+        self.assertFalse(_is_nubra_market_relevant("Nubra Valley travel guide"))
 
     def test_youtube_collector_skips_without_key(self):
         from insights_publisher.cli import collect_youtube_signals

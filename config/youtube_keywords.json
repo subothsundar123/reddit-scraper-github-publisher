@@ -6,12 +6,21 @@
   "seo_seed_keywords": {
     "enabled": true,
     "path": "marketing-keywords/current.json",
-    "max_retail": 25,
-    "max_api": 15,
+    "max_retail": 5,
+    "max_api": 3,
     "bucket": "marketing_seo_priority"
   },
+  "retail_feature_keywords": {
+    "enabled": true,
+    "path": "config/retail_feature_keywords.json",
+    "max_brand_queries": 5,
+    "max_feature_queries": 30
+  },
   "limits": {
-    "max_queries_per_partition": 20,
+    "max_queries_per_partition": {
+      "retail": 10,
+      "api": 10
+    },
     "max_videos_per_query": 5,
     "max_comments_per_video": 80,
     "max_recent_comments_per_video": 40,

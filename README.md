@@ -43,6 +43,16 @@ $env:YOUTUBE_API_KEY="your-youtube-data-api-key"
 
 YouTube collection is intentionally text-only. It does not download videos, images or thumbnails. Keywords live in `config/youtube_keywords.json` and are split into `retail` and `api` partitions so downstream analysis can keep retail app demand separate from API/algo/developer demand.
 
+Retail feature discovery is maintained centrally in `config/retail_feature_keywords.json`. The daily collector:
+
+- pins five broad Nubra brand searches;
+- rotates targeted searches across every retail feature bucket;
+- uses round-robin selection so one large keyword bucket cannot crowd out the others;
+- classifies collected text by Nubra feature ID, trader persona and intent;
+- filters the broad `Nubra` query to trading/market context to avoid unrelated place-name results.
+
+Reddit API collection also runs the targeted searches in `config/channels.json` in addition to the configured subreddit listings. The public fallback attempts the same public search endpoints but may be unavailable when Reddit returns 403/429.
+
 Marketing SEO keyword intelligence lives in:
 
 ```text

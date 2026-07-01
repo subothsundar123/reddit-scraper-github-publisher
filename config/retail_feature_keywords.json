@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "scope": "Nubra brand monitoring and retail feature-demand collection",
+  "broad_nubra_queries": [
+    "Nubra",
+    "Nubra trading",
+    "Nubra stock broker",
+    "Nubra trading app review",
+    "Nubra app features complaints"
+  ],
+  "personas": {
+    "option_buyer": ["option buyer", "option buying", "buying options"],
+    "option_seller": ["option seller", "option selling", "selling options"],
+    "investor": ["investor", "long term investing", "delivery investor"],
+    "oi_trader": ["OI trader", "open interest trader", "OI based trading"],
+    "scalper": ["scalper", "scalping", "high frequency discretionary trader"]
+  },
+  "feature_buckets": {
+    "watchlist": {
+      "feature_ids": ["nubra-expanded-auto-refresh-watchlists"],
+      "aliases": ["250 instrument watchlist", "250 stocks watchlist", "large watchlist", "auto refresh watchlist", "watchlist not refreshing", "live watchlist"],
+      "queries": [
+        "stock broker watchlist 250 instruments India",
+        "trading app watchlist auto refresh",
+        "broker watchlist not updating India"
+      ]
+    },
+    "oms_presets_execution": {
+      "feature_ids": ["nubra-oms-order-presets", "nubra-nse-best-fill-price", "nubra-one-click-trade-bid-ask"],
+      "aliases": ["OMS preset", "order preset", "apply preset", "best fill price", "best price execution", "one click mode", "one click trade"],
+      "queries": [
+        "trading app saved order presets India",
+        "best fill price NSE broker",
+        "one click trading app India"
+      ]
+    },
+    "funds_brokerage": {
+      "feature_ids": ["nubra-instant-fund-movement", "nubra-flexible-brokerage"],
+      "aliases": ["instant withdrawal", "instant payout", "instant fund addition", "add funds 5 lakh", "flexible brokerage", "custom brokerage"],
+      "queries": [
+        "broker instant withdrawal India review",
+        "instant fund addition trading app India",
+        "flexible brokerage plan India broker"
+      ]
+    },
+    "ai_scans_charts": {
+      "feature_ids": ["nubra-ai-query-scans", "nubra-chart-analyser"],
+      "aliases": ["AI generated scan", "natural language scanner", "prompt based screener", "chart analyser", "chart analyzer", "AI chart analysis"],
+      "queries": [
+        "AI natural language stock scanner India",
+        "query based trading scanner",
+        "AI chart analyser trading app"
+      ]
+    },
+    "trader_personas": {
+      "feature_ids": ["nubra-retail-persona-modes", "nubra-option-chain-buyer-mode", "nubra-option-chain-seller-mode"],
+      "aliases": ["customised broker", "trader persona", "option buyer mode", "option seller mode", "OI trader mode", "investor mode"],
+      "queries": [
+        "trading app option buyer mode",
+        "option seller mode broker app",
+        "personalised trading app investor OI trader"
+      ]
+    },
+    "strategy_library": {
+      "feature_ids": ["nubra-strategy-taxonomy-market-outcome-instrument"],
+      "aliases": ["40 pre built strategies", "40+ strategies", "pre-built strategy", "ready-made strategy", "strategy appstore"],
+      "queries": [
+        "broker app 40 pre built option strategies",
+        "ready made option strategies India",
+        "strategy appstore trading"
+      ]
+    },
+    "strategy_portfolio_risk": {
+      "feature_ids": ["nubra-strategy-level-portfolios", "nubra-strategy-level-risk-controls", "nubra-amount-margin-quantity-sizing"],
+      "aliases": ["strategy level portfolio", "strategy level P&L", "P&L based SL TP", "risk reward SL TP", "strategy level stop loss", "quantity based on margin", "amount based quantity"],
+      "queries": [
+        "strategy level portfolio options trading",
+        "P&L based stop loss multi leg strategy",
+        "position size based on margin trading app"
+      ]
+    },
+    "strategy_time_series": {
+      "feature_ids": ["nubra-strategy-time-series-chart", "nubra-live-strategy-risk-recalculation"],
+      "aliases": ["strategy time series", "multi instrument chart", "stock options combined chart", "live strategy risk", "live payoff update"],
+      "queries": [
+        "option strategy time series chart",
+        "combined stock futures options strategy chart",
+        "live strategy risk recalculation"
+      ]
+    },
+    "advanced_orders": {
+      "feature_ids": ["nubra-dual-iceberg-modes", "nubra-gtt-amo-orders", "nubra-flexible-order-type-modification", "nubra-no-app-price-restriction"],
+      "aliases": ["iceberg mode", "GTT", "AMO", "after market order", "modify order type", "iceberg conversion", "price restriction"],
+      "queries": [
+        "iceberg order modes India broker",
+        "GTT AMO trading app India",
+        "change order type without cancelling broker"
+      ]
+    },
+    "alerts": {
+      "feature_ids": ["nubra-technical-option-chain-alerts"],
+      "aliases": ["technical alert", "indicator alert", "option chain alert", "OI alert", "IV alert", "strike alert"],
+      "queries": [
+        "technical indicator alerts broker app India",
+        "option chain OI IV alerts app",
+        "best options alerts app India"
+      ]
+    },
+    "bid_ask_market_depth": {
+      "feature_ids": ["nubra-one-click-trade-bid-ask", "nubra-bid-ask-on-chart", "nubra-option-chain-custom-filters-columns"],
+      "aliases": ["bid ask option chain", "bid ask on chart", "spread on chart", "market depth chart", "save option chain filter", "saved option chain mode"],
+      "queries": [
+        "bid ask prices on trading chart",
+        "bid ask spread option chain India",
+        "save option chain filters trading app"
+      ]
+    }
+  }
+}

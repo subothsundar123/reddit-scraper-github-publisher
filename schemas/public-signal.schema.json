@@ -17,6 +17,12 @@
     "author_hash": {"type": ["string", "null"]},
     "engagement": {"type": "object"},
     "tags": {"type": "array", "items": {"type": "string"}},
+    "feature_ids": {"type": "array", "items": {"type": "string"}},
+    "personas": {"type": "array", "items": {"type": "string"}},
+    "signal_type": {
+      "type": "string",
+      "enum": ["feature_request", "pain_point", "competitor_comparison", "positive_feedback", "question", "general_discussion"]
+    },
     "segment": {"type": "string"},
     "competitors": {"type": "array", "items": {"type": "string"}},
     "evidence_quality": {"type": "string"},

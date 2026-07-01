@@ -12,6 +12,7 @@ import subprocess
 import sys
 import time
 from collections import Counter
+from functools import lru_cache
 from typing import Any, Iterable
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -65,6 +66,13 @@ TOPIC_TAGS = {
     "automation": ["algo", "automation", "strategy", "bot"],
     "pricing_margin": ["margin", "brokerage", "charges", "pricing"],
     "mcp_ai": ["mcp", "ai", "agent", "claude"],
+    "watchlists": ["watchlist", "watch list"],
+    "funds_payments": ["instant withdrawal", "instant payout", "fund addition", "add funds"],
+    "ai_scanners": ["ai scan", "ai scanner", "natural language scan", "query based scan", "prompt based screener"],
+    "chart_analysis": ["chart analyser", "chart analyzer", "bid ask on chart", "market depth chart"],
+    "alerts": ["technical alert", "indicator alert", "option chain alert", "oi alert", "iv alert"],
+    "advanced_orders": ["iceberg", "after market order", "amo", "order type modification"],
+    "strategy_risk": ["strategy level", "p&l based sl", "pnl based sl", "risk reward sl", "strategy portfolio"],
 }
 
 
@@ -78,6 +86,13 @@ COMPETITOR_ALIASES = {
     "ICICI Direct": ["icici", "breeze"],
     "Shoonya": ["shoonya", "finvasia"],
     "Alice Blue": ["alice blue", "ant api"],
+    "Groww": ["groww"],
+    "Sensibull": ["sensibull"],
+    "Opstra": ["opstra", "definedge"],
+    "AlgoTest": ["algotest"],
+    "TradingView": ["tradingview", "trading view"],
+    "StockEdge": ["stockedge", "stock edge"],
+    "StockMock": ["stockmock", "stock mock"],
 }
 
 
@@ -89,6 +104,76 @@ def _tags(text: str) -> list[str]:
 def _competitors(text: str) -> list[str]:
     lower = text.lower()
     return [name for name, keys in COMPETITOR_ALIASES.items() if any(key in lower for key in keys)]
+
+
+def _phrase_in_text(phrase: str, text: str) -> bool:
+    phrase = phrase.casefold().strip()
+    if not phrase:
+        return False
+    if len(phrase) <= 4 and phrase.isalnum():
+        return re.search(rf"\b{re.escape(phrase)}\b", text, flags=re.IGNORECASE) is not None
+    return phrase in text.casefold()
+
+
+@lru_cache(maxsize=1)
+def _retail_feature_keywords() -> dict[str, Any]:
+    path = ROOT / "config" / "retail_feature_keywords.json"
+    try:
+        return _json(path)
+    except (OSError, json.JSONDecodeError, TypeError, ValueError):
+        return {"feature_buckets": {}, "personas": {}, "broad_nubra_queries": []}
+
+
+@lru_cache(maxsize=1)
+def _retail_feature_catalog() -> list[dict[str, Any]]:
+    path = ROOT / "product-catalog" / "retail-upcoming-features.json"
+    try:
+        return list(_json(path).get("features") or [])
+    except (OSError, json.JSONDecodeError, TypeError, ValueError):
+        return []
+
+
+def _feature_ids(text: str) -> list[str]:
+    matched = []
+    for item in _retail_feature_catalog():
+        aliases = [item.get("name"), *(item.get("aliases") or [])]
+        if any(_phrase_in_text(str(alias), text) for alias in aliases if alias):
+            matched.append(str(item["id"]))
+    return matched
+
+
+def _personas(text: str) -> list[str]:
+    matched = []
+    for persona, aliases in (_retail_feature_keywords().get("personas") or {}).items():
+        if any(_phrase_in_text(str(alias), text) for alias in aliases):
+            matched.append(str(persona))
+    return matched
+
+
+def _signal_type(text: str) -> str:
+    lower = text.lower()
+    if any(term in lower for term in ("please add", "need", "want", "missing", "feature request", "should add", "wish it had")):
+        return "feature_request"
+    if any(term in lower for term in ("problem", "issue", "slow", "delay", "not working", "confusing", "difficult", "complaint", "bug")):
+        return "pain_point"
+    if len(_competitors(text)) >= 2 or any(term in lower for term in (" vs ", "compare", "comparison", "better than")):
+        return "competitor_comparison"
+    if any(term in lower for term in ("love", "useful", "works well", "great feature", "helpful")):
+        return "positive_feedback"
+    if "?" in text or any(term in lower for term in ("how", "why", "which", "what is", "best")):
+        return "question"
+    return "general_discussion"
+
+
+def _is_nubra_market_relevant(text: str) -> bool:
+    lower = text.lower()
+    if "nubra" not in lower and "zanskar" not in lower:
+        return False
+    market_terms = (
+        "trading", "stock", "option", "broker", "market", "invest", "nse", "bse", "f&o",
+        "portfolio", "order", "watchlist", "fintech", "demat", "zanskar", "app",
+    )
+    return any(term in lower for term in market_terms)
 
 
 def _segment(text: str) -> str:
@@ -133,6 +218,9 @@ def _signal(
         "author_hash": _anon(author),
         "engagement": engagement or {},
         "tags": _tags(text),
+        "feature_ids": _feature_ids(text),
+        "personas": _personas(text),
+        "signal_type": _signal_type(text),
         "segment": _segment(text),
         "competitors": _competitors(text),
         "evidence_quality": evidence_quality,
@@ -223,13 +311,16 @@ def _normalize_signal_row(raw: dict[str, Any], collection_date: str) -> dict[str
         "author_hash": raw.get("author_hash") or _anon(raw.get("author")),
         "engagement": raw.get("engagement") if isinstance(raw.get("engagement"), dict) else {},
         "tags": raw.get("tags") if isinstance(raw.get("tags"), list) else _tags(f"{title} {body}"),
+        "feature_ids": raw.get("feature_ids") if isinstance(raw.get("feature_ids"), list) else _feature_ids(f"{title} {body}"),
+        "personas": raw.get("personas") if isinstance(raw.get("personas"), list) else _personas(f"{title} {body}"),
+        "signal_type": raw.get("signal_type") or _signal_type(f"{title} {body}"),
         "segment": raw.get("segment") or _segment(f"{title} {body}"),
         "competitors": raw.get("competitors") if isinstance(raw.get("competitors"), list) else _competitors(f"{title} {body}"),
         "evidence_quality": raw.get("evidence_quality") or "manual_public_web_research",
         "source_method": raw.get("source_method") or "manual_web_research",
     }
     for optional_key in (
-        "platform_partition", "keyword_bucket", "matched_keyword", "signal_type",
+        "platform_partition", "keyword_bucket", "matched_keyword",
         "persona", "product_area", "research_query", "notes",
     ):
         if optional_key in raw:
@@ -579,25 +670,81 @@ def _youtube_get(session: Any, api_key: str, path: str, params: dict[str, Any]) 
     return response.json()
 
 
-def _flatten_youtube_keywords(cfg: dict[str, Any]) -> list[dict[str, str]]:
-    limit = int(cfg.get("limits", {}).get("max_queries_per_partition", 20))
+def _partition_limit(cfg: dict[str, Any], partition: str) -> int:
+    value = cfg.get("limits", {}).get("max_queries_per_partition", 20)
+    if isinstance(value, dict):
+        return int(value.get(partition, value.get("default", 20)))
+    return int(value)
+
+
+def _round_robin_keywords(keyword_buckets: dict[str, list[Any]], limit: int) -> list[tuple[str, str]]:
+    buckets = [(str(name), [str(value) for value in values]) for name, values in keyword_buckets.items()]
+    selected: list[tuple[str, str]] = []
+    index = 0
+    while len(selected) < limit:
+        added = False
+        for name, values in buckets:
+            if index < len(values):
+                selected.append((name, values[index]))
+                added = True
+                if len(selected) >= limit:
+                    break
+        if not added:
+            break
+        index += 1
+    return selected
+
+
+def _rotated(values: list[dict[str, str]], limit: int, collection_date: str | None) -> list[dict[str, str]]:
+    if not values or limit <= 0:
+        return []
+    try:
+        rotation = dt.date.fromisoformat(collection_date or dt.date.today().isoformat()).toordinal() % len(values)
+    except ValueError:
+        rotation = 0
+    rotated = values[rotation:] + values[:rotation]
+    return rotated[:limit]
+
+
+def _flatten_youtube_keywords(cfg: dict[str, Any], collection_date: str | None = None) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for partition, part_cfg in (cfg.get("partitions") or {}).items():
         segment = part_cfg.get("segment") or ("api_algo" if partition == "api" else "retail")
-        count = 0
-        for bucket, keywords in (part_cfg.get("keyword_buckets") or {}).items():
-            for keyword in keywords:
-                if count >= limit:
-                    break
+        for bucket, keyword in _round_robin_keywords(
+            part_cfg.get("keyword_buckets") or {},
+            _partition_limit(cfg, partition),
+        ):
+            rows.append({
+                "partition": partition,
+                "segment": segment,
+                "bucket": bucket,
+                "keyword": keyword,
+            })
+
+    feature_cfg = cfg.get("retail_feature_keywords") or {}
+    if feature_cfg.get("enabled", False):
+        try:
+            catalog = _json(ROOT / feature_cfg.get("path", "config/retail_feature_keywords.json"))
+            for keyword in (catalog.get("broad_nubra_queries") or [])[: int(feature_cfg.get("max_brand_queries", 5))]:
                 rows.append({
-                    "partition": partition,
-                    "segment": segment,
-                    "bucket": bucket,
+                    "partition": "retail",
+                    "segment": "retail",
+                    "bucket": "nubra_brand_sweep",
                     "keyword": str(keyword),
                 })
-                count += 1
-            if count >= limit:
-                break
+            feature_rows = []
+            for bucket, bucket_cfg in (catalog.get("feature_buckets") or {}).items():
+                for keyword in bucket_cfg.get("queries") or []:
+                    feature_rows.append({
+                        "partition": "retail",
+                        "segment": "retail",
+                        "bucket": f"retail_feature_{bucket}",
+                        "keyword": str(keyword),
+                    })
+            rows.extend(_rotated(feature_rows, int(feature_cfg.get("max_feature_queries", 30)), collection_date))
+        except (OSError, json.JSONDecodeError, TypeError, ValueError):
+            pass
+
     seo_cfg = cfg.get("seo_seed_keywords") or {}
     if seo_cfg.get("enabled", False):
         try:
@@ -614,21 +761,20 @@ def _flatten_youtube_keywords(cfg: dict[str, Any]) -> list[dict[str, str]]:
                     })
         except (OSError, json.JSONDecodeError, TypeError, ValueError):
             pass
-    rows = [row for row in rows if row.get("keyword")]
-    return rows
+    unique: list[dict[str, str]] = []
+    seen = set()
+    for row in rows:
+        keyword = row.get("keyword", "").strip()
+        key = (row.get("partition"), keyword.casefold())
+        if keyword and key not in seen:
+            row["keyword"] = keyword
+            unique.append(row)
+            seen.add(key)
+    return unique
 
 
 def _comment_signal_type(text: str) -> str:
-    lower = text.lower()
-    if any(term in lower for term in ("please add", "need", "want", "missing", "feature", "can you add")):
-        return "feature_request"
-    if any(term in lower for term in ("problem", "issue", "slow", "delay", "not working", "confusing", "difficult")):
-        return "pain_point"
-    if any(term in lower for term in ("zerodha", "dhan", "fyers", "sensibull", "opstra", "upstox", "angel")):
-        return "competitor_comparison"
-    if "?" in text or any(term in lower for term in ("how", "why", "which", "what is", "best")):
-        return "question"
-    return "general"
+    return _signal_type(text)
 
 
 def _youtube_video_comments(
@@ -673,6 +819,8 @@ def _youtube_video_comments(
                     "order": order,
                     "signal_type": _comment_signal_type(text),
                     "feature_mentions": _tags(text),
+                    "feature_ids": _feature_ids(text),
+                    "personas": _personas(text),
                     "competitor_mentions": _competitors(text),
                 })
             page_token = payload.get("nextPageToken")
@@ -685,6 +833,8 @@ def _youtube_video_comments(
 def _youtube_comment_summary(comments: list[dict[str, Any]]) -> dict[str, Any]:
     types = Counter(comment.get("signal_type") or "general" for comment in comments)
     features = Counter(tag for comment in comments for tag in comment.get("feature_mentions", []))
+    feature_ids = Counter(feature_id for comment in comments for feature_id in comment.get("feature_ids", []))
+    personas = Counter(persona for comment in comments for persona in comment.get("personas", []))
     competitors = Counter(name for comment in comments for name in comment.get("competitor_mentions", []))
     recent_cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=30)
     recent_count = 0
@@ -700,6 +850,8 @@ def _youtube_comment_summary(comments: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "comment_signal_types": dict(types),
         "feature_mentions": dict(features.most_common(12)),
+        "feature_ids": dict(feature_ids.most_common(15)),
+        "personas": dict(personas.most_common(8)),
         "competitor_mentions": dict(competitors.most_common(12)),
         "recent_comment_count": recent_count,
         "question_count": types.get("question", 0),
@@ -731,7 +883,7 @@ def collect_youtube_signals(config_path: pathlib.Path, output_path: pathlib.Path
     session = requests.Session()
     session.headers["User-Agent"] = "product-insights-youtube-agent/1.0"
 
-    for item in _flatten_youtube_keywords(cfg):
+    for item in _flatten_youtube_keywords(cfg, collection_date):
         params: dict[str, Any] = {
             "part": "snippet",
             "type": "video",
@@ -765,6 +917,12 @@ def collect_youtube_signals(config_path: pathlib.Path, output_path: pathlib.Path
             description = snippet.get("description") or ""
             channel = snippet.get("channelTitle") or snippet.get("channelId") or "youtube"
             published_at = snippet.get("publishedAt")
+            if (
+                item["bucket"] == "nubra_brand_sweep"
+                and item["keyword"].casefold() == "nubra"
+                and not _is_nubra_market_relevant(f"{title} {description} {channel}")
+            ):
+                continue
             comments = _youtube_video_comments(session, api_key, str(video_id), max_comments, max_recent, pause)
             summary = _youtube_comment_summary(comments)
             views = _int(stats.get("viewCount"))
@@ -880,6 +1038,39 @@ def collect_public(config_path: pathlib.Path, output_path: pathlib.Path) -> path
                     row["sort_type"] = str(row.get("sort_type", "")) + "," + sort
             time.sleep(1.1)
         result[sub] = list(collected.values())
+    for query in cfg.get("search_queries", []):
+        params = {
+            "q": str(query),
+            "sort": "new",
+            "t": cfg.get("search_time_filter", "month"),
+            "limit": min(int(cfg.get("search_limit_per_query", 50)), 100),
+            "raw_json": 1,
+        }
+        response = session.get("https://www.reddit.com/search.json", params=params, timeout=30)
+        if response.status_code in {403, 429}:
+            print(f"Skipping Reddit search '{query}': Reddit returned {response.status_code}", file=sys.stderr)
+            time.sleep(1.1)
+            continue
+        response.raise_for_status()
+        for child in response.json().get("data", {}).get("children", []):
+            d = child.get("data", {})
+            if str(query).casefold() == "nubra" and not _is_nubra_market_relevant(
+                f"{d.get('title', '')} {d.get('selftext', '')} {d.get('subreddit', '')}"
+            ):
+                continue
+            sub = str(d.get("subreddit") or "reddit_search")
+            pid = "t3_" + str(d.get("id"))
+            existing = {row["id"]: row for row in result.get(sub, [])}
+            existing.setdefault(pid, {
+                "id": pid, "subreddit": sub, "title": d.get("title"),
+                "author": d.get("author"), "score": d.get("score"),
+                "num_comments": d.get("num_comments"), "permalink": "https://reddit.com" + str(d.get("permalink", "")),
+                "url": d.get("url"), "selftext": d.get("selftext"), "flair": d.get("link_flair_text"),
+                "timestamp": d.get("created_utc"), "comments": [], "sort_type": "search",
+                "research_query": str(query),
+            })
+            result[sub] = list(existing.values())
+        time.sleep(1.1)
     _write_json(output_path, result)
     return output_path
 
@@ -893,6 +1084,29 @@ def collect_api(config_path: pathlib.Path, output_path: pathlib.Path) -> pathlib
         user_agent=os.environ["REDDIT_USER_AGENT"],
     )
     result: dict[str, list[dict[str, Any]]] = {}
+
+    def post_row(
+        p: Any,
+        sort_type: str,
+        research_query: str | None = None,
+        comment_limit: int | None = None,
+    ) -> dict[str, Any]:
+        p.comments.replace_more(limit=0)
+        comment_limit = comment_limit if comment_limit is not None else int(cfg.get("comment_limit", 100))
+        row = {
+            "id": "t3_" + p.id, "subreddit": str(p.subreddit), "sort_type": sort_type, "title": p.title,
+            "author": str(p.author) if p.author else None, "score": p.score,
+            "num_comments": p.num_comments, "permalink": "https://reddit.com" + p.permalink,
+            "url": p.url, "selftext": p.selftext, "flair": p.link_flair_text,
+            "timestamp": p.created_utc,
+            "comments": [{"id": c.id, "author": str(c.author) if c.author else None, "score": c.score,
+                          "body": c.body, "created_utc": c.created_utc}
+                         for c in list(p.comments)[:comment_limit]],
+        }
+        if research_query:
+            row["research_query"] = research_query
+        return row
+
     for sub in cfg["subreddits"]:
         found: dict[str, dict[str, Any]] = {}
         sr = reddit.subreddit(sub)
@@ -902,18 +1116,30 @@ def collect_api(config_path: pathlib.Path, output_path: pathlib.Path) -> pathlib
                 pid = "t3_" + p.id
                 if pid in found:
                     continue
-                p.comments.replace_more(limit=0)
-                found[pid] = {
-                    "id": pid, "subreddit": sub, "sort_type": sort, "title": p.title,
-                    "author": str(p.author) if p.author else None, "score": p.score,
-                    "num_comments": p.num_comments, "permalink": "https://reddit.com" + p.permalink,
-                    "url": p.url, "selftext": p.selftext, "flair": p.link_flair_text,
-                    "timestamp": p.created_utc,
-                    "comments": [{"id": c.id, "author": str(c.author) if c.author else None, "score": c.score,
-                                  "body": c.body, "created_utc": c.created_utc}
-                                 for c in list(p.comments)[: int(cfg.get("comment_limit", 100))]],
-                }
+                found[pid] = post_row(p, sort)
         result[sub] = list(found.values())
+
+    search_reddit = reddit.subreddit("all")
+    for query in cfg.get("search_queries", []):
+        listing = search_reddit.search(
+            str(query),
+            sort="new",
+            time_filter=str(cfg.get("search_time_filter", "month")),
+            limit=int(cfg.get("search_limit_per_query", 50)),
+        )
+        for p in listing:
+            if str(query).casefold() == "nubra" and not _is_nubra_market_relevant(
+                f"{p.title} {p.selftext} {p.subreddit}"
+            ):
+                continue
+            sub = str(p.subreddit)
+            pid = "t3_" + p.id
+            existing = {row["id"]: row for row in result.get(sub, [])}
+            existing.setdefault(
+                pid,
+                post_row(p, "search", str(query), int(cfg.get("search_comment_limit", 30))),
+            )
+            result[sub] = list(existing.values())
     _write_json(output_path, result)
     return output_path
 

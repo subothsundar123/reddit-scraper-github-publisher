@@ -1,6 +1,17 @@
 {
   "schema_version": "1.0",
   "trigger_phrase": "dump todays social media data",
+  "nubra_brand_sweep_queries": [
+    "Nubra",
+    "\"Nubra\" trading",
+    "\"Nubra\" broker",
+    "\"Nubra\" app review",
+    "\"Nubra\" complaints",
+    "site:reddit.com Nubra",
+    "site:youtube.com Nubra trading",
+    "site:x.com Nubra trading",
+    "site:github.com Nubra trading"
+  ],
   "retail_queries": [
     "Nubra trading app",
     "Nubra option chain",
@@ -13,7 +24,20 @@
     "Sensibull vs Dhan vs Zerodha options",
     "PCR max pain OI buildup option chain",
     "stock market alerts app India",
-    "trading app review India options"
+    "trading app review India options",
+    "stock broker watchlist 250 instruments auto refresh",
+    "OMS saved order presets trading app",
+    "best fill price NSE broker",
+    "instant withdrawal and fund addition broker India",
+    "AI natural language stock scans India",
+    "chart analyser trading app",
+    "option buyer option seller OI trader modes",
+    "strategy level portfolio P&L stop loss target",
+    "quantity sizing by amount margin trading",
+    "40 pre-built option strategies broker",
+    "iceberg GTT AMO order modification",
+    "technical and option chain alerts",
+    "bid ask price on option chain and chart"
   ],
   "api_queries": [
     "Nubra API",
@@ -28,6 +52,10 @@
     "backtesting API India"
   ],
   "indexed_social_queries": [
+    "site:x.com Nubra",
+    "site:x.com \"Nubra\" trading",
+    "site:x.com \"Nubra\" broker",
+    "site:x.com \"Nubra\" review",
     "site:x.com Nubra trading",
     "site:x.com Nubra API",
     "site:x.com option chain trading app India",
