@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "trigger_phrase": "dump todays social media data",
+  "retail_queries": [
+    "Nubra trading app",
+    "Nubra option chain",
+    "option chain trading app India",
+    "best option chain app India",
+    "option buyer strategy app India",
+    "option seller margin payoff India",
+    "F&O analytics app India",
+    "strategy builder options India",
+    "Sensibull vs Dhan vs Zerodha options",
+    "PCR max pain OI buildup option chain",
+    "stock market alerts app India",
+    "trading app review India options"
+  ],
+  "api_queries": [
+    "Nubra API",
+    "broker API India websocket",
+    "Zerodha Kite Connect API issues",
+    "Dhan API issues",
+    "Fyers API websocket",
+    "historical data API India trading",
+    "algo trading API India",
+    "trading API TOTP static IP",
+    "paper trading API India",
+    "backtesting API India"
+  ],
+  "indexed_social_queries": [
+    "site:x.com Nubra trading",
+    "site:x.com Nubra API",
+    "site:x.com option chain trading app India",
+    "site:x.com Zerodha API websocket",
+    "site:x.com Dhan API issues",
+    "site:x.com Sensibull strategy builder",
+    "site:x.com Opstra payoff",
+    "site:x.com broker API India"
+  ],
+  "seo_queries": [
+    "fii dii data",
+    "pcr ratio",
+    "nse option chain",
+    "nifty option chain",
+    "option chain filters",
+    "max pain option chain",
+    "strategy builder options",
+    "options payoff calculator",
+    "stock screener India",
+    "nifty 50 chart"
+  ]
+}

@@ -183,6 +183,134 @@ def _load_signals(path: pathlib.Path | None) -> list[dict[str, Any]]:
         return [json.loads(line) for line in f if line.strip()]
 
 
+def _load_jsonl(path: pathlib.Path) -> list[dict[str, Any]]:
+    rows = []
+    with path.open("r", encoding="utf-8-sig") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            if isinstance(row, dict):
+                rows.append(row)
+    return rows
+
+
+def _read_gzip_jsonl(path: pathlib.Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    with gzip.open(path, "rt", encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def _normalize_signal_row(raw: dict[str, Any], collection_date: str) -> dict[str, Any]:
+    title = str(raw.get("title") or raw.get("headline") or raw.get("topic") or "Manual research signal")
+    body = str(raw.get("body") or raw.get("summary") or raw.get("text") or raw.get("evidence") or "")
+    url = str(raw.get("url") or raw.get("source_url") or "")
+    source = str(raw.get("source") or "manual_web_research")
+    channel = str(raw.get("channel") or raw.get("source_name") or "manual_research")
+    item_type = str(raw.get("item_type") or "manual_research_note")
+    normalized = {
+        "id": raw.get("id") or _signal_id(source, raw.get("external_id"), url, title),
+        "source": source,
+        "channel": channel,
+        "item_type": item_type,
+        "external_id": str(raw.get("external_id")) if raw.get("external_id") is not None else None,
+        "collected_on": str(raw.get("collected_on") or collection_date),
+        "created_at": raw.get("created_at"),
+        "title": title,
+        "body": body,
+        "url": url,
+        "author_hash": raw.get("author_hash") or _anon(raw.get("author")),
+        "engagement": raw.get("engagement") if isinstance(raw.get("engagement"), dict) else {},
+        "tags": raw.get("tags") if isinstance(raw.get("tags"), list) else _tags(f"{title} {body}"),
+        "segment": raw.get("segment") or _segment(f"{title} {body}"),
+        "competitors": raw.get("competitors") if isinstance(raw.get("competitors"), list) else _competitors(f"{title} {body}"),
+        "evidence_quality": raw.get("evidence_quality") or "manual_public_web_research",
+        "source_method": raw.get("source_method") or "manual_web_research",
+    }
+    for optional_key in (
+        "platform_partition", "keyword_bucket", "matched_keyword", "signal_type",
+        "persona", "product_area", "research_query", "notes",
+    ):
+        if optional_key in raw:
+            normalized[optional_key] = raw[optional_key]
+    return normalized
+
+
+def _write_dump_metadata(out: pathlib.Path, collection_date: str, source: str | None = None) -> None:
+    post_path, comment_path, signal_path = out / "posts.jsonl.gz", out / "comments.jsonl.gz", out / "signals.jsonl.gz"
+    posts = _read_gzip_jsonl(post_path)
+    comments = _read_gzip_jsonl(comment_path)
+    signals = _read_gzip_jsonl(signal_path)
+    subreddit_counts = dict(Counter(p.get("subreddit") or "unknown" for p in posts))
+    summary = {
+        "collection_date": collection_date,
+        "source": source or "multi_channel_product_research",
+        "posts": len(posts),
+        "comments": len(comments),
+        "signals": len(signals),
+        "subreddits": subreddit_counts,
+        "source_methods": dict(Counter(p.get("source_method") or "unknown" for p in posts)),
+        "signal_source_methods": dict(Counter(s.get("source_method") or "unknown" for s in signals)),
+        "signal_sources": dict(Counter(s.get("source") or "unknown" for s in signals)),
+        "signal_channels": dict(Counter(s.get("channel") or "unknown" for s in signals)),
+        "evidence_quality": dict(Counter(p.get("evidence_quality") or "unknown" for p in posts)),
+        "signal_evidence_quality": dict(Counter(s.get("evidence_quality") or "unknown" for s in signals)),
+        "engagement": {
+            "post_score_sum": sum(int(p.get("score") or 0) for p in posts),
+            "comment_score_sum": sum(int(c.get("score") or 0) for c in comments),
+            "reported_comment_sum": sum(int(p.get("num_comments") or 0) for p in posts),
+        },
+        "privacy": "Public text retained for analysis; direct usernames replaced with stable one-way hashes when available.",
+    }
+    _write_json(out / "summary.json", summary)
+    output_files = [post_path, comment_path, out / "summary.json"]
+    if signal_path.exists():
+        output_files.append(signal_path)
+    files = [
+        {"path": p.relative_to(ROOT).as_posix(), "sha256": _sha(p), "bytes": p.stat().st_size}
+        for p in output_files
+    ]
+    manifest = {
+        "schema_version": "1.0",
+        "collection_date": collection_date,
+        "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "files": files,
+    }
+    _write_json(out / "manifest.json", manifest)
+    manifest_path = ROOT / "manifests" / "all_dumps.json"
+    index = _json(manifest_path) if manifest_path.exists() else {"schema_version": "1.0", "dumps": []}
+    index["dumps"] = [d for d in index["dumps"] if d.get("collection_date") != collection_date]
+    index["dumps"].append({
+        "collection_date": collection_date,
+        "manifest": (out / "manifest.json").relative_to(ROOT).as_posix(),
+        "posts": len(posts),
+        "comments": len(comments),
+        "signals": len(signals),
+    })
+    index["dumps"].sort(key=lambda d: d["collection_date"])
+    index["updated_at"] = manifest["generated_at"]
+    _write_json(manifest_path, index)
+
+
+def add_manual_research(input_path: pathlib.Path, collection_date: str, source: str = "manual_research_enriched") -> pathlib.Path:
+    rows = [_normalize_signal_row(row, collection_date) for row in _load_jsonl(input_path)]
+    out = ROOT / "daily-dumps" / collection_date
+    out.mkdir(parents=True, exist_ok=True)
+    post_path, comment_path, signal_path = out / "posts.jsonl.gz", out / "comments.jsonl.gz", out / "signals.jsonl.gz"
+    if not post_path.exists():
+        _gzip_jsonl(post_path, [])
+    if not comment_path.exists():
+        _gzip_jsonl(comment_path, [])
+    existing = _read_gzip_jsonl(signal_path)
+    merged: dict[str, dict[str, Any]] = {str(row.get("id")): row for row in existing if row.get("id")}
+    for row in rows:
+        merged[str(row["id"])] = row
+    _gzip_jsonl(signal_path, merged.values())
+    _write_dump_metadata(out, collection_date, source=source)
+    return out
+
+
 def package_dump(
     input_path: pathlib.Path,
     collection_date: str,
@@ -831,6 +959,11 @@ def main() -> None:
     p.add_argument("--date", default=dt.date.today().isoformat())
     p.add_argument("--source", default="reddit")
     p.add_argument("--signals", type=pathlib.Path)
+    manual = sub.add_parser("add-manual-research")
+    manual.add_argument("--input", type=pathlib.Path, required=True)
+    manual.add_argument("--date", default=dt.date.today().isoformat())
+    manual.add_argument("--source", default="manual_research_enriched")
+    manual.add_argument("--push", action="store_true")
     sub.add_parser("validate")
     pub = sub.add_parser("publish"); pub.add_argument("--push", action="store_true")
     daily = sub.add_parser("daily")
@@ -848,6 +981,10 @@ def main() -> None:
         output = args.output or ROOT / "staging" / f"youtube_signals_{args.date}.jsonl"
         print(collect_youtube_signals(args.config, output, args.date))
     elif args.command == "package": print(package_dump(args.input, args.date, args.source, args.signals))
+    elif args.command == "add-manual-research":
+        print(add_manual_research(args.input, args.date, args.source))
+        if args.push:
+            git_publish(True)
     elif args.command == "validate": validate()
     elif args.command == "publish": git_publish(args.push)
     elif args.command == "daily":

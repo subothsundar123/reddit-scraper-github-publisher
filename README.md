@@ -105,11 +105,45 @@ To package an existing scraper result:
 .\.venv\Scripts\insights-publisher publish --push
 ```
 
+## Manual research enrichment
+
+When the operator says:
+
+```text
+dump todays social media data
+```
+
+the intended workflow is:
+
+1. Run the scripted daily collectors.
+2. Do public manual web/social research using `manual-research/daily-research-prompt.md`.
+3. Save findings as JSONL:
+
+```text
+staging/manual_research_YYYY-MM-DD.jsonl
+```
+
+4. Merge and push:
+
+```powershell
+.\.venv\Scripts\insights-publisher add-manual-research --date YYYY-MM-DD --input .\staging\manual_research_YYYY-MM-DD.jsonl --push
+```
+
+The merge command appends manual research to `daily-dumps/YYYY-MM-DD/signals.jsonl.gz`, rebuilds the summary, manifest and checksums, then validates and publishes when `--push` is used.
+
+Manual research files and templates live in:
+
+```text
+manual-research/
+```
+
 ## Repository contract
 
 - `daily-dumps/YYYY-MM-DD/`: immutable compressed posts/comments/signals, summary, checksum manifest
 - `manifests/all_dumps.json`: small index checked by the lead agent
 - `product-catalog/current.json`: versioned Nubra capability and gap catalog
+- `marketing-keywords/current.json`: SEO/content keyword intelligence
+- `manual-research/`: repeatable manual enrichment runbook and templates
 - `schemas/`: machine-readable contracts
 - `config/channels.json`: approved public communities and collection limits
 

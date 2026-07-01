@@ -54,6 +54,26 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertIn("search_seed_keywords", catalog)
         self.assertGreaterEqual(len(catalog["search_seed_keywords"]["retail"]), 50)
 
+    def test_manual_research_assets_exist(self):
+        self.assertTrue((ROOT / "manual-research/daily-research-prompt.md").exists())
+        self.assertTrue((ROOT / "manual-research/research-checklist.md").exists())
+        queries = json.loads((ROOT / "manual-research/source-query-bank.json").read_text(encoding="utf-8"))
+        self.assertEqual(queries["trigger_phrase"], "dump todays social media data")
+        self.assertIn("retail_queries", queries)
+
+    def test_manual_signal_normalization(self):
+        from insights_publisher.cli import _normalize_signal_row
+        row = _normalize_signal_row({
+            "title": "Need better option chain filters",
+            "body": "Users compare Sensibull and Nubra for OI filters.",
+            "url": "https://example.com",
+            "segment": "retail",
+        }, "2026-07-01")
+        self.assertEqual(row["source_method"], "manual_web_research")
+        self.assertEqual(row["segment"], "retail")
+        self.assertIn("option_chain", row["tags"])
+        self.assertIn("Nubra", row["competitors"])
+
     def test_youtube_collector_skips_without_key(self):
         from insights_publisher.cli import collect_youtube_signals
         import os
