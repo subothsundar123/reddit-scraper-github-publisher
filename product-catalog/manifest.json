@@ -1,7 +1,7 @@
 {
-  "current_version": "1.0.0",
+  "current_version": "1.1.0",
   "path": "product-catalog/current.json",
-  "sha256": "2fab548b46ecc53b18c8559e9a9f2f266677661b7778185cc0aede658a11b2cd",
-  "feature_count": 189,
-  "updated_at": "2026-06-29T11:22:07.183843+00:00"
+  "sha256": "1e44bf098e3f6973f26a39d6984c711737257ee402fed0898c21853b046071ea",
+  "feature_count": 206,
+  "updated_at": "2026-07-01T11:54:46.710948+00:00"
 }

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-29T11:22:07.183843+00:00",
+  "generated_at": "2026-07-01T11:54:46.710948+00:00",
   "scope": "retail_only_upcoming_features",
   "excluded": [
     "API/SDK-only features",
     "MCP/internal connector features"
   ],
-  "count": 17,
+  "count": 34,
   "features": [
     {
       "id": "nubra-fo-analytics-against-price",
@@ -261,7 +261,7 @@
         "Option chain",
         "Customize sheet"
       ],
-      "capability": "Configurable option-chain settings and filters including OI bars, PCR, total OI, max pain, ITM highlighting, today high/low, VWAP, premium, OI, OI buildup, volume, volume spike, IV, IV change, Greeks, bid-ask spread and OI concentration.",
+      "capability": "Configurable option-chain settings, filters and saved modes including OI bars, PCR, total OI, max pain, ITM highlighting, today high/low, VWAP, premium, OI, OI buildup, volume, volume spike, IV, IV change, Greeks, bid-ask spread and OI concentration.",
       "notes": "Screenshots show Settings and Filters tabs with toggles and filters for core option-chain data, columns and Greeks.",
       "user_benefit": "Lets different trader personas tune the option chain to their strategy instead of forcing one default layout.",
       "priority": "high",
@@ -283,7 +283,10 @@
         "Put view",
         "Calls view",
         "Puts view",
-        "Call and Put view"
+        "Call and Put view",
+        "save option chain filters",
+        "saved option chain mode",
+        "save chain layout"
       ],
       "source": {
         "type": "screenshot_user_input",
@@ -335,8 +338,8 @@
         "Home customization",
         "Option chain"
       ],
-      "capability": "Persona-based experience for Option Sellers, Option Buyers, Investors and OI Traders, changing visible tools, defaults, layouts and guidance.",
-      "notes": "User clarified persona types as Option sellers, Option buyers, Investor and OI trader. Treat as upcoming until public rollout is confirmed.",
+      "capability": "Persona-based broker experience for Option Sellers, Option Buyers, Investors and OI Traders, changing visible tools, defaults, layouts, guidance and workflows.",
+      "notes": "User clarified persona types as Option sellers, Option buyers, Investor and OI trader. Treat as upcoming until public rollout is confirmed. User confirmed that 'customised broker' refers to the existing persona-based experience, not a separate feature.",
       "user_benefit": "Reduces clutter and makes Nubra feel purpose-built for investor, option buyer, option seller and OI-based trader journeys.",
       "priority": "high",
       "aliases": [
@@ -352,7 +355,12 @@
         "OI Trader persona",
         "OI trader",
         "Option sellers",
-        "Option buyers"
+        "Option buyers",
+        "customised broker",
+        "customized broker",
+        "OI trader mode",
+        "option seller mode",
+        "option buyer mode"
       ],
       "source": {
         "type": "user_input",
@@ -394,13 +402,13 @@
     {
       "id": "nubra-scalper-tradingview-template-customisation",
       "category": "Retail App / Scalper & Trading View",
-      "name": "Scalper and Trading View template customisation",
+      "name": "Scalper mode and saved TradingView templates",
       "status": "upcoming",
       "availability": "source_document_evidence",
       "surfaces": [
         "Mobile App"
       ],
-      "capability": "Save templates/customisations for Scalper and Trading View style workflows.",
+      "capability": "Provide a focused Scalper mode and save preferred Scalper/TradingView-style layouts and execution templates.",
       "notes": "Revamp sheet mentions Scalper & Trading View new customisation - save templates.",
       "user_benefit": "Helps active users keep preferred layouts and reduce repeated setup.",
       "priority": "medium",
@@ -411,7 +419,10 @@
         "template customisation",
         "template customization",
         "saved templates",
-        "Scalper and Trading View template customisation"
+        "Scalper and Trading View template customisation",
+        "scalper mode",
+        "scalper workflow",
+        "saved trading template"
       ],
       "source": {
         "type": "source_documents",
@@ -494,7 +505,7 @@
       "surfaces": [
         "Mobile App"
       ],
-      "capability": "Classify pre-built strategies by Market View, Trader Outcome and Instrument Set. Market views include Bullish, Bearish, Sideways and Big News. Trader outcomes include Income, Hedge, Directional, Volatility and Arbitrage. Instrument sets include Stock, Future and Option.",
+      "capability": "Offer 40+ pre-built strategies classified by Market View, Trader Outcome and Instrument Set. Market views include Bullish, Bearish, Sideways and Big News; outcomes include Income, Hedge, Directional, Volatility and Arbitrage; instrument sets include Stock, Future and Option.",
       "notes": "Revamp sheet explicitly lists Market View, Trader Outcome and Instrument Set taxonomy.",
       "user_benefit": "Makes the strategy library easier to browse by intent rather than only by strategy name.",
       "priority": "high",
@@ -514,7 +525,10 @@
         "stock",
         "future",
         "option",
-        "Strategy Appstore taxonomy by market view, trader outcome and instrument set"
+        "Strategy Appstore taxonomy by market view, trader outcome and instrument set",
+        "40+ pre-built strategies",
+        "40 built-in strategies",
+        "ready-made strategies"
       ],
       "source": {
         "type": "source_documents",
@@ -535,7 +549,7 @@
       "surfaces": [
         "Mobile App"
       ],
-      "capability": "One-click trade actions directly from bid/ask or LTP cells across option-chain strikes.",
+      "capability": "One-click mode with direct trade actions from bid/ask or LTP cells across option-chain strikes, with bid/ask visible in the chain.",
       "notes": "Revamp sheet mentions one click trade with Bid and Ask across strikes and one-click mode across the app.",
       "user_benefit": "Reduces execution friction for active traders while keeping risk controls visible.",
       "priority": "high",
@@ -546,7 +560,8 @@
         "bid and ask across strikes",
         "one click mode",
         "one-click mode across the app",
-        "One-click trade with bid/ask across strikes"
+        "One-click trade with bid/ask across strikes",
+        "bid ask on option chain"
       ],
       "source": {
         "type": "source_documents",
@@ -556,6 +571,474 @@
           "STRATEGIES APPSTORE.pdf"
         ],
         "notes": "User-provided new/upcoming feature documents reviewed on 2026-06-29"
+      }
+    },
+    {
+      "id": "nubra-expanded-auto-refresh-watchlists",
+      "category": "Retail App / Watchlist",
+      "name": "250-instrument watchlists with auto-refresh",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Watchlist"
+      ],
+      "capability": "Support up to 250 stock and derivatives instruments in a watchlist, with automatic quote refresh.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Lets active traders monitor a broader universe without manually refreshing prices or splitting instruments across many lists.",
+      "priority": "high",
+      "aliases": [
+        "250 stocks watchlist",
+        "250 instrument watchlist",
+        "large watchlist",
+        "auto refresh watchlist",
+        "live watchlist refresh"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-oms-order-presets",
+      "category": "Retail App / Order Management",
+      "name": "Saved OMS order presets",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "OMS",
+        "Order entry"
+      ],
+      "capability": "Apply saved presets in the order management system for frequently used order, quantity, product and risk settings.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Reduces repetitive order entry and makes fast execution more consistent.",
+      "priority": "high",
+      "aliases": [
+        "apply presets on OMS",
+        "OMS presets",
+        "order presets",
+        "saved order template",
+        "Apply Preset"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-nse-best-fill-price",
+      "category": "Retail App / Execution",
+      "name": "Best-fill-price execution on NSE",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "NSE order execution"
+      ],
+      "capability": "Seek the best available fill price on NSE within the user's order instructions and applicable exchange controls.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Improves execution confidence and reduces avoidable price impact for active traders.",
+      "priority": "high",
+      "aliases": [
+        "best fill price in NSE",
+        "best price execution",
+        "NSE best fill",
+        "price improvement"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-instant-fund-movement",
+      "category": "Retail App / Funds",
+      "name": "Instant fund addition and withdrawal",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Funds"
+      ],
+      "capability": "Support instant withdrawals and instant fund additions of up to ₹5 lakh, subject to banking, risk and regulatory limits.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Reduces waiting time before trading and makes unused capital easier to access.",
+      "priority": "high",
+      "aliases": [
+        "instant withdrawal",
+        "instant payout",
+        "instant fund addition",
+        "add funds up to 5 lakh",
+        "₹5 lakh fund addition"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-ai-query-scans",
+      "category": "Retail App / Discovery & Scanners",
+      "name": "Natural-language AI-generated scans",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Explore",
+        "Ask AI",
+        "Scanners"
+      ],
+      "capability": "Convert a trader's plain-language query into a market scan with visible conditions and editable filters.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Makes stock and derivatives discovery accessible without requiring users to construct complex scanner logic manually.",
+      "priority": "high",
+      "aliases": [
+        "query based AI generated scans",
+        "AI scanner",
+        "natural language scanner",
+        "prompt based screener",
+        "AI generated scans"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-flexible-brokerage",
+      "category": "Retail App / Pricing",
+      "name": "Flexible brokerage plan",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Account",
+        "Brokerage plan"
+      ],
+      "capability": "Offer a flexible brokerage plan that can fit different trading personas and usage patterns.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Lets investors, option traders and high-frequency users choose a pricing structure aligned with how they trade.",
+      "priority": "high",
+      "aliases": [
+        "flexible brokerage",
+        "custom brokerage plan",
+        "persona based brokerage",
+        "Flexible Brokerage Plan"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-chart-analyser",
+      "category": "Retail App / Charts & Analytics",
+      "name": "Chart analyser",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Charts",
+        "Ask AI"
+      ],
+      "capability": "Analyse a chart and surface technical structure, indicators, levels and possible trading observations in context.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Helps users interpret charts faster while keeping the underlying signals visible for verification.",
+      "priority": "high",
+      "aliases": [
+        "chart analyser",
+        "chart analyzer",
+        "AI chart analysis",
+        "technical chart insights"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-strategy-level-portfolios",
+      "category": "Retail App / Portfolio & Strategies",
+      "name": "Strategy-level portfolios",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Portfolio",
+        "Strategies"
+      ],
+      "capability": "Group positions and performance by strategy rather than showing only an account-level collection of individual legs.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Allows multi-leg traders to understand capital, exposure and P&L at the level at which the trade was planned.",
+      "priority": "high",
+      "aliases": [
+        "strategy lvl portfolios",
+        "strategy level portfolio",
+        "portfolio by strategy",
+        "multi-leg portfolio grouping"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-strategy-level-risk-controls",
+      "category": "Retail App / Strategies & Risk",
+      "name": "Strategy-level stop-loss and target controls",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Strategies",
+        "Portfolio",
+        "Order entry"
+      ],
+      "capability": "Configure and manage strategy-level SL/TP using P&L values or risk-reward rules across all linked legs.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Protects the intended strategy outcome without forcing traders to manage each leg independently.",
+      "priority": "high",
+      "aliases": [
+        "P&L based SL TP",
+        "pnl based stop loss",
+        "risk reward SL TP",
+        "strategy lvl SL TP",
+        "strategy level stop loss",
+        "strategy target"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-amount-margin-quantity-sizing",
+      "category": "Retail App / Order Entry",
+      "name": "Quantity sizing by amount or margin",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Order entry",
+        "Strategies"
+      ],
+      "capability": "Calculate and select order quantity from a chosen investment amount or available margin.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Makes position sizing faster and reduces manual quantity and lot calculations.",
+      "priority": "high",
+      "aliases": [
+        "choose qty based on amount",
+        "quantity based on margin",
+        "amount based quantity",
+        "margin based sizing",
+        "position sizing"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-dual-iceberg-modes",
+      "category": "Retail App / Advanced Orders",
+      "name": "Two configurable iceberg order modes",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Order entry",
+        "OMS"
+      ],
+      "capability": "Provide two configurable iceberg execution modes for splitting and managing larger orders.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Gives large-order traders more control over market impact and execution behaviour.",
+      "priority": "high",
+      "aliases": [
+        "iceberg two modes",
+        "two iceberg modes",
+        "iceberg execution mode",
+        "advanced iceberg order"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-no-app-price-restriction",
+      "category": "Retail App / Order Entry",
+      "name": "Removal of app-level price restrictions",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Order entry"
+      ],
+      "capability": "Avoid unnecessary app-level price restrictions while continuing to enforce exchange, regulatory and risk limits.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Prevents valid orders from being blocked by overly narrow application controls.",
+      "priority": "medium",
+      "aliases": [
+        "no price restriction",
+        "remove price restriction",
+        "order price flexibility",
+        "app price limits"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-technical-option-chain-alerts",
+      "category": "Retail App / Alerts",
+      "name": "Technical and option-chain alerts",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Alerts",
+        "Charts",
+        "Option chain"
+      ],
+      "capability": "Create alerts from technical conditions and option-chain signals such as OI, volume, IV, Greeks, PCR, price and strike activity.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Lets users monitor relevant market changes without continuously watching charts or the option chain.",
+      "priority": "high",
+      "aliases": [
+        "technical alerts",
+        "indicator alerts",
+        "option chain alerts",
+        "OI alert",
+        "IV alert",
+        "strike alert"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-strategy-time-series-chart",
+      "category": "Retail App / Strategies & Analytics",
+      "name": "Strategy-level time-series charts across instruments",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Strategies",
+        "Portfolio",
+        "Charts"
+      ],
+      "capability": "Plot a strategy as a time series while combining its linked stock, futures and options instruments.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Shows how a complete strategy evolves over time instead of presenting disconnected leg-level charts.",
+      "priority": "high",
+      "aliases": [
+        "strategy level time series",
+        "mixed stock options chart",
+        "strategy chart",
+        "multi-instrument time series"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-gtt-amo-orders",
+      "category": "Retail App / Advanced Orders",
+      "name": "GTT and AMO order support",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Order entry",
+        "Orders"
+      ],
+      "capability": "Support Good Till Triggered and After Market Orders in the retail order workflow.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Allows users to prepare orders outside market hours and maintain trigger-based trade instructions.",
+      "priority": "high",
+      "aliases": [
+        "GTT",
+        "Good Till Triggered",
+        "AMO",
+        "After Market Order"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-flexible-order-type-modification",
+      "category": "Retail App / Order Management",
+      "name": "Flexible order-type modification",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "OMS",
+        "Orders"
+      ],
+      "capability": "Allow eligible open orders to be modified between supported order types, including conversion from iceberg to other types, subject to exchange rules.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Reduces cancel-and-recreate friction when execution conditions change.",
+      "priority": "high",
+      "aliases": [
+        "flexible order modification",
+        "change order type",
+        "iceberg to other order type",
+        "convert open order"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
+      }
+    },
+    {
+      "id": "nubra-bid-ask-on-chart",
+      "category": "Retail App / Charts & Execution",
+      "name": "Bid and ask prices on charts",
+      "status": "upcoming",
+      "availability": "new_build_evidence",
+      "surfaces": [
+        "Mobile App",
+        "Charts",
+        "Trading View"
+      ],
+      "capability": "Display live bid and ask prices on the chart and connect them to the trading workflow.",
+      "notes": "Treat as upcoming/new-build evidence until public rollout is confirmed.",
+      "user_benefit": "Helps traders judge spread and execution context without leaving the chart.",
+      "priority": "high",
+      "aliases": [
+        "bid ask on chart",
+        "bid and ask chart",
+        "spread on chart",
+        "live bid ask overlay"
+      ],
+      "source": {
+        "type": "user_input",
+        "file": "conversation_2026-07-01",
+        "notes": "User-confirmed Nubra retail feature input, cleaned and deduplicated on 2026-07-01."
       }
     }
   ]

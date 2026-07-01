@@ -26,6 +26,18 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertGreater(len(catalog["features"]), 100)
         self.assertIn("internal_unverified", catalog["status_definitions"])
 
+    def test_retail_upcoming_catalog_is_deduplicated_and_expanded(self):
+        catalog = json.loads((ROOT / "product-catalog/retail-upcoming-features.json").read_text(encoding="utf-8"))
+        ids = {item["id"] for item in catalog["features"]}
+        self.assertEqual(catalog["count"], 34)
+        self.assertEqual(len(ids), catalog["count"])
+        self.assertIn("nubra-expanded-auto-refresh-watchlists", ids)
+        self.assertIn("nubra-ai-query-scans", ids)
+        self.assertIn("nubra-strategy-level-risk-controls", ids)
+        self.assertIn("nubra-technical-option-chain-alerts", ids)
+        persona = next(item for item in catalog["features"] if item["id"] == "nubra-retail-persona-modes")
+        self.assertIn("customised broker", persona["aliases"])
+
     def test_public_signal_schema_exists(self):
         schema = json.loads((ROOT / "schemas/public-signal.schema.json").read_text())
         self.assertIn("source", schema["required"])
