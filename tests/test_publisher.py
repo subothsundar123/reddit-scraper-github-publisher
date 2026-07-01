@@ -90,6 +90,24 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertIn("search_seed_keywords", catalog)
         self.assertGreaterEqual(len(catalog["search_seed_keywords"]["retail"]), 50)
 
+    def test_seo_keyword_markdown_views_are_complete(self):
+        catalog = json.loads((ROOT / "marketing-keywords/current.json").read_text(encoding="utf-8"))
+        index = (ROOT / "marketing-keywords/README.md").read_text(encoding="utf-8")
+        self.assertIn("Priority SEO clusters", index)
+        self.assertIn("Priority keywords 2,001", index)
+        self.assertIn("Programmatic page ideas 501", index)
+        view_dir = ROOT / "marketing-keywords/views"
+        keyword_pages = sorted(view_dir.glob("priority-keywords-*.md"))
+        programmatic_pages = sorted(view_dir.glob("programmatic-pages-*.md"))
+        self.assertEqual(len(keyword_pages), 5)
+        self.assertEqual(len(programmatic_pages), 2)
+        self.assertTrue((view_dir / "option-chain-keywords.md").exists())
+        keyword_rows = sum(
+            text.count("\n| ") - 2
+            for text in (page.read_text(encoding="utf-8") for page in keyword_pages)
+        )
+        self.assertEqual(keyword_rows, len(catalog["priority_keywords"]))
+
     def test_manual_research_assets_exist(self):
         self.assertTrue((ROOT / "manual-research/daily-research-prompt.md").exists())
         self.assertTrue((ROOT / "manual-research/research-checklist.md").exists())

@@ -60,6 +60,8 @@ marketing-keywords/current.json
 marketing-keywords/manifest.json
 ```
 
+For a GitHub-readable version, open [`marketing-keywords/README.md`](marketing-keywords/README.md). It links to smaller Markdown tables for clusters, search seeds, option-chain keywords, all 2,500 priority keywords and programmatic page ideas.
+
 This catalog is derived from the Nubra priority keyword workbook and keeps a compact, high-signal subset:
 
 - priority competitor page clusters
