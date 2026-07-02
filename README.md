@@ -1,5 +1,7 @@
 # Reddit Product Insights Publisher
 
+For the collection, data-contract and end-to-end developer architecture, read [ARCHITECTURE.md](ARCHITECTURE.md).
+
 This repository collects selected public Reddit discussions once per day, removes direct usernames, packages immutable daily dumps, validates checksums, and publishes the result for the insights agent.
 
 It also supports credential-free public signal collection from:
