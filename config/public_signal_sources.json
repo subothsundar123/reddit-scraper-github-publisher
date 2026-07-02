@@ -63,5 +63,10 @@
     "enabled": true,
     "config": "config/youtube_keywords.json",
     "note": "Requires YOUTUBE_API_KEY. If the key is not present, the publisher skips YouTube without failing the daily Reddit/signals run."
+  },
+  "community_forums": {
+    "enabled": true,
+    "config": "config/community_sources.json",
+    "note": "Collects open public broker/community forum topics through public JSON endpoints, public sitemap/RSS-style feeds or lightweight HTML fallback."
   }
 }

@@ -877,6 +877,430 @@ def _youtube_comment_summary(comments: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def _join_url(base_url: str, path_or_url: str) -> str:
+    from urllib.parse import urljoin
+    if not path_or_url:
+        return base_url.rstrip("/")
+    return urljoin(base_url.rstrip("/") + "/", str(path_or_url).lstrip("/"))
+
+
+def _community_session() -> Any:
+    import requests
+    session = requests.Session()
+    session.headers["User-Agent"] = os.getenv(
+        "COMMUNITY_USER_AGENT",
+        "product-insights-community-agent/1.0 (+public product research)",
+    )
+    return session
+
+
+def _clean_forum_html(value: Any, limit: int = 1800) -> str:
+    import html as html_lib
+    text = _clean_html_text(str(value or ""), limit * 2)
+    text = html_lib.unescape(text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text[:limit]
+
+
+def _category_lookup(payload: dict[str, Any]) -> dict[int, str]:
+    categories: dict[int, str] = {}
+    for category in payload.get("categories") or []:
+        try:
+            categories[int(category.get("id"))] = str(category.get("name") or "")
+        except (TypeError, ValueError):
+            continue
+    for category in (payload.get("topic_list") or {}).get("categories") or []:
+        try:
+            categories[int(category.get("id"))] = str(category.get("name") or "")
+        except (TypeError, ValueError):
+            continue
+    return categories
+
+
+def _forum_body(
+    *,
+    broker: str,
+    category: str,
+    tags: list[str],
+    first_post: str,
+    replies: list[str],
+) -> str:
+    parts = [f"Broker/community: {broker}"]
+    if category:
+        parts.append(f"Category: {category}")
+    if tags:
+        parts.append("Tags: " + ", ".join(tags[:12]))
+    if first_post:
+        parts.append("Topic body: " + first_post)
+    if replies:
+        parts.append("Representative replies:")
+        for reply in replies:
+            parts.append("- " + reply)
+    return "\n".join(parts)[:9000]
+
+
+def _community_row(
+    *,
+    source_cfg: dict[str, Any],
+    collection_date: str,
+    title: str,
+    body: str,
+    url: str,
+    external_id: Any,
+    created_at: Any,
+    author: Any,
+    engagement: dict[str, Any],
+    category: str = "",
+    tags: list[str] | None = None,
+    evidence_quality: str,
+    source_method: str,
+) -> dict[str, Any]:
+    broker = str(source_cfg.get("broker") or source_cfg.get("name") or "")
+    row = _signal(
+        source="community_forum",
+        channel=str(source_cfg.get("channel") or source_cfg.get("name") or "community_forum"),
+        item_type="forum_topic",
+        collected_on=collection_date,
+        external_id=external_id,
+        created_at=created_at,
+        author=author,
+        title=title,
+        body=body,
+        url=url,
+        engagement={**engagement, "broker": broker, "category": category},
+        evidence_quality=evidence_quality,
+        source_method=source_method,
+    )
+    if broker and broker not in row["competitors"]:
+        row["competitors"].append(broker)
+    row.update({
+        "broker": broker,
+        "community_name": source_cfg.get("name"),
+        "community_platform": source_cfg.get("platform"),
+        "community_category": category,
+        "community_tags": tags or [],
+    })
+    return row
+
+
+def collect_discourse_community_signals(
+    session: Any,
+    source_cfg: dict[str, Any],
+    limits: dict[str, Any],
+    collection_date: str,
+) -> list[dict[str, Any]]:
+    if not source_cfg.get("enabled", True):
+        return []
+    base_url = str(source_cfg["base_url"]).rstrip("/")
+    latest_url = _join_url(base_url, source_cfg.get("latest_path") or "/latest.json")
+    max_topics = int(source_cfg.get("max_topics") or limits.get("max_topics_per_source", 20))
+    max_replies = int(source_cfg.get("max_replies") or limits.get("max_replies_per_topic", 8))
+    skip_pinned = bool(limits.get("skip_pinned", True))
+    pause = float(limits.get("request_pause_seconds", 0.5))
+    response = session.get(latest_url, timeout=30)
+    response.raise_for_status()
+    payload = response.json()
+    categories = _category_lookup(payload)
+    rows: dict[str, dict[str, Any]] = {}
+    for topic in ((payload.get("topic_list") or {}).get("topics") or [])[:max_topics]:
+        if skip_pinned and (topic.get("pinned") or topic.get("globally_pinned")):
+            continue
+        topic_id = topic.get("id")
+        slug = topic.get("slug") or topic_id
+        if not topic_id:
+            continue
+        topic_url = _join_url(base_url, f"/t/{slug}/{topic_id}")
+        detail_url = topic_url + ".json"
+        first_post = ""
+        replies: list[str] = []
+        author = None
+        try:
+            detail = session.get(detail_url, timeout=30)
+            detail.raise_for_status()
+            detail_payload = detail.json()
+            posts = ((detail_payload.get("post_stream") or {}).get("posts") or [])
+            for index, post in enumerate(posts[: max_replies + 1]):
+                cooked = _clean_forum_html(post.get("cooked") or post.get("raw") or "", 1200 if index else 1800)
+                if not cooked:
+                    continue
+                if index == 0:
+                    first_post = cooked
+                    author = post.get("username")
+                else:
+                    replies.append(cooked)
+        except Exception:
+            pass
+        tags = [str(tag) for tag in (topic.get("tags") or []) if tag]
+        category = categories.get(_int(topic.get("category_id")), "")
+        body = _forum_body(
+            broker=str(source_cfg.get("broker") or ""),
+            category=category,
+            tags=tags,
+            first_post=first_post,
+            replies=replies[:max_replies],
+        )
+        row = _community_row(
+            source_cfg=source_cfg,
+            collection_date=collection_date,
+            title=str(topic.get("title") or ""),
+            body=body,
+            url=topic_url,
+            external_id=topic_id,
+            created_at=topic.get("created_at") or topic.get("last_posted_at"),
+            author=author,
+            engagement={
+                "views": _int(topic.get("views")),
+                "replies": _int(topic.get("posts_count")) - 1,
+                "posts": _int(topic.get("posts_count")),
+                "likes": _int(topic.get("like_count")),
+                "last_posted_at": topic.get("last_posted_at"),
+            },
+            category=category,
+            tags=tags,
+            evidence_quality="public_community_json",
+            source_method="community_discourse_json",
+        )
+        rows[row["id"]] = row
+        time.sleep(pause)
+    return list(rows.values())
+
+
+def _nodebb_timestamp(value: Any) -> str | None:
+    if value is None:
+        return None
+    try:
+        number = float(value)
+        if number > 10_000_000_000:
+            number = number / 1000
+        return dt.datetime.fromtimestamp(number, tz=dt.timezone.utc).isoformat()
+    except (TypeError, ValueError, OSError):
+        return str(value)
+
+
+def collect_nodebb_community_signals(
+    session: Any,
+    source_cfg: dict[str, Any],
+    limits: dict[str, Any],
+    collection_date: str,
+) -> list[dict[str, Any]]:
+    if not source_cfg.get("enabled", True):
+        return []
+    base_url = str(source_cfg["base_url"]).rstrip("/")
+    recent_url = _join_url(base_url, source_cfg.get("recent_path") or "/api/recent")
+    max_topics = int(source_cfg.get("max_topics") or limits.get("max_topics_per_source", 20))
+    max_replies = int(source_cfg.get("max_replies") or limits.get("max_replies_per_topic", 8))
+    skip_pinned = bool(limits.get("skip_pinned", True))
+    pause = float(limits.get("request_pause_seconds", 0.5))
+    response = session.get(recent_url, timeout=30)
+    response.raise_for_status()
+    payload = response.json()
+    rows: dict[str, dict[str, Any]] = {}
+    for topic in (payload.get("topics") or [])[:max_topics]:
+        if skip_pinned and topic.get("pinned"):
+            continue
+        tid = topic.get("tid")
+        if not tid:
+            continue
+        slug = topic.get("slug") or str(tid)
+        public_url = _join_url(base_url, f"/topic/{slug}")
+        detail_url = _join_url(base_url, str(source_cfg.get("topic_path_template") or "/api/topic/{tid}").format(tid=tid, slug=slug))
+        first_post = ""
+        replies: list[str] = []
+        author = None
+        detail_payload = topic
+        try:
+            detail = session.get(detail_url, timeout=30)
+            detail.raise_for_status()
+            detail_payload = detail.json()
+            posts = detail_payload.get("posts") or []
+            for index, post in enumerate(posts[: max_replies + 1]):
+                cooked = _clean_forum_html(post.get("content") or "", 1200 if index else 1800)
+                if not cooked:
+                    continue
+                if index == 0:
+                    first_post = cooked
+                    author = (post.get("user") or {}).get("username") or post.get("username")
+                else:
+                    replies.append(cooked)
+        except Exception:
+            pass
+        category = str(((detail_payload.get("category") or topic.get("category") or {}).get("name")) or "")
+        tags = [str(tag.get("value") if isinstance(tag, dict) else tag) for tag in (detail_payload.get("tags") or topic.get("tags") or []) if tag]
+        body = _forum_body(
+            broker=str(source_cfg.get("broker") or ""),
+            category=category,
+            tags=tags,
+            first_post=first_post,
+            replies=replies[:max_replies],
+        )
+        row = _community_row(
+            source_cfg=source_cfg,
+            collection_date=collection_date,
+            title=str(topic.get("title") or detail_payload.get("title") or ""),
+            body=body,
+            url=public_url,
+            external_id=tid,
+            created_at=detail_payload.get("timestampISO") or _nodebb_timestamp(topic.get("timestamp")),
+            author=author,
+            engagement={
+                "views": _int(detail_payload.get("viewcount") or topic.get("viewcount")),
+                "replies": max(0, _int(detail_payload.get("postcount") or topic.get("postcount")) - 1),
+                "posts": _int(detail_payload.get("postcount") or topic.get("postcount")),
+                "upvotes": _int(detail_payload.get("upvotes") or topic.get("upvotes")),
+                "downvotes": _int(detail_payload.get("downvotes") or topic.get("downvotes")),
+                "last_posted_at": detail_payload.get("lastposttimeISO") or _nodebb_timestamp(topic.get("lastposttime")),
+            },
+            category=category,
+            tags=tags,
+            evidence_quality="public_community_json",
+            source_method="community_nodebb_json",
+        )
+        rows[row["id"]] = row
+        time.sleep(pause)
+    return list(rows.values())
+
+
+def _sitemap_locs(xml_text: str) -> list[str]:
+    import xml.etree.ElementTree as ET
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError:
+        return re.findall(r"<loc>(.*?)</loc>", xml_text, flags=re.IGNORECASE)
+    locs = []
+    for element in root.iter():
+        if element.tag.endswith("loc") and element.text:
+            locs.append(element.text.strip())
+    return locs
+
+
+def _sitemap_entries(xml_text: str) -> list[dict[str, str | None]]:
+    import xml.etree.ElementTree as ET
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError:
+        return [{"loc": loc, "lastmod": None} for loc in re.findall(r"<loc>(.*?)</loc>", xml_text, flags=re.IGNORECASE)]
+    rows = []
+    for url in root:
+        loc = None
+        lastmod = None
+        for child in url:
+            if child.tag.endswith("loc"):
+                loc = child.text
+            elif child.tag.endswith("lastmod"):
+                lastmod = child.text
+        if loc:
+            rows.append({"loc": loc.strip(), "lastmod": lastmod.strip() if lastmod else None})
+    return rows
+
+
+def collect_sitemap_html_community_signals(
+    session: Any,
+    source_cfg: dict[str, Any],
+    limits: dict[str, Any],
+    collection_date: str,
+) -> list[dict[str, Any]]:
+    if not source_cfg.get("enabled", True):
+        return []
+    sitemap_url = str(source_cfg.get("sitemap_url") or _join_url(str(source_cfg["base_url"]), "/sitemap.xml"))
+    max_topics = int(source_cfg.get("max_topics") or limits.get("max_topics_per_source", 20))
+    html_fetch_limit = min(max_topics, int(source_cfg.get("html_fetch_limit") or limits.get("html_fetch_limit", 8)))
+    pause = float(limits.get("request_pause_seconds", 0.5))
+    response = session.get(sitemap_url, timeout=30)
+    response.raise_for_status()
+    sitemap_text = response.text
+    preferred = [str(value).casefold() for value in (source_cfg.get("preferred_sitemaps") or [])]
+    child_sitemaps = _sitemap_locs(sitemap_text)
+    if preferred:
+        child_sitemaps = [url for url in child_sitemaps if any(token in url.casefold() for token in preferred)] or child_sitemaps
+    entries: list[dict[str, str | None]] = []
+    for child in child_sitemaps[: max(1, len(preferred) or 3)]:
+        try:
+            child_response = session.get(child, timeout=30)
+            child_response.raise_for_status()
+            entries.extend(_sitemap_entries(child_response.text))
+        except Exception:
+            continue
+        time.sleep(pause)
+    entries = [entry for entry in entries if entry.get("loc")]
+    entries.sort(key=lambda entry: entry.get("lastmod") or "", reverse=True)
+    rows: dict[str, dict[str, Any]] = {}
+    for entry in entries[:html_fetch_limit]:
+        url = str(entry["loc"])
+        title = url.rstrip("/").rsplit("/", 1)[-1].replace("-", " ").replace("_", " ").title()
+        body = f"Broker/community: {source_cfg.get('broker')}\nSitemap topic URL discovered from public sitemap."
+        try:
+            page = session.get(url, timeout=30)
+            page.raise_for_status()
+            html = page.text
+            title = _html_title(html, title)
+            body = _clean_html_text(html, 2200)
+        except Exception:
+            pass
+        row = _community_row(
+            source_cfg=source_cfg,
+            collection_date=collection_date,
+            title=title,
+            body=body,
+            url=url,
+            external_id=url,
+            created_at=entry.get("lastmod"),
+            author=None,
+            engagement={"source": "sitemap", "lastmod": entry.get("lastmod")},
+            category="sitemap",
+            tags=[],
+            evidence_quality="public_sitemap_html",
+            source_method="community_sitemap_html",
+        )
+        rows[row["id"]] = row
+        time.sleep(pause)
+    return list(rows.values())
+
+
+def collect_community_signals(config_path: pathlib.Path, output_path: pathlib.Path, collection_date: str) -> pathlib.Path:
+    cfg = _json(config_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    if not cfg.get("enabled", True):
+        output_path.write_text("", encoding="utf-8")
+        return output_path
+    session = _community_session()
+    limits = cfg.get("limits") or {}
+    rows: dict[str, dict[str, Any]] = {}
+    collectors = {
+        "discourse": collect_discourse_community_signals,
+        "nodebb": collect_nodebb_community_signals,
+        "sitemap_html": collect_sitemap_html_community_signals,
+    }
+    for source_cfg in cfg.get("sources", []):
+        if not source_cfg.get("enabled", True):
+            continue
+        platform = str(source_cfg.get("platform") or "").casefold()
+        collector = collectors.get(platform)
+        if collector is None:
+            continue
+        try:
+            for row in collector(session, source_cfg, limits, collection_date):
+                rows[row["id"]] = row
+        except Exception as exc:
+            fallback = _community_row(
+                source_cfg=source_cfg,
+                collection_date=collection_date,
+                title=f"{source_cfg.get('name') or 'Community'} collection issue",
+                body=f"Could not collect public community source during collection: {type(exc).__name__}",
+                url=str(source_cfg.get("base_url") or source_cfg.get("sitemap_url") or ""),
+                external_id=source_cfg.get("name"),
+                created_at=None,
+                author=None,
+                engagement={},
+                evidence_quality="collection_error",
+                source_method=f"community_{platform or 'unknown'}",
+            )
+            rows[fallback["id"]] = fallback
+    with output_path.open("w", encoding="utf-8") as f:
+        for row in rows.values():
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    return output_path
+
+
 def collect_youtube_signals(config_path: pathlib.Path, output_path: pathlib.Path, collection_date: str) -> pathlib.Path:
     import requests
     cfg = _json(config_path)
@@ -1016,6 +1440,12 @@ def collect_public_signals(config_path: pathlib.Path, output_path: pathlib.Path,
         youtube_output = output_path.parent / f"youtube_signals_{collection_date}.jsonl"
         collect_youtube_signals(youtube_config, youtube_output, collection_date)
         rows.extend(_load_signals(youtube_output))
+    community_cfg = cfg.get("community_forums", {})
+    if community_cfg.get("enabled", False):
+        community_config = ROOT / community_cfg.get("config", "config/community_sources.json")
+        community_output = output_path.parent / f"community_signals_{collection_date}.jsonl"
+        collect_community_signals(community_config, community_output, collection_date)
+        rows.extend(_load_signals(community_output))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as f:
         for row in rows:
@@ -1197,6 +1627,10 @@ def main() -> None:
     y.add_argument("--config", type=pathlib.Path, default=ROOT / "config" / "youtube_keywords.json")
     y.add_argument("--output", type=pathlib.Path)
     y.add_argument("--date", default=_collection_date())
+    communities = sub.add_parser("collect-communities")
+    communities.add_argument("--config", type=pathlib.Path, default=ROOT / "config" / "community_sources.json")
+    communities.add_argument("--output", type=pathlib.Path)
+    communities.add_argument("--date", default=_collection_date())
     p = sub.add_parser("package")
     p.add_argument("--input", type=pathlib.Path, required=True)
     p.add_argument("--date", default=_collection_date())
@@ -1223,6 +1657,9 @@ def main() -> None:
     elif args.command == "collect-youtube":
         output = args.output or ROOT / "staging" / f"youtube_signals_{args.date}.jsonl"
         print(collect_youtube_signals(args.config, output, args.date))
+    elif args.command == "collect-communities":
+        output = args.output or ROOT / "staging" / f"community_signals_{args.date}.jsonl"
+        print(collect_community_signals(args.config, output, args.date))
     elif args.command == "package": print(package_dump(args.input, args.date, args.source, args.signals))
     elif args.command == "add-manual-research":
         print(add_manual_research(args.input, args.date, args.source))

@@ -25,7 +25,7 @@ It does not generate final Claude analysis and does not write to connector users
 flowchart TD
     Config["config/*.json"] --> Collectors
     Secrets["Environment secrets"] --> Collectors
-    Collectors["Reddit / YouTube / GitHub / HN / docs"] --> Stage["staging/"]
+    Collectors["Reddit / YouTube / GitHub / HN / docs / communities"] --> Stage["staging/"]
     Manual["Manual research JSONL"] --> ManualMerge["Manual merge"]
     Stage --> Normalize["Normalize and classify"]
     Normalize --> Package["Package dated dump"]
@@ -64,8 +64,9 @@ insights-publisher
 | Command | Behavior |
 |---|---|
 | `collect` | Collect Reddit through API or public fallback |
-| `collect-signals` | Collect GitHub, HN, broker docs and YouTube |
+| `collect-signals` | Collect GitHub, HN, broker docs, YouTube and broker communities |
 | `collect-youtube` | Collect YouTube text/comments only |
+| `collect-communities` | Collect broker-owned public community forums |
 | `package` | Convert staged data into a dated dump |
 | `add-manual-research` | Merge normalized public research JSONL |
 | `validate` | Verify every published file checksum |
@@ -125,6 +126,20 @@ Round-robin selection prevents one bucket consuming the daily allowance.
 - Hacker News queries;
 - broker documentation URLs;
 - YouTube configuration.
+
+### Broker communities
+
+`community_sources.json` controls open public broker/community forums:
+
+- Zerodha TradingQnA through Discourse JSON;
+- Dhan MadeForTrade through Discourse JSON;
+- Upstox Community through Discourse JSON;
+- Angel One SmartAPI Forum through NodeBB public API;
+- FYERS Community through sitemap plus lightweight HTML fallback.
+
+The collector stores topic title/body, representative replies, broker, category,
+tags, public URL, created/updated time where available and engagement metrics
+such as views, replies, likes or upvotes when the source exposes them.
 
 ## 6. Shared normalization
 
@@ -309,5 +324,6 @@ Never push:
 - GitHub search is rate limited.
 - Manual research is not a scheduled adapter.
 - App stores, LinkedIn, Twitter/X, Telegram and Discord are not fully automated.
+- Community forums depend on public endpoints staying available; FYERS currently uses lower-fidelity sitemap/HTML fallback.
 - Classification is rule-based.
 - Git is a practical current data bus, not a long-term analytical warehouse.

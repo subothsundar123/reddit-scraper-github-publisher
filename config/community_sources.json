@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "enabled": true,
+  "limits": {
+    "max_topics_per_source": 20,
+    "max_replies_per_topic": 8,
+    "request_pause_seconds": 0.5,
+    "html_fetch_limit": 8,
+    "skip_pinned": true
+  },
+  "sources": [
+    {
+      "name": "Zerodha TradingQnA",
+      "broker": "Zerodha",
+      "channel": "zerodha_tradingqna",
+      "platform": "discourse",
+      "base_url": "https://tradingqna.com",
+      "latest_path": "/latest.json",
+      "enabled": true
+    },
+    {
+      "name": "Dhan MadeForTrade",
+      "broker": "Dhan",
+      "channel": "dhan_madefortrade",
+      "platform": "discourse",
+      "base_url": "https://madefortrade.in",
+      "latest_path": "/latest.json",
+      "enabled": true
+    },
+    {
+      "name": "Upstox Community",
+      "broker": "Upstox",
+      "channel": "upstox_community",
+      "platform": "discourse",
+      "base_url": "https://community.upstox.com",
+      "latest_path": "/latest.json",
+      "enabled": true
+    },
+    {
+      "name": "Angel One SmartAPI Forum",
+      "broker": "Angel One",
+      "channel": "angelone_smartapi_forum",
+      "platform": "nodebb",
+      "base_url": "https://smartapi.angelone.in/smartapi/forum",
+      "recent_path": "/api/recent",
+      "topic_path_template": "/api/topic/{tid}",
+      "enabled": true
+    },
+    {
+      "name": "FYERS Community",
+      "broker": "Fyers",
+      "channel": "fyers_community",
+      "platform": "sitemap_html",
+      "base_url": "https://fyers.in/community",
+      "sitemap_url": "https://fyers.in/community/sitemap.xml",
+      "preferred_sitemaps": [
+        "feedback-feature-requests",
+        "api-algo-trading",
+        "support-desk",
+        "questions",
+        "traders-lounge"
+      ],
+      "enabled": true
+    }
+  ]
+}

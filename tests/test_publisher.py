@@ -50,6 +50,49 @@ class PublishedSnapshotTests(unittest.TestCase):
         cfg = json.loads((ROOT / "config/public_signal_sources.json").read_text())
         self.assertIn("github", cfg)
         self.assertIn("youtube", cfg)
+        self.assertIn("community_forums", cfg)
+
+    def test_community_sources_are_configured(self):
+        cfg = json.loads((ROOT / "config/community_sources.json").read_text(encoding="utf-8"))
+        channels = {source["channel"] for source in cfg["sources"] if source.get("enabled", True)}
+        self.assertIn("zerodha_tradingqna", channels)
+        self.assertIn("dhan_madefortrade", channels)
+        self.assertIn("upstox_community", channels)
+        self.assertIn("angelone_smartapi_forum", channels)
+        self.assertIn("fyers_community", channels)
+        platforms = {source["platform"] for source in cfg["sources"]}
+        self.assertIn("discourse", platforms)
+        self.assertIn("nodebb", platforms)
+        self.assertIn("sitemap_html", platforms)
+
+    def test_community_signal_normalization(self):
+        from insights_publisher.cli import _community_row
+        row = _community_row(
+            source_cfg={
+                "name": "Zerodha TradingQnA",
+                "broker": "Zerodha",
+                "channel": "zerodha_tradingqna",
+                "platform": "discourse",
+            },
+            collection_date="2026-07-02",
+            title="Need option chain bid ask spread filter",
+            body="Broker/community: Zerodha\nTopic body: Please add option chain filters for bid ask spread and OI.",
+            url="https://tradingqna.com/t/example/1",
+            external_id=1,
+            created_at="2026-07-02T00:00:00Z",
+            author="public_user",
+            engagement={"views": 10, "replies": 2},
+            category="Feature Requests",
+            tags=["options"],
+            evidence_quality="public_community_json",
+            source_method="community_discourse_json",
+        )
+        self.assertEqual(row["source"], "community_forum")
+        self.assertEqual(row["channel"], "zerodha_tradingqna")
+        self.assertEqual(row["broker"], "Zerodha")
+        self.assertEqual(row["source_method"], "community_discourse_json")
+        self.assertIn("option_chain", row["tags"])
+        self.assertIn("Zerodha", row["competitors"])
 
     def test_youtube_keywords_are_partitioned(self):
         cfg = json.loads((ROOT / "config/youtube_keywords.json").read_text())
