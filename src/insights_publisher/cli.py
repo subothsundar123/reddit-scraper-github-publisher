@@ -14,8 +14,25 @@ import time
 from collections import Counter
 from functools import lru_cache
 from typing import Any, Iterable
+from zoneinfo import ZoneInfo
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
+
+
+def _collection_date(
+    now: dt.datetime | None = None,
+    timezone_name: str | None = None,
+) -> str:
+    """Return the business date used to label a published daily snapshot."""
+    name = timezone_name or os.getenv("INSIGHTS_TIMEZONE", "Asia/Kolkata")
+    try:
+        timezone = ZoneInfo(name)
+    except (KeyError, ValueError):
+        timezone = dt.timezone(dt.timedelta(hours=5, minutes=30))
+    instant = now or dt.datetime.now(dt.timezone.utc)
+    if instant.tzinfo is None:
+        instant = instant.replace(tzinfo=dt.timezone.utc)
+    return instant.astimezone(timezone).date().isoformat()
 
 
 def _json(path: pathlib.Path) -> Any:
@@ -1160,7 +1177,7 @@ def git_publish(push: bool) -> None:
     subprocess.run(["git", "add", "daily-dumps", "manifests", "product-catalog", "marketing-keywords", "schemas", "config"], cwd=ROOT, check=True)
     status = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
     if status.returncode:
-        subprocess.run(["git", "commit", "-m", f"data: publish insights snapshot {dt.date.today().isoformat()}"], cwd=ROOT, check=True)
+        subprocess.run(["git", "commit", "-m", f"data: publish insights snapshot {_collection_date()}"], cwd=ROOT, check=True)
     if push:
         subprocess.run(["git", "push", "origin", "main"], cwd=ROOT, check=True)
 
@@ -1175,19 +1192,19 @@ def main() -> None:
     sig = sub.add_parser("collect-signals")
     sig.add_argument("--config", type=pathlib.Path, default=ROOT / "config" / "public_signal_sources.json")
     sig.add_argument("--output", type=pathlib.Path)
-    sig.add_argument("--date", default=dt.date.today().isoformat())
+    sig.add_argument("--date", default=_collection_date())
     y = sub.add_parser("collect-youtube")
     y.add_argument("--config", type=pathlib.Path, default=ROOT / "config" / "youtube_keywords.json")
     y.add_argument("--output", type=pathlib.Path)
-    y.add_argument("--date", default=dt.date.today().isoformat())
+    y.add_argument("--date", default=_collection_date())
     p = sub.add_parser("package")
     p.add_argument("--input", type=pathlib.Path, required=True)
-    p.add_argument("--date", default=dt.date.today().isoformat())
+    p.add_argument("--date", default=_collection_date())
     p.add_argument("--source", default="reddit")
     p.add_argument("--signals", type=pathlib.Path)
     manual = sub.add_parser("add-manual-research")
     manual.add_argument("--input", type=pathlib.Path, required=True)
-    manual.add_argument("--date", default=dt.date.today().isoformat())
+    manual.add_argument("--date", default=_collection_date())
     manual.add_argument("--source", default="manual_research_enriched")
     manual.add_argument("--push", action="store_true")
     sub.add_parser("validate")
@@ -1214,7 +1231,7 @@ def main() -> None:
     elif args.command == "validate": validate()
     elif args.command == "publish": git_publish(args.push)
     elif args.command == "daily":
-        today = dt.date.today().isoformat()
+        today = _collection_date()
         output = ROOT / "staging" / f"reddit_{today}.json"
         use_api = args.mode == "api" or (args.mode == "auto" and os.getenv("REDDIT_CLIENT_ID"))
         (collect_api if use_api else collect_public)(ROOT / "config" / "channels.json", output)

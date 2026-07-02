@@ -233,6 +233,10 @@ GitHub Actions runs daily at 02:00 Asia/Kolkata:
 ```
 
 It has repository `contents: write`; secrets are job environment variables.
+Snapshot labels use `INSIGHTS_TIMEZONE`, which defaults to `Asia/Kolkata`.
+The CLI converts the current UTC instant into this business timezone before
+choosing the `YYYY-MM-DD` dump directory. This prevents an early-morning India
+run from being written into the previous UTC date.
 
 Windows can install a local publisher task:
 

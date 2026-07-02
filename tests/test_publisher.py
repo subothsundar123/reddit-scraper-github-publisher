@@ -1,3 +1,4 @@
+import datetime as dt
 import gzip
 import json
 import pathlib
@@ -6,6 +7,11 @@ import unittest
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 class PublishedSnapshotTests(unittest.TestCase):
+    def test_collection_date_uses_business_timezone_at_utc_boundary(self):
+        from insights_publisher.cli import _collection_date
+        instant = dt.datetime(2026, 7, 1, 20, 30, tzinfo=dt.timezone.utc)
+        self.assertEqual(_collection_date(instant, "Asia/Kolkata"), "2026-07-02")
+
     def test_manifest_files_and_checksums_exist(self):
         index = json.loads((ROOT / "manifests/all_dumps.json").read_text())
         self.assertGreaterEqual(len(index["dumps"]), 1)
