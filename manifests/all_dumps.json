@@ -67,7 +67,14 @@
       "posts": 0,
       "comments": 0,
       "signals": 385
+    },
+    {
+      "collection_date": "2026-07-05",
+      "manifest": "daily-dumps/2026-07-05/manifest.json",
+      "posts": 0,
+      "comments": 0,
+      "signals": 384
     }
   ],
-  "updated_at": "2026-07-03T21:43:10.317055+00:00"
+  "updated_at": "2026-07-04T21:31:30.536791+00:00"
 }
