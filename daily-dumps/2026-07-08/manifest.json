@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "collection_date": "2026-07-08",
+  "generated_at": "2026-07-07T21:56:29.941048+00:00",
+  "files": [
+    {
+      "path": "daily-dumps/2026-07-08/posts.jsonl.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 20
+    },
+    {
+      "path": "daily-dumps/2026-07-08/comments.jsonl.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 20
+    },
+    {
+      "path": "daily-dumps/2026-07-08/summary.json",
+      "sha256": "ffec46bb157471e96e3eb290b3b3ad304b9feff633e60e77cd0e1ba979a28b72",
+      "bytes": 4258
+    },
+    {
+      "path": "daily-dumps/2026-07-08/signals.jsonl.gz",
+      "sha256": "a5b7037a0ddc1fe06b8d3953380bdcff651dd504a1de8df8755c20e67c64e93e",
+      "bytes": 210508
+    }
+  ]
+}
