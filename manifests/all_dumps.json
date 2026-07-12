@@ -102,7 +102,14 @@
       "posts": 0,
       "comments": 0,
       "signals": 387
+    },
+    {
+      "collection_date": "2026-07-13",
+      "manifest": "daily-dumps/2026-07-13/manifest.json",
+      "posts": 0,
+      "comments": 0,
+      "signals": 386
     }
   ],
-  "updated_at": "2026-07-11T21:25:53.655430+00:00"
+  "updated_at": "2026-07-12T21:26:23.333400+00:00"
 }
