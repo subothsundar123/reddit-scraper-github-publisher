@@ -10,6 +10,7 @@ It also supports credential-free public signal collection from:
 - Hacker News public search results
 - Broker/API public documentation pages
 - Broker-owned public community forums
+- TradingView public community ideas, stored as a separate linked dataset
 
 It can also collect text-only YouTube signals when a `YOUTUBE_API_KEY` is configured:
 
@@ -29,7 +30,7 @@ python -m venv .venv
 .\.venv\Scripts\insights-publisher daily --mode auto --push
 ```
 
-`auto` uses the official Reddit API when credentials are configured and falls back to public Reddit JSON otherwise. The daily command also creates `signals.jsonl.gz` from public GitHub, Hacker News, broker-doc, broker-community and YouTube sources unless `--skip-signals` is passed. It never bypasses authentication, private communities, or rate limits.
+`auto` uses the official Reddit API when credentials are configured and falls back to public Reddit JSON otherwise. The daily command also creates `signals.jsonl.gz` from public GitHub, Hacker News, broker-doc, broker-community and YouTube sources unless `--skip-signals` is passed. TradingView ideas are collected into the separate `tradingview_signals.jsonl.gz` file. It never bypasses authentication, private communities, or rate limits.
 
 Community forum collection is public-only and configured in `config/community_sources.json`. Current sources are Zerodha TradingQnA, Dhan MadeForTrade, Upstox Community, Angel One SmartAPI Forum and FYERS Community. The collector uses public JSON/API endpoints where available and sitemap/HTML fallback where needed.
 
@@ -52,6 +53,24 @@ To collect only broker community forum signals:
 
 ```powershell
 .\.venv\Scripts\insights-publisher collect-communities --date 2026-07-02
+```
+
+To collect the daily TradingView public-ideas increment:
+
+```powershell
+.\.venv\Scripts\insights-publisher collect-tradingview --date 2026-07-22 --package
+```
+
+For the initial unrestricted public backfill, use `--backfill`. No keyword is used to decide which ideas are retained:
+
+```powershell
+.\.venv\Scripts\insights-publisher collect-tradingview --date 2026-07-22 --backfill --package
+```
+
+Manual TradingView research can be merged into the same separate dataset:
+
+```powershell
+.\.venv\Scripts\insights-publisher add-tradingview-research --date 2026-07-22 --input .\staging\manual_tradingview_2026-07-22.jsonl
 ```
 
 Retail feature discovery is maintained centrally in `config/retail_feature_keywords.json`. The daily collector:
@@ -107,12 +126,15 @@ Once the secret is present, the scheduled job collects:
 - broker/API public docs
 - broker-owned public community forums
 - YouTube text signals split into retail and API/algo partitions
+- TradingView public community ideas with direct links, stored separately
 
 The daily output is still written to:
 
 ```text
 daily-dumps/YYYY-MM-DD/
 ```
+
+TradingView-enabled dumps additionally contain `tradingview_signals.jsonl.gz` and `tradingview_summary.json`.
 
 and indexed in:
 

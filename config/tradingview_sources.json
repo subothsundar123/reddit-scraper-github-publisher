@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "enabled": true,
+  "base_url": "https://in.tradingview.com",
+  "request_pause_seconds": 0.35,
+  "timeout_seconds": 30,
+  "daily_pages": 3,
+  "feeds": [
+    {
+      "name": "recent_all",
+      "url": "https://in.tradingview.com/ideas/?sort=recent",
+      "backfill_pages": 0
+    },
+    {
+      "name": "popular_all",
+      "url": "https://in.tradingview.com/ideas/",
+      "backfill_pages": 0
+    },
+    {
+      "name": "editors_picks",
+      "url": "https://in.tradingview.com/ideas/editors-picks/",
+      "backfill_pages": 1
+    }
+  ],
+  "notes": [
+    "Collection is not restricted by keywords. Every public idea card returned by the configured feeds is retained.",
+    "Keywords and Nubra feature mappings are applied only after collection for analysis.",
+    "The collector does not log in, bypass access controls or fetch image media."
+  ]
+}

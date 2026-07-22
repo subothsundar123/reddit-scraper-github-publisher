@@ -7,11 +7,10 @@ name = "reddit-product-insights-publisher"
 version = "1.0.0"
 description = "Daily Reddit collection, privacy-safe packaging, and GitHub publication"
 requires-python = ">=3.11"
-dependencies = ["requests>=2.32", "praw>=7.8"]
+dependencies = ["requests>=2.32", "praw>=7.8", "beautifulsoup4>=4.12"]
 
 [project.scripts]
 insights-publisher = "insights_publisher.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-

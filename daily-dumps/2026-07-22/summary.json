@@ -1,11 +1,20 @@
 {
   "collection_date": "2026-07-22",
-  "source": "reddit",
+  "source": "tradingview_automated_and_manual",
   "posts": 0,
   "comments": 0,
   "signals": 387,
+  "tradingview_signals": 11543,
   "subreddits": {},
   "source_methods": {},
+  "signal_source_methods": {
+    "github_search_api": 197,
+    "hacker_news_algolia_api": 98,
+    "broker_docs_page_fetch": 7,
+    "community_discourse_json": 57,
+    "community_nodebb_json": 20,
+    "community_sitemap_html": 8
+  },
   "signal_sources": {
     "github": 197,
     "hacker_news": 98,
@@ -169,11 +178,24 @@
     "angelone_smartapi_forum": 20,
     "fyers_community": 8
   },
+  "tradingview_channels": {
+    "recent_all": 11493,
+    "manual_indexed_search": 10,
+    "popular_all": 40
+  },
   "evidence_quality": {},
+  "signal_evidence_quality": {
+    "public_github_api": 197,
+    "public_hn_api": 98,
+    "public_docs_page": 6,
+    "collection_error": 1,
+    "public_community_json": 77,
+    "public_sitemap_html": 8
+  },
   "engagement": {
     "post_score_sum": 0,
     "comment_score_sum": 0,
     "reported_comment_sum": 0
   },
-  "privacy": "Public text retained for analysis; Reddit usernames replaced with stable one-way hashes."
+  "privacy": "Public text retained for analysis; direct usernames replaced with stable one-way hashes when available."
 }

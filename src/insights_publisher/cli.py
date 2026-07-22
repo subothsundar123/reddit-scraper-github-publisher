@@ -339,6 +339,9 @@ def _normalize_signal_row(raw: dict[str, Any], collection_date: str) -> dict[str
     for optional_key in (
         "platform_partition", "keyword_bucket", "matched_keyword",
         "persona", "product_area", "research_query", "notes",
+        "symbol", "exchange", "asset_name", "idea_type", "direction",
+        "tradingview_tags", "discovery_surfaces", "collection_methods",
+        "listing_pages", "related_idea_urls", "chart_url",
     ):
         if optional_key in raw:
             normalized[optional_key] = raw[optional_key]
@@ -347,9 +350,12 @@ def _normalize_signal_row(raw: dict[str, Any], collection_date: str) -> dict[str
 
 def _write_dump_metadata(out: pathlib.Path, collection_date: str, source: str | None = None) -> None:
     post_path, comment_path, signal_path = out / "posts.jsonl.gz", out / "comments.jsonl.gz", out / "signals.jsonl.gz"
+    tradingview_path = out / "tradingview_signals.jsonl.gz"
+    tradingview_summary_path = out / "tradingview_summary.json"
     posts = _read_gzip_jsonl(post_path)
     comments = _read_gzip_jsonl(comment_path)
     signals = _read_gzip_jsonl(signal_path)
+    tradingview_signals = _read_gzip_jsonl(tradingview_path)
     subreddit_counts = dict(Counter(p.get("subreddit") or "unknown" for p in posts))
     summary = {
         "collection_date": collection_date,
@@ -357,11 +363,13 @@ def _write_dump_metadata(out: pathlib.Path, collection_date: str, source: str | 
         "posts": len(posts),
         "comments": len(comments),
         "signals": len(signals),
+        "tradingview_signals": len(tradingview_signals),
         "subreddits": subreddit_counts,
         "source_methods": dict(Counter(p.get("source_method") or "unknown" for p in posts)),
         "signal_source_methods": dict(Counter(s.get("source_method") or "unknown" for s in signals)),
         "signal_sources": dict(Counter(s.get("source") or "unknown" for s in signals)),
         "signal_channels": dict(Counter(s.get("channel") or "unknown" for s in signals)),
+        "tradingview_channels": dict(Counter(s.get("channel") or "unknown" for s in tradingview_signals)),
         "evidence_quality": dict(Counter(p.get("evidence_quality") or "unknown" for p in posts)),
         "signal_evidence_quality": dict(Counter(s.get("evidence_quality") or "unknown" for s in signals)),
         "engagement": {
@@ -375,6 +383,10 @@ def _write_dump_metadata(out: pathlib.Path, collection_date: str, source: str | 
     output_files = [post_path, comment_path, out / "summary.json"]
     if signal_path.exists():
         output_files.append(signal_path)
+    if tradingview_path.exists():
+        output_files.append(tradingview_path)
+    if tradingview_summary_path.exists():
+        output_files.append(tradingview_summary_path)
     files = [
         {"path": p.relative_to(ROOT).as_posix(), "sha256": _sha(p), "bytes": p.stat().st_size}
         for p in output_files
@@ -395,6 +407,7 @@ def _write_dump_metadata(out: pathlib.Path, collection_date: str, source: str | 
         "posts": len(posts),
         "comments": len(comments),
         "signals": len(signals),
+        "tradingview_signals": len(tradingview_signals),
     })
     index["dumps"].sort(key=lambda d: d["collection_date"])
     index["updated_at"] = manifest["generated_at"]
@@ -417,6 +430,85 @@ def add_manual_research(input_path: pathlib.Path, collection_date: str, source: 
     _gzip_jsonl(signal_path, merged.values())
     _write_dump_metadata(out, collection_date, source=source)
     return out
+
+
+def _tradingview_summary(rows: list[dict[str, Any]], collection_date: str) -> dict[str, Any]:
+    created = []
+    for row in rows:
+        value = str(row.get("created_at") or "")
+        try:
+            dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        created.append(value)
+    created.sort()
+    return {
+        "collection_date": collection_date,
+        "source": "tradingview",
+        "ideas": len(rows),
+        "publication_range": {
+            "earliest": created[0] if created else None,
+            "latest": created[-1] if created else None,
+        },
+        "channels": dict(Counter(row.get("channel") or "unknown" for row in rows)),
+        "idea_types": dict(Counter(row.get("idea_type") or "unknown" for row in rows)),
+        "directions": dict(Counter(row.get("direction") or "unknown" for row in rows)),
+        "source_methods": dict(Counter(row.get("source_method") or "unknown" for row in rows)),
+        "evidence_quality": dict(Counter(row.get("evidence_quality") or "unknown" for row in rows)),
+        "engagement": {
+            "boosts": sum(_int((row.get("engagement") or {}).get("boosts")) for row in rows),
+            "comments": sum(_int((row.get("engagement") or {}).get("comments")) for row in rows),
+        },
+        "collection_scope": "All publicly accessible ideas returned by configured TradingView feeds; no keyword gate is applied.",
+    }
+
+
+def package_tradingview_signals(
+    input_path: pathlib.Path,
+    collection_date: str,
+    source: str = "tradingview_public_ideas",
+) -> pathlib.Path:
+    incoming = [_normalize_signal_row(row, collection_date) for row in _load_jsonl(input_path)]
+    for row in incoming:
+        row["source"] = "tradingview"
+        row["item_type"] = row.get("item_type") or "trading_idea"
+    out = ROOT / "daily-dumps" / collection_date
+    out.mkdir(parents=True, exist_ok=True)
+    post_path, comment_path = out / "posts.jsonl.gz", out / "comments.jsonl.gz"
+    if not post_path.exists():
+        _gzip_jsonl(post_path, [])
+    if not comment_path.exists():
+        _gzip_jsonl(comment_path, [])
+    path = out / "tradingview_signals.jsonl.gz"
+    merged: dict[str, dict[str, Any]] = {
+        str(row.get("id")): row for row in _read_gzip_jsonl(path) if row.get("id")
+    }
+    for row in incoming:
+        identity = str(row.get("id") or _signal_id("tradingview", row.get("external_id"), row.get("url", ""), row.get("title", "")))
+        row["id"] = identity
+        previous = merged.get(identity)
+        if previous:
+            surfaces = set(previous.get("discovery_surfaces") or []) | set(row.get("discovery_surfaces") or [])
+            methods = set(previous.get("collection_methods") or [previous.get("source_method")]) | set(row.get("collection_methods") or [row.get("source_method")])
+            row["discovery_surfaces"] = sorted(value for value in surfaces if value)
+            row["collection_methods"] = sorted(value for value in methods if value)
+            if len(str(previous.get("body") or "")) > len(str(row.get("body") or "")):
+                row["body"] = previous.get("body")
+            row["engagement"] = {
+                "boosts": max(_int((previous.get("engagement") or {}).get("boosts")), _int((row.get("engagement") or {}).get("boosts"))),
+                "comments": max(_int((previous.get("engagement") or {}).get("comments")), _int((row.get("engagement") or {}).get("comments"))),
+                "views": max(_int((previous.get("engagement") or {}).get("views")), _int((row.get("engagement") or {}).get("views"))),
+            }
+        merged[identity] = row
+    rows = list(merged.values())
+    _gzip_jsonl(path, rows)
+    _write_json(out / "tradingview_summary.json", _tradingview_summary(rows, collection_date))
+    _write_dump_metadata(out, collection_date, source=source)
+    return out
+
+
+def add_tradingview_research(input_path: pathlib.Path, collection_date: str) -> pathlib.Path:
+    return package_tradingview_signals(input_path, collection_date, source="tradingview_automated_and_manual")
 
 
 def package_dump(
@@ -1522,6 +1614,202 @@ def collect_public(config_path: pathlib.Path, output_path: pathlib.Path) -> path
     return output_path
 
 
+def _tradingview_page_url(feed_url: str, page: int) -> str:
+    from urllib.parse import urlsplit, urlunsplit
+    parts = urlsplit(feed_url)
+    path = parts.path
+    if page > 1:
+        base = re.sub(r"/page-\d+/?$", "/", path.rstrip("/"))
+        path = base.rstrip("/") + f"/page-{page}/"
+    return urlunsplit((parts.scheme, parts.netloc, path, parts.query, ""))
+
+
+def _tradingview_max_page(soup: Any) -> int:
+    pages = [1]
+    for anchor in soup.find_all("a", href=True):
+        match = re.search(r"/ideas/page-(\d+)/", str(anchor.get("href") or ""))
+        if match:
+            pages.append(int(match.group(1)))
+    return max(pages)
+
+
+def _tradingview_count(value: str | None) -> int:
+    # Treat K/M/B as a suffix only when it is a standalone abbreviation. This
+    # prevents the B in labels such as "345 boosts" from meaning billions.
+    match = re.search(r"([\d,.]+)\s*([KMB])?(?=\s|$)", value or "", re.I)
+    if not match:
+        return 0
+    number = float(match.group(1).replace(",", ""))
+    suffix = (match.group(2) or "").upper()
+    multiplier = {"": 1, "K": 1_000, "M": 1_000_000, "B": 1_000_000_000}.get(suffix, 1)
+    return int(number * multiplier)
+
+
+def _parse_tradingview_cards(soup: Any, feed_name: str, page: int, collection_date: str) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for position, card in enumerate(soup.find_all("article"), start=1):
+        title_link = card.find("a", attrs={"data-qa-id": "ui-lib-card-link-title"})
+        if not title_link or not title_link.get("href"):
+            continue
+        url = str(title_link.get("href")).split("#", 1)[0]
+        match = re.search(r"/chart/([^/]+)/([^/?#]+)/?", url)
+        if not match:
+            continue
+        symbol_from_url, slug = match.groups()
+        external_id = slug.split("-", 1)[0]
+        title = title_link.get_text(" ", strip=True)
+        paragraph = card.find("a", attrs={"data-qa-id": "ui-lib-card-link-paragraph"})
+        body = paragraph.get_text("\n", strip=True) if paragraph else ""
+        symbol_link = card.find("a", attrs={"data-qa-id": "ui-lib-card-preview-link-icon"})
+        symbol_label = str(symbol_link.get("title") or symbol_from_url) if symbol_link else symbol_from_url
+        exchange, symbol = (symbol_label.split(":", 1) + [""])[:2] if ":" in symbol_label else ("", symbol_label)
+        badge = card.find(attrs={"title": re.compile(r"^(Long|Short|Education|Neutral)$", re.I)})
+        idea_type = str(badge.get("title") or "unknown") if badge else "unknown"
+        direction = idea_type.lower() if idea_type.lower() in {"long", "short", "neutral"} else "education"
+        author_link = card.find("a", href=re.compile(r"^/u/"))
+        author = author_link.get_text(" ", strip=True).removeprefix("by ").strip() if author_link else None
+        time_tag = card.find("time", datetime=True)
+        created_at = time_tag.get("datetime") if time_tag else None
+        comment_link = card.find(attrs={"data-qa-id": "ui-lib-card-comment-button"})
+        comments = _tradingview_count(comment_link.get("aria-label") if comment_link else None)
+        boost_label = card.find(attrs={"aria-label": re.compile(r"boost", re.I)})
+        boosts = _tradingview_count(boost_label.get("aria-label") if boost_label else None)
+        row = _signal(
+            source="tradingview",
+            channel=feed_name,
+            item_type="trading_idea",
+            collected_on=collection_date,
+            external_id=external_id,
+            created_at=created_at,
+            author=author,
+            title=title,
+            body=body[:16000],
+            url=url,
+            engagement={"boosts": boosts, "comments": comments},
+            evidence_quality="public_tradingview_page",
+            source_method="tradingview_public_html",
+        )
+        row.update({
+            "platform_partition": "tradingview",
+            "symbol": symbol or symbol_from_url,
+            "exchange": exchange,
+            "asset_name": symbol_label,
+            "idea_type": idea_type,
+            "direction": direction,
+            "tradingview_tags": [],
+            "discovery_surfaces": [feed_name],
+            "collection_methods": ["tradingview_public_html"],
+            "listing_pages": [{"feed": feed_name, "page": page, "position": position}],
+        })
+        rows.append(row)
+    return rows
+
+
+def collect_tradingview_signals(
+    config_path: pathlib.Path,
+    output_path: pathlib.Path,
+    collection_date: str,
+    *,
+    backfill: bool = False,
+    page_limit: int | None = None,
+) -> pathlib.Path:
+    import requests
+    from bs4 import BeautifulSoup
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    cfg = _json(config_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    if not cfg.get("enabled", True):
+        output_path.write_text("", encoding="utf-8")
+        return output_path
+    timeout = int(cfg.get("timeout_seconds", 30))
+    pause = float(cfg.get("request_pause_seconds", 0.35))
+    workers = max(1, min(int(cfg.get("workers", 2)), 3))
+    headers = {
+        "User-Agent": os.getenv(
+            "TRADINGVIEW_USER_AGENT",
+            "Mozilla/5.0 (compatible; NubraProductResearch/1.0; public-ideas-collector)",
+        )
+    }
+    rows: dict[str, dict[str, Any]] = {}
+    failures: list[dict[str, Any]] = []
+    pages_attempted = 0
+
+    def fetch(url: str) -> tuple[str, str]:
+        response = requests.get(url, headers=headers, timeout=timeout)
+        if response.status_code in {403, 429}:
+            raise RuntimeError(f"TradingView returned {response.status_code}")
+        response.raise_for_status()
+        time.sleep(pause)
+        return url, response.content.decode("utf-8", errors="replace")
+
+    def merge_page(soup: Any, feed_name: str, page: int) -> None:
+        for row in _parse_tradingview_cards(soup, feed_name, page, collection_date):
+            existing = rows.get(row["id"])
+            if existing:
+                existing["discovery_surfaces"] = sorted(set(existing.get("discovery_surfaces") or []) | set(row.get("discovery_surfaces") or []))
+                existing["listing_pages"] = (existing.get("listing_pages") or []) + (row.get("listing_pages") or [])
+                existing["engagement"] = {
+                    "boosts": max(_int((existing.get("engagement") or {}).get("boosts")), _int((row.get("engagement") or {}).get("boosts"))),
+                    "comments": max(_int((existing.get("engagement") or {}).get("comments")), _int((row.get("engagement") or {}).get("comments"))),
+                }
+                if len(str(row.get("body") or "")) > len(str(existing.get("body") or "")):
+                    existing["body"] = row.get("body")
+            else:
+                rows[row["id"]] = row
+
+    for feed in cfg.get("feeds", []):
+        feed_name = str(feed.get("name") or "community_ideas")
+        feed_url = str(feed.get("url") or "")
+        if not feed_url:
+            continue
+        try:
+            _, first_html = fetch(_tradingview_page_url(feed_url, 1))
+            first_soup = BeautifulSoup(first_html, "html.parser")
+            discovered_pages = _tradingview_max_page(first_soup)
+            configured = int(feed.get("backfill_pages") or 0) if backfill else int(cfg.get("daily_pages", 3))
+            target_pages = discovered_pages if backfill and configured == 0 else min(discovered_pages, max(1, configured))
+            if page_limit is not None and page_limit > 0:
+                target_pages = min(target_pages, page_limit)
+            merge_page(first_soup, feed_name, 1)
+            first_soup.decompose()
+            pages_attempted += 1
+            if target_pages > 1:
+                with ThreadPoolExecutor(max_workers=workers) as pool:
+                    batch_size = max(workers, int(cfg.get("page_batch_size", 20)))
+                    for batch_start in range(2, target_pages + 1, batch_size):
+                        batch_end = min(target_pages + 1, batch_start + batch_size)
+                        futures = {
+                            pool.submit(fetch, _tradingview_page_url(feed_url, page)): page
+                            for page in range(batch_start, batch_end)
+                        }
+                        for future in as_completed(futures):
+                            page = futures[future]
+                            pages_attempted += 1
+                            try:
+                                _, html = future.result()
+                                soup = BeautifulSoup(html, "html.parser")
+                                merge_page(soup, feed_name, page)
+                                soup.decompose()
+                            except Exception as exc:
+                                failures.append({"feed": feed_name, "page": page, "error": f"{type(exc).__name__}: {exc}"})
+        except Exception as exc:
+            failures.append({"feed": feed_name, "page": 1, "error": f"{type(exc).__name__}: {exc}"})
+
+    with output_path.open("w", encoding="utf-8") as stream:
+        for row in rows.values():
+            stream.write(json.dumps(row, ensure_ascii=False) + "\n")
+    _write_json(output_path.with_suffix(".summary.json"), {
+        "collection_date": collection_date,
+        "backfill": backfill,
+        "ideas": len(rows),
+        "pages_attempted": pages_attempted,
+        "failures": failures,
+        "keyword_filter": False,
+    })
+    return output_path
+
+
 def collect_api(config_path: pathlib.Path, output_path: pathlib.Path) -> pathlib.Path:
     import praw
     cfg = _json(config_path)
@@ -1631,6 +1919,13 @@ def main() -> None:
     communities.add_argument("--config", type=pathlib.Path, default=ROOT / "config" / "community_sources.json")
     communities.add_argument("--output", type=pathlib.Path)
     communities.add_argument("--date", default=_collection_date())
+    tradingview = sub.add_parser("collect-tradingview")
+    tradingview.add_argument("--config", type=pathlib.Path, default=ROOT / "config" / "tradingview_sources.json")
+    tradingview.add_argument("--output", type=pathlib.Path)
+    tradingview.add_argument("--date", default=_collection_date())
+    tradingview.add_argument("--backfill", action="store_true")
+    tradingview.add_argument("--max-pages", type=int)
+    tradingview.add_argument("--package", action="store_true")
     p = sub.add_parser("package")
     p.add_argument("--input", type=pathlib.Path, required=True)
     p.add_argument("--date", default=_collection_date())
@@ -1641,6 +1936,10 @@ def main() -> None:
     manual.add_argument("--date", default=_collection_date())
     manual.add_argument("--source", default="manual_research_enriched")
     manual.add_argument("--push", action="store_true")
+    tv_manual = sub.add_parser("add-tradingview-research")
+    tv_manual.add_argument("--input", type=pathlib.Path, required=True)
+    tv_manual.add_argument("--date", default=_collection_date())
+    tv_manual.add_argument("--push", action="store_true")
     sub.add_parser("validate")
     pub = sub.add_parser("publish"); pub.add_argument("--push", action="store_true")
     daily = sub.add_parser("daily")
@@ -1660,9 +1959,20 @@ def main() -> None:
     elif args.command == "collect-communities":
         output = args.output or ROOT / "staging" / f"community_signals_{args.date}.jsonl"
         print(collect_community_signals(args.config, output, args.date))
+    elif args.command == "collect-tradingview":
+        output = args.output or ROOT / "staging" / f"tradingview_signals_{args.date}.jsonl"
+        print(collect_tradingview_signals(
+            args.config, output, args.date, backfill=args.backfill, page_limit=args.max_pages
+        ))
+        if args.package:
+            print(package_tradingview_signals(output, args.date))
     elif args.command == "package": print(package_dump(args.input, args.date, args.source, args.signals))
     elif args.command == "add-manual-research":
         print(add_manual_research(args.input, args.date, args.source))
+        if args.push:
+            git_publish(True)
+    elif args.command == "add-tradingview-research":
+        print(add_tradingview_research(args.input, args.date))
         if args.push:
             git_publish(True)
     elif args.command == "validate": validate()
@@ -1677,6 +1987,13 @@ def main() -> None:
             signals = ROOT / "staging" / f"public_signals_{today}.jsonl"
             collect_public_signals(ROOT / "config" / "public_signal_sources.json", signals, today)
         package_dump(output, today, signals_path=signals)
+        public_cfg = _json(ROOT / "config" / "public_signal_sources.json")
+        tradingview_cfg = public_cfg.get("tradingview", {})
+        if tradingview_cfg.get("enabled", False):
+            tv_config = ROOT / tradingview_cfg.get("config", "config/tradingview_sources.json")
+            tv_output = ROOT / "staging" / f"tradingview_signals_{today}.jsonl"
+            collect_tradingview_signals(tv_config, tv_output, today)
+            package_tradingview_signals(tv_output, today)
         git_publish(args.push)
 
 

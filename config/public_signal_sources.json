@@ -68,5 +68,10 @@
     "enabled": true,
     "config": "config/community_sources.json",
     "note": "Collects open public broker/community forum topics through public JSON endpoints, public sitemap/RSS-style feeds or lightweight HTML fallback."
+  },
+  "tradingview": {
+    "enabled": true,
+    "config": "config/tradingview_sources.json",
+    "note": "Stored separately in tradingview_signals.jsonl.gz. Daily runs collect recent/public ideas without keyword filtering; full backfill is available through collect-tradingview --backfill."
   }
 }

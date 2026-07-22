@@ -171,8 +171,9 @@
       "manifest": "daily-dumps/2026-07-22/manifest.json",
       "posts": 0,
       "comments": 0,
-      "signals": 387
+      "signals": 387,
+      "tradingview_signals": 11543
     }
   ],
-  "updated_at": "2026-07-21T21:42:12.389908+00:00"
+  "updated_at": "2026-07-22T05:56:58.351423+00:00"
 }

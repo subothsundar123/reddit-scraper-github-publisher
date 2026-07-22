@@ -51,6 +51,32 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertIn("github", cfg)
         self.assertIn("youtube", cfg)
         self.assertIn("community_forums", cfg)
+        self.assertIn("tradingview", cfg)
+
+    def test_tradingview_card_normalization_is_not_keyword_gated(self):
+        from bs4 import BeautifulSoup
+        from insights_publisher.cli import _parse_tradingview_cards, _tradingview_count
+        html = """
+        <article>
+          <a data-qa-id="ui-lib-card-link-title" href="https://in.tradingview.com/chart/NIFTY/abc123-Any-Public-Idea/">Any Public Idea</a>
+          <a data-qa-id="ui-lib-card-link-paragraph">A public market observation without a configured keyword.</a>
+          <a data-qa-id="ui-lib-card-preview-link-icon" title="NSE:NIFTY"></a>
+          <span title="Long">Long</span>
+          <a href="/u/example/">by example</a>
+          <time datetime="2026-07-22T01:00:00.000Z"></time>
+          <a data-qa-id="ui-lib-card-comment-button" aria-label="12 comments"></a>
+          <span aria-label="1.2K boosts"></span>
+        </article>
+        """
+        rows = _parse_tradingview_cards(BeautifulSoup(html, "html.parser"), "recent_all", 1, "2026-07-22")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["source"], "tradingview")
+        self.assertEqual(rows[0]["symbol"], "NIFTY")
+        self.assertEqual(rows[0]["direction"], "long")
+        self.assertEqual(rows[0]["engagement"], {"boosts": 1200, "comments": 12})
+        self.assertEqual(rows[0]["discovery_surfaces"], ["recent_all"])
+        self.assertEqual(_tradingview_count("345 boosts"), 345)
+        self.assertEqual(_tradingview_count("3.4K boosts"), 3400)
 
     def test_community_sources_are_configured(self):
         cfg = json.loads((ROOT / "config/community_sources.json").read_text(encoding="utf-8"))

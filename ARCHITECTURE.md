@@ -25,7 +25,7 @@ It does not generate final Claude analysis and does not write to connector users
 flowchart TD
     Config["config/*.json"] --> Collectors
     Secrets["Environment secrets"] --> Collectors
-    Collectors["Reddit / YouTube / GitHub / HN / docs / communities"] --> Stage["staging/"]
+    Collectors["Reddit / YouTube / GitHub / HN / docs / communities / TradingView"] --> Stage["staging/"]
     Manual["Manual research JSONL"] --> ManualMerge["Manual merge"]
     Stage --> Normalize["Normalize and classify"]
     Normalize --> Package["Package dated dump"]
@@ -67,6 +67,8 @@ insights-publisher
 | `collect-signals` | Collect GitHub, HN, broker docs, YouTube and broker communities |
 | `collect-youtube` | Collect YouTube text/comments only |
 | `collect-communities` | Collect broker-owned public community forums |
+| `collect-tradingview` | Collect every public TradingView idea returned by configured feeds; supports daily increments and initial backfill |
+| `add-tradingview-research` | Merge manually verified TradingView pages into the separate TradingView dump |
 | `package` | Convert staged data into a dated dump |
 | `add-manual-research` | Merge normalized public research JSONL |
 | `validate` | Verify every published file checksum |
@@ -141,6 +143,10 @@ The collector stores topic title/body, representative replies, broker, category,
 tags, public URL, created/updated time where available and engagement metrics
 such as views, replies, likes or upvotes when the source exposes them.
 
+### TradingView community ideas
+
+`tradingview_sources.json` controls the public TradingView Ideas collector. Collection is feed- and pagination-driven rather than keyword-gated. Keywords, personas and Nubra feature mappings are added only after collection. Daily runs collect the newest pages; `--backfill` follows every publicly exposed pagination page for recent, popular and Editors' Picks feeds. Records retain direct idea URLs, publication time, symbol, exchange, direction/type, text, boosts and comments when labelled by the page.
+
 ## 6. Shared normalization
 
 Cross-channel adapters call `_signal`, which supplies:
@@ -189,6 +195,8 @@ Use `manual-research/output-template.jsonl`, one JSON object per line.
 
 ```text
 daily-dumps/YYYY-MM-DD/
+â”œâ”€â”€ tradingview_signals.jsonl.gz
+â”œâ”€â”€ tradingview_summary.json
 ├── posts.jsonl.gz
 ├── comments.jsonl.gz
 ├── signals.jsonl.gz
