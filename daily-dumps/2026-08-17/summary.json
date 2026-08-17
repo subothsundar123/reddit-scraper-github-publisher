@@ -3,7 +3,7 @@
   "source": "manual_research_enriched",
   "posts": 0,
   "comments": 0,
-  "signals": 658,
+  "signals": 676,
   "tradingview_signals": 194,
   "subreddits": {},
   "source_methods": {},
@@ -15,10 +15,11 @@
     "community_discourse_json": 56,
     "community_nodebb_json": 20,
     "community_sitemap_html": 6,
-    "manual_indexed_reddit_search": 16,
+    "manual_indexed_reddit_search": 28,
     "manual_community_index_search": 1,
     "manual_official_docs_review": 2,
-    "manual_app_store_review": 2
+    "manual_app_store_review": 2,
+    "manual_official_web_research": 6
   },
   "signal_sources": {
     "github": 195,
@@ -26,7 +27,10 @@
     "broker_docs": 7,
     "youtube": 255,
     "community_forum": 82,
-    "manual_web_research": 21
+    "manual_web_research": 33,
+    "official_competitor_research": 4,
+    "official_regulatory_research": 1,
+    "official_ecosystem_research": 1
   },
   "signal_channels": {
     "SeneX-Prophet": 1,
@@ -372,12 +376,18 @@
     "reddit_IndianStreetBets": 2,
     "reddit_IndianStockMarket": 2,
     "reddit_IndiaOptionsSelling": 3,
-    "reddit_IndiaAlgoTrading": 4,
+    "reddit_IndiaAlgoTrading": 16,
     "reddit_Indiastreetbets": 2,
     "reddit_FYERS": 2,
     "reddit_Indiantradingbets": 1,
     "nubra_docs": 2,
-    "apple_app_store": 2
+    "apple_app_store": 2,
+    "groww_official": 1,
+    "upstox_official": 1,
+    "nse_official": 1,
+    "dhan_official": 1,
+    "openalgo_official": 1,
+    "algocloud_official": 1
   },
   "tradingview_channels": {
     "recent_all": 96,
@@ -393,10 +403,14 @@
     "public_youtube_api": 255,
     "public_community_json": 76,
     "public_sitemap_html": 6,
-    "public_indexed_reddit": 16,
+    "public_indexed_reddit": 28,
     "public_community_index": 1,
     "official_product_documentation": 2,
-    "public_app_store": 2
+    "public_app_store": 2,
+    "official_competitor_documentation": 3,
+    "official_exchange_standard": 1,
+    "official_competitor_product_page": 1,
+    "official_ecosystem_documentation": 1
   },
   "engagement": {
     "post_score_sum": 0,
