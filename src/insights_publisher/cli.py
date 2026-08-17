@@ -45,6 +45,15 @@ def _write_json(path: pathlib.Path, value: Any) -> None:
 
 
 def _sha(path: pathlib.Path) -> str:
+    """Hash published bytes as they appear in Git/GitHub.
+
+    Git normalizes tracked JSON files to LF (see .gitattributes).  Normalize
+    line endings here too so a Windows checkout cannot publish a checksum for
+    CRLF working-tree bytes that consumers will never download.
+    """
+    if path.suffix.casefold() == ".json":
+        payload = path.read_bytes().replace(b"\r\n", b"\n")
+        return hashlib.sha256(payload).hexdigest()
     h = hashlib.sha256()
     with path.open("rb") as f:
         for block in iter(lambda: f.read(1024 * 1024), b""):
@@ -1887,7 +1896,21 @@ def validate() -> None:
             path = ROOT / file["path"]
             if not path.exists() or _sha(path) != file["sha256"]:
                 raise RuntimeError(f"Integrity failure: {path}")
-    print(f"Validated {len(index['dumps'])} dump(s)")
+
+    catalog_manifest = _json(ROOT / "product-catalog" / "manifest.json")
+    catalog_path = ROOT / catalog_manifest["path"]
+    if not catalog_path.exists() or _sha(catalog_path) != catalog_manifest["sha256"]:
+        raise RuntimeError(f"Feature catalog checksum mismatch: {catalog_path}")
+    catalog = _json(catalog_path)
+    if len(catalog.get("features", [])) != int(catalog_manifest["feature_count"]):
+        raise RuntimeError(f"Feature catalog count mismatch: {catalog_path}")
+
+    keyword_manifest = _json(ROOT / "marketing-keywords" / "manifest.json")
+    keyword_path = ROOT / keyword_manifest["path"]
+    if not keyword_path.exists() or _sha(keyword_path) != keyword_manifest["sha256"]:
+        raise RuntimeError(f"Marketing keyword catalog checksum mismatch: {keyword_path}")
+
+    print(f"Validated {len(index['dumps'])} dump(s), feature catalog and marketing keyword catalog")
 
 
 def git_publish(push: bool) -> None:

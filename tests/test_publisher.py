@@ -1,5 +1,6 @@
 import datetime as dt
 import gzip
+import hashlib
 import json
 import pathlib
 import unittest
@@ -7,6 +8,13 @@ import unittest
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 class PublishedSnapshotTests(unittest.TestCase):
+    @staticmethod
+    def canonical_sha(path: pathlib.Path) -> str:
+        payload = path.read_bytes()
+        if path.suffix.casefold() == ".json":
+            payload = payload.replace(b"\r\n", b"\n")
+        return hashlib.sha256(payload).hexdigest()
+
     def test_collection_date_uses_business_timezone_at_utc_boundary(self):
         from insights_publisher.cli import _collection_date
         instant = dt.datetime(2026, 7, 1, 20, 30, tzinfo=dt.timezone.utc)
@@ -31,6 +39,16 @@ class PublishedSnapshotTests(unittest.TestCase):
         catalog = json.loads((ROOT / "product-catalog/current.json").read_text())
         self.assertGreater(len(catalog["features"]), 100)
         self.assertIn("internal_unverified", catalog["status_definitions"])
+
+    def test_published_catalog_checksums_match_canonical_git_bytes(self):
+        for directory in ("product-catalog", "marketing-keywords"):
+            manifest = json.loads((ROOT / directory / "manifest.json").read_text(encoding="utf-8"))
+            published = ROOT / manifest["path"]
+            self.assertEqual(
+                manifest["sha256"],
+                self.canonical_sha(published),
+                f"{directory} checksum must be independent of checkout line endings",
+            )
 
     def test_retail_upcoming_catalog_is_deduplicated_and_expanded(self):
         catalog = json.loads((ROOT / "product-catalog/retail-upcoming-features.json").read_text(encoding="utf-8"))

@@ -291,7 +291,7 @@ def markdown(features: list[dict]) -> str:
 
 
 def write_json(path: Path, payload: dict) -> None:
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    path.write_bytes((json.dumps(payload, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
 
 
 def main() -> None:
@@ -308,7 +308,7 @@ def main() -> None:
     current["updated_at"] = now
 
     write_json(RETAIL_PATH, retail)
-    RETAIL_MD_PATH.write_text(markdown(retail["features"]), encoding="utf-8")
+    RETAIL_MD_PATH.write_bytes(markdown(retail["features"]).encode("utf-8"))
     write_json(CURRENT_PATH, current)
     write_json(CATALOG_DIR / "history" / f"{VERSION}.json", current)
 
