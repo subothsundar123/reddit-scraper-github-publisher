@@ -1,36 +1,36 @@
 {
   "collection_date": "2026-08-17",
   "source": "tradingview",
-  "ideas": 131,
+  "ideas": 194,
   "publication_range": {
     "earliest": "2026-08-04T12:23:42.000Z",
-    "latest": "2026-08-16T20:43:00.000Z"
+    "latest": "2026-08-17T10:10:25.000Z"
   },
   "channels": {
-    "recent_all": 69,
-    "popular_all": 41,
-    "editors_picks": 21
+    "recent_all": 96,
+    "popular_all": 75,
+    "editors_picks": 23
   },
   "idea_types": {
-    "unknown": 34,
-    "Long": 68,
-    "Short": 12,
-    "Education": 17
+    "unknown": 49,
+    "Long": 102,
+    "Short": 25,
+    "Education": 18
   },
   "directions": {
-    "education": 51,
-    "long": 68,
-    "short": 12
+    "education": 67,
+    "long": 102,
+    "short": 25
   },
   "source_methods": {
-    "tradingview_public_html": 131
+    "tradingview_public_html": 194
   },
   "evidence_quality": {
-    "public_tradingview_page": 131
+    "public_tradingview_page": 194
   },
   "engagement": {
-    "boosts": 1709,
-    "comments": 169
+    "boosts": 2212,
+    "comments": 250
   },
   "collection_scope": "All publicly accessible ideas returned by configured TradingView feeds; no keyword gate is applied."
 }
