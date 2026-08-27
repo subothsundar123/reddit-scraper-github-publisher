@@ -255,12 +255,14 @@ Positive/negative counts are based on feature-related wording in the collected t
 
 ## 6. Discussions about TradingView and broker charts
 
-| Topic | Matching discussions |
-|---|---:|
-| TradingView | 1268 |
-| Groww Chart | 2 |
-| Sahi Chart | 0 |
-| Dhan Chart | 45 |
+| Topic | Matching discussions | Unique authors |
+|---|---:|---:|
+| TradingView | 1268 | 1276 |
+| Groww Chart | 2 | Not available |
+| Sahi Chart | 0 | Not available |
+| Dhan Chart | 45 | Not available |
+
+Author counts use the anonymized author hash when the source exposes it; they are not inferred from thread counts.
 
 ## 7. Top 50 discussions by engagement, frequency, comments and length
 

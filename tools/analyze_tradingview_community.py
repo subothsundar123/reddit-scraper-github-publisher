@@ -78,6 +78,7 @@ def main() -> None:
     top_threads = []
     daily, monthly = Counter(), Counter()
     people = Counter()
+    author_sets = defaultdict(set)
     for r in tv_rows:
         s = text(r)
         e = engagement(r)
@@ -88,6 +89,7 @@ def main() -> None:
         author = r.get("author_hash")
         if author:
             people["TradingView authors"] += 1
+            author_sets["TradingView"].add(author)
         for topic in match_topics(s):
             topic_count[topic] += 1; topic_eng[topic] += e
             if any(x in s for x in POSITIVE): topic_pos[topic] += 1
@@ -96,6 +98,8 @@ def main() -> None:
             if any(t in s for t in terms): indicator[name] += 1
         for name, terms in {"TradingView": ["tradingview"], "Groww Chart":["groww chart","groww charts"], "Sahi Chart":["sahi chart","sahi charts"], "Dhan Chart":["dhan chart","dhan charts"], "Sahi 5-second Chart":["sahi 5 sec","sahi 5-second","5 sec chart"]}.items():
             if any(t in s for t in terms): chart_counts[name] += 1
+            if any(t in s for t in terms) and r.get("author_hash"):
+                author_sets[name].add(r["author_hash"])
         top_threads.append((e, int((r.get("engagement") or {}).get("comments") or 0), len(s.split()), r.get("url"), r.get("title", "")))
 
     # Chart and performance questions also include non-TV community signals.
@@ -119,8 +123,9 @@ def main() -> None:
     for i, (topic, n) in enumerate(sorted(topic_count.items(), key=lambda x: (-topic_eng[x[0]], -x[1])), 1): out.append(f"| {i} | {topic} | {n} | {topic_eng[topic]} |")
     out += ["", "## 5. Daily and monthly TradingView community counts", "", "| Date/month | Discussions |", "|---|---:|"]
     for k, n in sorted({**monthly, **daily}.items()): out.append(f"| {k} | {n} |")
-    out += ["", "## 6. Discussions about TradingView and broker charts", "", "| Topic | Matching discussions |", "|---|---:|"]
-    for k in ("TradingView", "Groww Chart", "Sahi Chart", "Dhan Chart"): out.append(f"| {k} | {chart_counts[k]} |")
+    out += ["", "## 6. Discussions about TradingView and broker charts", "", "| Topic | Matching discussions | Unique authors |", "|---|---:|---:|"]
+    for k in ("TradingView", "Groww Chart", "Sahi Chart", "Dhan Chart"): out.append(f"| {k} | {chart_counts[k]} | {len(author_sets[k]) if author_sets[k] else 'Not available'} |")
+    out += ["", "Author counts use the anonymized author hash when the source exposes it; they are not inferred from thread counts."]
     out += ["", "## 7. Top 50 discussions by engagement, frequency, comments and length", "", "| Rank | Topic/title | Engagement | Comments | Length (words) |", "|---:|---|---:|---:|---:|"]
     for i, (e, comments, length, url, title) in enumerate(sorted(top_threads, reverse=True)[:50], 1):
         out.append(f"| {i} | {title.replace('|','/')} | {e} | {comments} | {length} |")
