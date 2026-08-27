@@ -25,7 +25,7 @@ def set_table_geometry(table):
     width_map = {
         3: [2200, 1800, 5360],
         4: [900, 3300, 1800, 3360],
-        5: [700, 2850, 1450, 1450, 2910],
+        5: [550, 2850, 1500, 1750, 2710],
         6: [700, 2350, 1450, 1350, 1250, 2260],
     }
     widths = width_map.get(len(table.columns), [9360 // len(table.columns)] * len(table.columns))
@@ -57,7 +57,7 @@ def main():
     lines = SRC.read_text(encoding='utf-8').splitlines(); i=0
     report_title = lines[0].lstrip('# ').strip() if lines and lines[0].startswith('# ') else 'Community Analysis'
     title = doc.add_paragraph(); title.alignment=WD_ALIGN_PARAGRAPH.CENTER; title.paragraph_format.space_after=Pt(4); rr=title.add_run(report_title); rr.bold=True; rr.font.size=Pt(23); rr.font.color.rgb=RGBColor(0x0B,0x25,0x45)
-    sub=doc.add_paragraph(); sub.alignment=WD_ALIGN_PARAGRAPH.CENTER; sub.paragraph_format.space_after=Pt(18); sr=sub.add_run('Research window: 29 May to 27 August 2026'); sr.font.size=Pt(12); sr.font.color.rgb=RGBColor(0x55,0x55,0x55)
+    sub=doc.add_paragraph(); sub.alignment=WD_ALIGN_PARAGRAPH.CENTER; sub.paragraph_format.space_after=Pt(18); sr=sub.add_run('Collected community evidence and current public research'); sr.font.size=Pt(12); sr.font.color.rgb=RGBColor(0x55,0x55,0x55)
     while i < len(lines):
         line=lines[i]
         if line.startswith('Research window:'):
@@ -82,6 +82,7 @@ def main():
             p=doc.add_paragraph(); r=p.add_run(line); r.italic=True; r.font.color.rgb=RGBColor(0x55,0x55,0x55); i+=1; continue
         p=doc.add_paragraph();
         # Keep the report readable while preserving markdown emphasis.
+        line=re.sub(r'\[([^\]]+)\]\((https?://[^)]+)\)', r'\1: \2', line)
         for part in re.split(r'(\*\*.*?\*\*)', line):
             if part.startswith('**') and part.endswith('**'):
                 r=p.add_run(part[2:-2]); r.bold=True

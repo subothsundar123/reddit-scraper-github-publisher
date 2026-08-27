@@ -1,0 +1,774 @@
+{
+  "unique_tradingview_records": 13631,
+  "unique_all_source_records": 16944,
+  "unique_chart_related_records": 15767,
+  "collection_days": [
+    [
+      "2026-07-22",
+      11543
+    ],
+    [
+      "2026-07-23",
+      146
+    ],
+    [
+      "2026-07-24",
+      139
+    ],
+    [
+      "2026-07-25",
+      136
+    ],
+    [
+      "2026-07-26",
+      143
+    ],
+    [
+      "2026-07-27",
+      119
+    ],
+    [
+      "2026-07-28",
+      138
+    ],
+    [
+      "2026-07-29",
+      142
+    ],
+    [
+      "2026-07-30",
+      152
+    ],
+    [
+      "2026-07-31",
+      126
+    ],
+    [
+      "2026-08-01",
+      136
+    ],
+    [
+      "2026-08-02",
+      137
+    ],
+    [
+      "2026-08-03",
+      121
+    ],
+    [
+      "2026-08-04",
+      130
+    ],
+    [
+      "2026-08-05",
+      141
+    ],
+    [
+      "2026-08-06",
+      142
+    ],
+    [
+      "2026-08-07",
+      141
+    ],
+    [
+      "2026-08-08",
+      140
+    ],
+    [
+      "2026-08-09",
+      142
+    ],
+    [
+      "2026-08-10",
+      137
+    ],
+    [
+      "2026-08-11",
+      134
+    ],
+    [
+      "2026-08-12",
+      134
+    ],
+    [
+      "2026-08-13",
+      139
+    ],
+    [
+      "2026-08-14",
+      137
+    ],
+    [
+      "2026-08-15",
+      136
+    ],
+    [
+      "2026-08-16",
+      123
+    ],
+    [
+      "2026-08-17",
+      194
+    ],
+    [
+      "2026-08-27",
+      147
+    ]
+  ],
+  "monthly_feed_records": {
+    "2026-07": 12784,
+    "2026-08": 2511
+  },
+  "indicator_counts": [
+    [
+      "EMA",
+      5753
+    ],
+    [
+      "SMA",
+      1594
+    ],
+    [
+      "RSI",
+      1528
+    ],
+    [
+      "Market Structure",
+      1312
+    ],
+    [
+      "Moving Average",
+      883
+    ],
+    [
+      "Fibonacci",
+      680
+    ],
+    [
+      "MACD",
+      398
+    ],
+    [
+      "Support and Resistance",
+      366
+    ],
+    [
+      "Order Block",
+      300
+    ],
+    [
+      "PCR",
+      261
+    ],
+    [
+      "VWAP",
+      186
+    ],
+    [
+      "Open Interest",
+      157
+    ],
+    [
+      "Bollinger Bands",
+      128
+    ],
+    [
+      "Volume Profile",
+      103
+    ],
+    [
+      "Ichimoku",
+      86
+    ],
+    [
+      "ATR",
+      74
+    ],
+    [
+      "ADX",
+      64
+    ],
+    [
+      "RSI Divergence",
+      51
+    ],
+    [
+      "Supertrend",
+      44
+    ],
+    [
+      "Implied Volatility",
+      36
+    ],
+    [
+      "Stochastic",
+      29
+    ],
+    [
+      "Pivot Points",
+      18
+    ],
+    [
+      "Max Pain",
+      12
+    ],
+    [
+      "Greeks",
+      11
+    ],
+    [
+      "UT Bot",
+      6
+    ],
+    [
+      "Volume Delta",
+      5
+    ],
+    [
+      "AVWAP",
+      4
+    ],
+    [
+      "RRG",
+      4
+    ],
+    [
+      "Chandelier Exit",
+      2
+    ],
+    [
+      "VWAP Bands",
+      0
+    ]
+  ],
+  "brand_counts": [
+    [
+      "tradingview",
+      608
+    ],
+    [
+      "groww",
+      99
+    ],
+    [
+      "dhan",
+      634
+    ],
+    [
+      "sahi",
+      74
+    ],
+    [
+      "groww charts",
+      1
+    ],
+    [
+      "dhan chart",
+      42
+    ],
+    [
+      "sahi chart",
+      0
+    ],
+    [
+      "5-second",
+      3
+    ],
+    [
+      "5 second",
+      8
+    ]
+  ],
+  "loading_counts": [
+    [
+      "loading",
+      99
+    ],
+    [
+      "blank chart",
+      0
+    ],
+    [
+      "graph not moving",
+      0
+    ],
+    [
+      "lag",
+      423
+    ],
+    [
+      "freeze",
+      20
+    ],
+    [
+      "stale",
+      65
+    ],
+    [
+      "delayed",
+      55
+    ],
+    [
+      "price mismatch",
+      0
+    ],
+    [
+      "price differs",
+      0
+    ]
+  ],
+  "loading_unique_records": 643,
+  "topic_rows": [
+    {
+      "topic": "EMA",
+      "records": 6314,
+      "engagement": 388771,
+      "comments": 22618,
+      "average_words": 231,
+      "positive": 3198,
+      "negative": 1033
+    },
+    {
+      "topic": "Stop-loss and target",
+      "records": 2692,
+      "engagement": 101566,
+      "comments": 4559,
+      "average_words": 203,
+      "positive": 1389,
+      "negative": 316
+    },
+    {
+      "topic": "Trendlines",
+      "records": 2214,
+      "engagement": 32229,
+      "comments": 3160,
+      "average_words": 200,
+      "positive": 1032,
+      "negative": 260
+    },
+    {
+      "topic": "Bid/ask and liquidity",
+      "records": 2210,
+      "engagement": 186206,
+      "comments": 5258,
+      "average_words": 243,
+      "positive": 1392,
+      "negative": 333
+    },
+    {
+      "topic": "Price action",
+      "records": 2148,
+      "engagement": 90368,
+      "comments": 6327,
+      "average_words": 242,
+      "positive": 1102,
+      "negative": 304
+    },
+    {
+      "topic": "Momentum oscillators",
+      "records": 2077,
+      "engagement": 244603,
+      "comments": 14790,
+      "average_words": 224,
+      "positive": 948,
+      "negative": 437
+    },
+    {
+      "topic": "SMA",
+      "records": 1929,
+      "engagement": 1477343,
+      "comments": 22431,
+      "average_words": 252,
+      "positive": 1269,
+      "negative": 430
+    },
+    {
+      "topic": "Risk position sizing",
+      "records": 1185,
+      "engagement": 82486,
+      "comments": 4272,
+      "average_words": 232,
+      "positive": 634,
+      "negative": 146
+    },
+    {
+      "topic": "Chart speed / loading",
+      "records": 1148,
+      "engagement": 233902,
+      "comments": 7969,
+      "average_words": 250,
+      "positive": 753,
+      "negative": 1142
+    },
+    {
+      "topic": "Fibonacci tools",
+      "records": 855,
+      "engagement": 76771,
+      "comments": 3641,
+      "average_words": 254,
+      "positive": 437,
+      "negative": 118
+    },
+    {
+      "topic": "Mobile chart usability",
+      "records": 560,
+      "engagement": 174342,
+      "comments": 8569,
+      "average_words": 267,
+      "positive": 363,
+      "negative": 86
+    },
+    {
+      "topic": "Volatility indicators",
+      "records": 441,
+      "engagement": 43397,
+      "comments": 4647,
+      "average_words": 258,
+      "positive": 207,
+      "negative": 77
+    },
+    {
+      "topic": "Support/resistance",
+      "records": 409,
+      "engagement": 44262,
+      "comments": 3869,
+      "average_words": 223,
+      "positive": 224,
+      "negative": 55
+    },
+    {
+      "topic": "Portfolio on chart",
+      "records": 383,
+      "engagement": 181741,
+      "comments": 6067,
+      "average_words": 244,
+      "positive": 253,
+      "negative": 111
+    },
+    {
+      "topic": "Replay / backtesting",
+      "records": 371,
+      "engagement": 56551,
+      "comments": 4390,
+      "average_words": 191,
+      "positive": 183,
+      "negative": 110
+    },
+    {
+      "topic": "Volume profile / order flow",
+      "records": 338,
+      "engagement": 21309,
+      "comments": 807,
+      "average_words": 271,
+      "positive": 225,
+      "negative": 49
+    },
+    {
+      "topic": "Options chain",
+      "records": 305,
+      "engagement": 176556,
+      "comments": 10003,
+      "average_words": 217,
+      "positive": 187,
+      "negative": 61
+    },
+    {
+      "topic": "Screeners / scans",
+      "records": 267,
+      "engagement": 1442654,
+      "comments": 17109,
+      "average_words": 225,
+      "positive": 192,
+      "negative": 72
+    },
+    {
+      "topic": "Volume indicators",
+      "records": 255,
+      "engagement": 40368,
+      "comments": 2371,
+      "average_words": 262,
+      "positive": 117,
+      "negative": 42
+    },
+    {
+      "topic": "Watchlist sections / colour coding",
+      "records": 243,
+      "engagement": 62328,
+      "comments": 3425,
+      "average_words": 199,
+      "positive": 160,
+      "negative": 55
+    },
+    {
+      "topic": "OI on chart / OI profile",
+      "records": 234,
+      "engagement": 53481,
+      "comments": 6181,
+      "average_words": 155,
+      "positive": 86,
+      "negative": 26
+    },
+    {
+      "topic": "Market / index overview",
+      "records": 232,
+      "engagement": 12058,
+      "comments": 1398,
+      "average_words": 240,
+      "positive": 169,
+      "negative": 46
+    },
+    {
+      "topic": "Candlesticks",
+      "records": 214,
+      "engagement": 18833,
+      "comments": 1085,
+      "average_words": 244,
+      "positive": 124,
+      "negative": 28
+    },
+    {
+      "topic": "Risk-reward / payoff",
+      "records": 187,
+      "engagement": 17979,
+      "comments": 897,
+      "average_words": 156,
+      "positive": 90,
+      "negative": 24
+    },
+    {
+      "topic": "Data accuracy / mismatched prices",
+      "records": 174,
+      "engagement": 1489,
+      "comments": 907,
+      "average_words": 243,
+      "positive": 74,
+      "negative": 95
+    },
+    {
+      "topic": "IV / Greeks",
+      "records": 165,
+      "engagement": 30369,
+      "comments": 4413,
+      "average_words": 191,
+      "positive": 96,
+      "negative": 41
+    },
+    {
+      "topic": "Price / indicator alerts",
+      "records": 161,
+      "engagement": 305580,
+      "comments": 11875,
+      "average_words": 244,
+      "positive": 102,
+      "negative": 53
+    },
+    {
+      "topic": "Chart patterns / auto-detection",
+      "records": 160,
+      "engagement": 7280,
+      "comments": 458,
+      "average_words": 187,
+      "positive": 89,
+      "negative": 27
+    },
+    {
+      "topic": "Trailing stop",
+      "records": 118,
+      "engagement": 17035,
+      "comments": 728,
+      "average_words": 215,
+      "positive": 56,
+      "negative": 23
+    },
+    {
+      "topic": "Historical / intraday data",
+      "records": 108,
+      "engagement": 9156,
+      "comments": 964,
+      "average_words": 218,
+      "positive": 56,
+      "negative": 49
+    },
+    {
+      "topic": "Chart sharing / ideas",
+      "records": 100,
+      "engagement": 6531,
+      "comments": 613,
+      "average_words": 217,
+      "positive": 53,
+      "negative": 9
+    },
+    {
+      "topic": "Seconds / scalper charts",
+      "records": 99,
+      "engagement": 31548,
+      "comments": 2804,
+      "average_words": 235,
+      "positive": 71,
+      "negative": 25
+    },
+    {
+      "topic": "Strategy signals",
+      "records": 75,
+      "engagement": 8119,
+      "comments": 382,
+      "average_words": 204,
+      "positive": 31,
+      "negative": 15
+    },
+    {
+      "topic": "Options data on chart",
+      "records": 48,
+      "engagement": 3994,
+      "comments": 440,
+      "average_words": 186,
+      "positive": 23,
+      "negative": 13
+    },
+    {
+      "topic": "Alert debugging",
+      "records": 40,
+      "engagement": 7612,
+      "comments": 405,
+      "average_words": 238,
+      "positive": 30,
+      "negative": 19
+    },
+    {
+      "topic": "Chart customisation",
+      "records": 37,
+      "engagement": 10000,
+      "comments": 1084,
+      "average_words": 285,
+      "positive": 29,
+      "negative": 16
+    },
+    {
+      "topic": "Chart webhooks",
+      "records": 35,
+      "engagement": 590,
+      "comments": 140,
+      "average_words": 228,
+      "positive": 17,
+      "negative": 12
+    },
+    {
+      "topic": "AI chart assistance",
+      "records": 30,
+      "engagement": 121249,
+      "comments": 1698,
+      "average_words": 228,
+      "positive": 20,
+      "negative": 7
+    },
+    {
+      "topic": "Trade execution speed",
+      "records": 30,
+      "engagement": 390,
+      "comments": 208,
+      "average_words": 179,
+      "positive": 29,
+      "negative": 5
+    },
+    {
+      "topic": "Saved indicator templates",
+      "records": 29,
+      "engagement": 126319,
+      "comments": 1899,
+      "average_words": 278,
+      "positive": 24,
+      "negative": 15
+    },
+    {
+      "topic": "Custom indicators / Pine Script",
+      "records": 26,
+      "engagement": 11711,
+      "comments": 1206,
+      "average_words": 239,
+      "positive": 18,
+      "negative": 10
+    },
+    {
+      "topic": "Multi-chart layouts",
+      "records": 19,
+      "engagement": 5271,
+      "comments": 533,
+      "average_words": 224,
+      "positive": 12,
+      "negative": 11
+    },
+    {
+      "topic": "Drawing tools",
+      "records": 12,
+      "engagement": 636,
+      "comments": 61,
+      "average_words": 220,
+      "positive": 6,
+      "negative": 6
+    },
+    {
+      "topic": "Heatmap",
+      "records": 10,
+      "engagement": 1967,
+      "comments": 85,
+      "average_words": 250,
+      "positive": 6,
+      "negative": 0
+    },
+    {
+      "topic": "Layout / chart synchronisation",
+      "records": 10,
+      "engagement": 41,
+      "comments": 5,
+      "average_words": 232,
+      "positive": 6,
+      "negative": 4
+    },
+    {
+      "topic": "Trade journal / performance",
+      "records": 9,
+      "engagement": 62,
+      "comments": 3,
+      "average_words": 245,
+      "positive": 4,
+      "negative": 2
+    },
+    {
+      "topic": "Chart-to-order",
+      "records": 6,
+      "engagement": 869,
+      "comments": 2,
+      "average_words": 229,
+      "positive": 5,
+      "negative": 1
+    },
+    {
+      "topic": "Indicator management",
+      "records": 2,
+      "engagement": 49,
+      "comments": 0,
+      "average_words": 232,
+      "positive": 0,
+      "negative": 0
+    },
+    {
+      "topic": "Pop-out charts",
+      "records": 2,
+      "engagement": 2,
+      "comments": 0,
+      "average_words": 266,
+      "positive": 1,
+      "negative": 0
+    },
+    {
+      "topic": "Multiple monitors",
+      "records": 1,
+      "engagement": 1902,
+      "comments": 29,
+      "average_words": 290,
+      "positive": 1,
+      "negative": 0
+    }
+  ]
+}
