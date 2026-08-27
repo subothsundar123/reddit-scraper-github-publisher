@@ -69,19 +69,62 @@ The collected TradingView feed contains **1,272 matching records** through 27 Au
 
 The TradingView author number is available only where the source exposes an anonymised author hash. Broker totals are broader source-record counts and are not directly comparable to unique people.
 
-## 7. What does the 50-point frequency/engagement view show?
+## 7. Which 50 features or discussions do people like or dislike most?
 
-The top-50 record set is dominated by three product themes: charting, indicators and option-chain analytics. When grouped for product use, the strongest signals are:
+The table ranks concrete feature/discussion terms across the full collected corpus. **Records** means matching source records; **engagement** combines available score, comments, likes and views; **positive/negative** counts mean records containing positive or negative wording near the topic. These are directional signals, not unique-user counts. The ranking uses frequency first, then engagement.
 
-| Product theme | What the high-engagement records contain | Product action |
-|---|---|---|
-| Charts and charting | Layouts, drawings, chart usability, price display and responsiveness | Improve speed, consistency and workspace persistence. |
-| Indicators | EMA/SMA/RSI and indicator setup questions | Make presets, explanations and one-tap application easy. |
-| Option-chain analytics | OI, IV, Greeks, strikes, PCR, liquidity and payoff | Put chain context beside the chart and make filters reusable. |
-| Execution and order workflow | Trade-from-chart, SL/target, order modification and slippage | Remove screen switching and show order state clearly. |
-| Risk and payoff | Stop-loss, target, breakeven, margin and defined-risk setups | Show risk-reward and payoff before confirmation. |
-
-Frequency is the number of matching records; engagement combines the available score, comments, likes and views. Thread length is used as context, not as a quality score.
+| Rank | Feature or discussion | Records | Engagement | Comments | Positive | Negative |
+|---:|---|---:|---:|---:|---:|---:|
+| 1 | EMA | 6,791 | 622,886 | 38,881 | 3,734 | 1,896 |
+| 2 | Stop-loss | 2,625 | 98,172 | 5,167 | 1,556 | 692 |
+| 3 | SMA | 2,326 | 1,641,661 | 34,263 | 1,618 | 1,024 |
+| 4 | RSI | 2,181 | 294,350 | 17,811 | 1,117 | 842 |
+| 5 | Fibonacci | 720 | 136,481 | 7,855 | 465 | 164 |
+| 6 | Margin | 454 | 97,539 | 3,403 | 273 | 214 |
+| 7 | MACD | 439 | 60,539 | 4,730 | 199 | 156 |
+| 8 | Option chain | 379 | 213,756 | 12,531 | 260 | 142 |
+| 9 | PCR | 327 | 31,593 | 4,703 | 139 | 117 |
+| 10 | VWAP | 289 | 83,627 | 6,788 | 153 | 154 |
+| 11 | Scalping | 288 | 103,506 | 5,187 | 219 | 99 |
+| 12 | Open interest | 238 | 55,505 | 7,163 | 92 | 54 |
+| 13 | ATR | 226 | 69,796 | 5,014 | 138 | 93 |
+| 14 | Alerts | 182 | 327,416 | 12,357 | 123 | 94 |
+| 15 | Backtesting | 176 | 38,471 | 3,086 | 93 | 61 |
+| 16 | Automation | 164 | 99,759 | 6,217 | 117 | 60 |
+| 17 | Bollinger Bands | 145 | 9,252 | 1,465 | 78 | 59 |
+| 18 | Greeks | 134 | 22,907 | 2,084 | 60 | 51 |
+| 19 | Slippage | 114 | 14,162 | 356 | 82 | 43 |
+| 20 | Trailing stop | 113 | 15,284 | 567 | 60 | 34 |
+| 21 | Option buying | 111 | 116,574 | 10,577 | 90 | 66 |
+| 22 | Replay | 106 | 9,386 | 707 | 59 | 49 |
+| 23 | Ichimoku | 90 | 7,229 | 222 | 54 | 13 |
+| 24 | Paper trading | 89 | 100,323 | 4,903 | 36 | 34 |
+| 25 | Risk/reward | 80 | 775 | 47 | 45 | 16 |
+| 26 | ADX | 78 | 659 | 103 | 36 | 36 |
+| 27 | Supertrend | 73 | 13,885 | 2,211 | 45 | 19 |
+| 28 | Option selling | 71 | 84,045 | 5,918 | 59 | 45 |
+| 29 | Implied volatility | 71 | 18,694 | 3,178 | 63 | 29 |
+| 30 | Latency | 54 | 303 | 70 | 25 | 21 |
+| 31 | Stochastic | 39 | 57,629 | 3,985 | 20 | 21 |
+| 32 | Watchlists | 37 | 18,449 | 1,613 | 21 | 23 |
+| 33 | Max pain | 36 | 221 | 10 | 20 | 9 |
+| 34 | Bid/ask | 34 | 664 | 524 | 18 | 15 |
+| 35 | Screeners | 33 | 4,467 | 293 | 29 | 16 |
+| 36 | Pine Script | 24 | 23,492 | 852 | 19 | 15 |
+| 37 | Payoff graph | 16 | 2,026 | 102 | 10 | 6 |
+| 38 | Basket orders | 15 | 195 | 0 | 8 | 7 |
+| 39 | Webhooks | 14 | 382 | 116 | 10 | 10 |
+| 40 | Custom indicators | 8 | 4,802 | 1,209 | 8 | 7 |
+| 41 | Order modification | 8 | 20 | 1 | 5 | 3 |
+| 42 | One-click trading | 7 | 84 | 7 | 6 | 0 |
+| 43 | Target orders | 6 | 317 | 19 | 5 | 4 |
+| 44 | Drawing tools | 5 | 2,149 | 195 | 4 | 3 |
+| 45 | P&L tracking | 5 | 55 | 3 | 5 | 2 |
+| 46 | Trade from chart | 4 | 869 | 2 | 4 | 3 |
+| 47 | Data freshness | 3 | 9 | 0 | 1 | 2 |
+| 48 | Expiry selection | 1 | 217 | 24 | 1 | 1 |
+| 49 | Price mismatch | 1 | 8 | 0 | 1 | 1 |
+| 50 | Multi-chart layouts | 1 | 1 | 0 | 1 | 0 |
 
 ## 8. Are people discussing Sahi’s 5-second chart?
 
