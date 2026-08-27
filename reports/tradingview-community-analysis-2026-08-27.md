@@ -2,18 +2,18 @@
 
 ## 1. What users like and dislike about TradingView features
 
-| Feature area | Positive mentions | Negative mentions | Discussions | Engagement |
-|---|---:|---:|---:|---:|
-| Option-chain analytics | 5043 | 2235 | 9620 | 69396 |
-| Execution and order workflow | 4483 | 2010 | 8731 | 63344 |
-| Indicators | 4125 | 1994 | 7763 | 58017 |
-| Risk and payoff | 3597 | 1397 | 6628 | 48539 |
-| Charts and charting | 3152 | 1641 | 6044 | 44013 |
-| Community and ideas | 2546 | 1248 | 4356 | 34169 |
-| Alerts and automation | 1097 | 881 | 2026 | 15057 |
-| Performance and reliability | 1053 | 1219 | 1437 | 14638 |
-| Watchlists and screeners | 146 | 57 | 207 | 2295 |
-| Backtesting and replay | 50 | 26 | 67 | 1068 |
+| Feature area | Positive mentions | Negative mentions | Discussions | Engagement | Product reading |
+|---|---:|---:|---:|---:|---|
+| Option-chain analytics | 5043 | 2235 | 9620 | 69396 | Users value decision-ready derivatives context, not just raw quotes. |
+| Execution and order workflow | 4483 | 2010 | 8731 | 63344 | Chart-to-order speed and control are central to perceived quality. |
+| Indicators | 4125 | 1994 | 7763 | 58017 | Breadth matters, but setup clarity and responsiveness matter more. |
+| Risk and payoff | 3597 | 1397 | 6628 | 48539 | Pre-trade risk visibility is a recurring adoption lever. |
+| Charts and charting | 3152 | 1641 | 6044 | 44013 | Chart reliability and customisation are foundational expectations. |
+| Community and ideas | 2546 | 1248 | 4356 | 34169 | Discovery and education can turn analysis into repeat usage. |
+| Alerts and automation | 1097 | 881 | 2026 | 15057 | Users want dependable, actionable notifications. |
+| Performance and reliability | 1053 | 1219 | 1437 | 14638 | Reliability issues can outweigh feature breadth. |
+| Watchlists and screeners | 146 | 57 | 207 | 2295 | Reusable discovery workflows reduce daily effort. |
+| Backtesting and replay | 50 | 26 | 67 | 1068 | Users need evidence before trusting a strategy. |
 
 Positive/negative counts are based on feature-related wording in the collected text, not Like buttons.
 
@@ -47,18 +47,18 @@ These are keyword matches across the corpus, not verified unique people. A YouTu
 
 ## 4. What users are asking for on TradingView
 
-| Rank | Request category | Discussions | Engagement |
-|---:|---|---:|---:|
-| 1 | Option-chain analytics | 9620 | 69396 |
-| 2 | Execution and order workflow | 8731 | 63344 |
-| 3 | Indicators | 7763 | 58017 |
-| 4 | Risk and payoff | 6628 | 48539 |
-| 5 | Charts and charting | 6044 | 44013 |
-| 6 | Community and ideas | 4356 | 34169 |
-| 7 | Alerts and automation | 2026 | 15057 |
-| 8 | Performance and reliability | 1437 | 14638 |
-| 9 | Watchlists and screeners | 207 | 2295 |
-| 10 | Backtesting and replay | 67 | 1068 |
+| Rank | Request category | Discussions | Engagement | Product opportunity |
+|---:|---|---:|---:|---|
+| 1 | Option-chain analytics | 9620 | 69396 | Users value decision-ready derivatives context, not just raw quotes. |
+| 2 | Execution and order workflow | 8731 | 63344 | Chart-to-order speed and control are central to perceived quality. |
+| 3 | Indicators | 7763 | 58017 | Breadth matters, but setup clarity and responsiveness matter more. |
+| 4 | Risk and payoff | 6628 | 48539 | Pre-trade risk visibility is a recurring adoption lever. |
+| 5 | Charts and charting | 6044 | 44013 | Chart reliability and customisation are foundational expectations. |
+| 6 | Community and ideas | 4356 | 34169 | Discovery and education can turn analysis into repeat usage. |
+| 7 | Alerts and automation | 2026 | 15057 | Users want dependable, actionable notifications. |
+| 8 | Performance and reliability | 1437 | 14638 | Reliability issues can outweigh feature breadth. |
+| 9 | Watchlists and screeners | 207 | 2295 | Reusable discovery workflows reduce daily effort. |
+| 10 | Backtesting and replay | 67 | 1068 | Users need evidence before trusting a strategy. |
 
 ## 5. Daily and monthly TradingView community counts
 
@@ -266,60 +266,22 @@ These are keyword matches across the corpus, not verified unique people. A YouTu
 
 Author counts use the anonymized author hash when the source exposes it; they are not inferred from thread counts.
 
-## 7. Top 50 discussions by engagement, frequency, comments and length
+## 7. Product opportunity ranking
 
-| Rank | Topic category | Engagement | Comments | Length (words) |
-|---:|---|---:|---:|---:|
-| 1 | Charts and charting | 345 | 0 | 206 |
-| 2 | Indicators | 237 | 0 | 148 |
-| 3 | Indicators | 207 | 1 | 302 |
-| 4 | Charts and charting | 190 | 4 | 452 |
-| 5 | Charts and charting | 186 | 4 | 1052 |
-| 6 | Charts and charting | 177 | 4 | 257 |
-| 7 | Charts and charting | 173 | 2 | 139 |
-| 8 | Charts and charting | 172 | 10 | 194 |
-| 9 | Charts and charting | 170 | 0 | 69 |
-| 10 | Option-chain analytics | 167 | 0 | 107 |
-| 11 | Charts and charting | 166 | 0 | 686 |
-| 12 | Option-chain analytics | 165 | 10 | 315 |
-| 13 | Charts and charting | 165 | 3 | 242 |
-| 14 | Indicators | 163 | 8 | 268 |
-| 15 | Charts and charting | 161 | 0 | 784 |
-| 16 | Charts and charting | 156 | 5 | 1188 |
-| 17 | Indicators | 153 | 0 | 264 |
-| 18 | Charts and charting | 150 | 4 | 719 |
-| 19 | Charts and charting | 150 | 0 | 461 |
-| 20 | Indicators | 148 | 4 | 584 |
-| 21 | Indicators | 148 | 2 | 780 |
-| 22 | Charts and charting | 147 | 0 | 511 |
-| 23 | Indicators | 146 | 0 | 281 |
-| 24 | Charts and charting | 145 | 7 | 242 |
-| 25 | Charts and charting | 145 | 3 | 118 |
-| 26 | Charts and charting | 144 | 3 | 712 |
-| 27 | Indicators | 141 | 5 | 210 |
-| 28 | Indicators | 141 | 3 | 117 |
-| 29 | Risk and payoff | 141 | 0 | 137 |
-| 30 | Charts and charting | 140 | 3 | 185 |
-| 31 | Charts and charting | 137 | 0 | 565 |
-| 32 | Execution and order workflow | 135 | 2 | 86 |
-| 33 | Charts and charting | 133 | 0 | 491 |
-| 34 | Indicators | 131 | 1 | 310 |
-| 35 | Indicators | 131 | 1 | 57 |
-| 36 | Charts and charting | 130 | 3 | 387 |
-| 37 | Charts and charting | 129 | 5 | 632 |
-| 38 | Option-chain analytics | 128 | 8 | 229 |
-| 39 | Charts and charting | 128 | 7 | 435 |
-| 40 | Charts and charting | 128 | 2 | 210 |
-| 41 | Charts and charting | 127 | 2 | 469 |
-| 42 | Indicators | 126 | 3 | 112 |
-| 43 | Charts and charting | 126 | 2 | 121 |
-| 44 | Indicators | 124 | 3 | 321 |
-| 45 | Indicators | 124 | 0 | 263 |
-| 46 | Indicators | 123 | 2 | 674 |
-| 47 | Charts and charting | 123 | 2 | 558 |
-| 48 | Indicators | 122 | 3 | 877 |
-| 49 | Charts and charting | 121 | 4 | 1586 |
-| 50 | Indicators | 121 | 0 | 239 |
+Themes are grouped once across the full corpus. Engagement is a prioritisation signal, not a user count.
+
+| Rank | Product theme | Records | Engagement | Comments | Avg. length | Product implication |
+|---:|---|---:|---:|---:|---:|---|
+| 1 | Option-chain analytics | 9620 | 69396 | 6520 | 272 | Expose actionable chain filters, OI/IV context and saved views. |
+| 2 | Execution and order workflow | 8731 | 63344 | 6215 | 273 | Reduce chart-to-order friction and make order status explicit. |
+| 3 | Indicators | 7763 | 58017 | 4562 | 296 | Prioritise fast indicator setup, presets and clear explanations. |
+| 4 | Risk and payoff | 6628 | 48539 | 4213 | 279 | Make payoff, SL/TP and risk-reward visible before order placement. |
+| 5 | Charts and charting | 6044 | 44013 | 3845 | 300 | Invest in speed, layouts, drawings and consistent price display. |
+| 6 | Community and ideas | 4356 | 34169 | 2533 | 326 | Improve discovery, publishing, follow and idea-to-trade workflows. |
+| 7 | Alerts and automation | 2026 | 15057 | 1128 | 383 | Support dependable alerts, webhooks and reusable conditions. |
+| 8 | Performance and reliability | 1437 | 14638 | 1163 | 389 | Instrument load time, errors and disconnects and surface status. |
+| 9 | Watchlists and screeners | 207 | 2295 | 176 | 292 | Add reusable filters, saved screens and fast watchlist actions. |
+| 10 | Backtesting and replay | 67 | 1068 | 51 | 371 | Connect replay/backtesting to rules, metrics and paper execution. |
 
 ## 8. Sahi 5-second chart discussions
 
