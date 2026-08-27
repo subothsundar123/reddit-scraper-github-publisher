@@ -15,8 +15,8 @@
     },
     {
       "path": "daily-dumps/2026-08-27/summary.json",
-      "sha256": "407ab149e17ea61dbef7ff946e162f5a2af5a3cb91d6b7772ec661b0dc1166a8",
-      "bytes": 10319
+      "sha256": "56540a209d31c73dd979c03d442dc0d49555c22ef1b9d8294ad9ad1be5f036b3",
+      "bytes": 10751
     },
     {
       "path": "daily-dumps/2026-08-27/signals.jsonl.gz",
@@ -25,8 +25,8 @@
     },
     {
       "path": "daily-dumps/2026-08-27/tradingview_signals.jsonl.gz",
-      "sha256": "d563915806f336a6e0558ca4de2391e65cfadf53467e7c5ea1c038b289ffdaf2",
-      "bytes": 803716
+      "sha256": "1050a597ee0d3799453f65893f4293d2c64fd1e7f1c30ec686eda59552c8246f",
+      "bytes": 90517
     },
     {
       "path": "daily-dumps/2026-08-27/tradingview_summary.json",
