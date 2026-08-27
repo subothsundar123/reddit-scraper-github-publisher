@@ -266,58 +266,58 @@ Author counts use the anonymized author hash when the source exposes it; they ar
 
 ## 7. Top 50 discussions by engagement, frequency, comments and length
 
-| Rank | Topic/title | Engagement | Comments | Length (words) |
+| Rank | Topic category | Engagement | Comments | Length (words) |
 |---:|---|---:|---:|---:|
-| 1 | Head and Shoulders - Bearish Continuation | 345 | 0 | 206 |
-| 2 | BTC consolidating inside key daily range – breakout soon? | 237 | 0 | 148 |
-| 3 | GBP/JPY Under Significant Bearish Pressure | 207 | 1 | 302 |
-| 4 | GOLD (XAU/USD) Price Action Update 20th March 2026 | 190 | 4 | 452 |
-| 5 | 7 Rules Every Trader Must Follow | 186 | 4 | 1052 |
-| 6 | BTCUSD Bearish Structure Finally Looking Clear | 177 | 4 | 257 |
-| 7 | 96,000 coming in BTC!? | 173 | 2 | 139 |
-| 8 | XAUUSD Daily view | 172 | 10 | 194 |
-| 9 | BITCOIN | 170 | 0 | 69 |
-| 10 | GBPUSD MTFA | 167 | 0 | 107 |
-| 11 | Part 1. Imbalance and balance between supply and demand | 166 | 0 | 686 |
-| 12 | THE REAL GOAL IS NOT MONEY | 165 | 10 | 315 |
-| 13 | HOW-TO: Identify WeeklyExpiry Ranges for Options TradingStrategy | 165 | 3 | 242 |
-| 14 | PATIENCE IS YOUR STRATEGY | 163 | 8 | 268 |
-| 15 | Log vs Linear: Why Your "Broken" Support Never Actually Broke | 161 | 0 | 784 |
-| 16 | The Silent Killer in Trading: Boredom | 156 | 5 | 1188 |
-| 17 | BTCUSD 4H Bearish Reversal Zone | 153 | 0 | 264 |
-| 18 | Market Mirror Theory: Your Mind vs The Market | 150 | 4 | 719 |
-| 19 | The Illusion of Productivity in Trading | 150 | 0 | 461 |
-| 20 | Liquidity Explained: The Hidden Force Behind Every Market Move | 148 | 4 | 584 |
-| 21 | SMT 1: Why Retail Traders Always Enter too Late | 148 | 2 | 780 |
-| 22 | THE FAKEOUT TRAP | 147 | 0 | 511 |
-| 23 | BTCUSD 1H | 146 | 0 | 281 |
-| 24 | sell | 145 | 7 | 242 |
-| 25 | LUPIN : 5 Months Consolidation breakout | 145 | 3 | 118 |
-| 26 | Physics of Trading: Why Price Moves Like an Object in Motion? | 144 | 3 | 712 |
-| 27 | BTCUSD Pennant Structure / Waiting For FMFR Setup | 141 | 5 | 210 |
-| 28 | btc overview for long term | 141 | 3 | 117 |
-| 29 | USDCAD SHOWING A GOOD UP MOVE WITH 1:10 RISK REWARD | 141 | 0 | 137 |
-| 30 | BTC/USD simple trendline and support range trade | 140 | 3 | 185 |
-| 31 | HOW-TO: Identify Reversals, Breakouts & Sideways in Nifty Index | 137 | 0 | 565 |
-| 32 | BTCUSDT is ready for reversal | 135 | 2 | 86 |
-| 33 | Liquidity Is the Market's Fuel | 133 | 0 | 491 |
-| 34 | BTC Market Analysis — Range Near Resistance with Breakdown Risk | 131 | 1 | 310 |
-| 35 | Market will be bearish | 131 | 1 | 57 |
-| 36 | Nicholas Darvas – How He Made $2,000,000 Using a Simple System | 130 | 3 | 387 |
-| 37 | RSI Continuation Secrets: The Power of Positive Reversals | 129 | 5 | 632 |
-| 38 | Coal India Ltd - Breakout & Retest with Bullish Momentum | 128 | 8 | 229 |
-| 39 | A Complete Trading Plan | 128 | 7 | 435 |
-| 40 | PREDICTION ON BTCUSD 30 MIN TF | 128 | 2 | 210 |
-| 41 | Accumulation Market Structure | 127 | 2 | 469 |
-| 42 | BTC Head & Shoulders Breakdown Setup | 126 | 3 | 112 |
-| 43 | Ethereum Price Action Trade | 126 | 2 | 121 |
-| 44 | BTCUSD Retesting Zone & W Structure Analysis | 124 | 3 | 321 |
-| 45 | BTCUSD 30M Bullish Continuation Setup | 124 | 0 | 263 |
-| 46 | How to Choose the Best Strike Price in Options | 123 | 2 | 674 |
-| 47 | Trading: Human vs Machine | 123 | 2 | 558 |
-| 48 | 3 Signs a Breakout Will Fail | 122 | 3 | 877 |
-| 49 | Before I Take Any NIFTY Trade: My Real Chart Preparation Routine | 121 | 4 | 1586 |
-| 50 | BTC/USDT — 8H Head & Shoulders Breakdown Structure | 121 | 0 | 239 |
+| 1 | Charts and charting | 345 | 0 | 206 |
+| 2 | Indicators | 237 | 0 | 148 |
+| 3 | Indicators | 207 | 1 | 302 |
+| 4 | Charts and charting | 190 | 4 | 452 |
+| 5 | Charts and charting | 186 | 4 | 1052 |
+| 6 | Charts and charting | 177 | 4 | 257 |
+| 7 | Charts and charting | 173 | 2 | 139 |
+| 8 | Charts and charting | 172 | 10 | 194 |
+| 9 | Charts and charting | 170 | 0 | 69 |
+| 10 | Option-chain analytics | 167 | 0 | 107 |
+| 11 | Charts and charting | 166 | 0 | 686 |
+| 12 | Option-chain analytics | 165 | 10 | 315 |
+| 13 | Charts and charting | 165 | 3 | 242 |
+| 14 | Indicators | 163 | 8 | 268 |
+| 15 | Charts and charting | 161 | 0 | 784 |
+| 16 | Charts and charting | 156 | 5 | 1188 |
+| 17 | Indicators | 153 | 0 | 264 |
+| 18 | Charts and charting | 150 | 4 | 719 |
+| 19 | Charts and charting | 150 | 0 | 461 |
+| 20 | Indicators | 148 | 4 | 584 |
+| 21 | Indicators | 148 | 2 | 780 |
+| 22 | Charts and charting | 147 | 0 | 511 |
+| 23 | Indicators | 146 | 0 | 281 |
+| 24 | Charts and charting | 145 | 7 | 242 |
+| 25 | Charts and charting | 145 | 3 | 118 |
+| 26 | Charts and charting | 144 | 3 | 712 |
+| 27 | Indicators | 141 | 5 | 210 |
+| 28 | Indicators | 141 | 3 | 117 |
+| 29 | Risk and payoff | 141 | 0 | 137 |
+| 30 | Charts and charting | 140 | 3 | 185 |
+| 31 | Charts and charting | 137 | 0 | 565 |
+| 32 | Execution and order workflow | 135 | 2 | 86 |
+| 33 | Charts and charting | 133 | 0 | 491 |
+| 34 | Indicators | 131 | 1 | 310 |
+| 35 | Indicators | 131 | 1 | 57 |
+| 36 | Charts and charting | 130 | 3 | 387 |
+| 37 | Charts and charting | 129 | 5 | 632 |
+| 38 | Option-chain analytics | 128 | 8 | 229 |
+| 39 | Charts and charting | 128 | 7 | 435 |
+| 40 | Charts and charting | 128 | 2 | 210 |
+| 41 | Charts and charting | 127 | 2 | 469 |
+| 42 | Indicators | 126 | 3 | 112 |
+| 43 | Charts and charting | 126 | 2 | 121 |
+| 44 | Indicators | 124 | 3 | 321 |
+| 45 | Indicators | 124 | 0 | 263 |
+| 46 | Indicators | 123 | 2 | 674 |
+| 47 | Charts and charting | 123 | 2 | 558 |
+| 48 | Indicators | 122 | 3 | 877 |
+| 49 | Charts and charting | 121 | 4 | 1586 |
+| 50 | Indicators | 121 | 0 | 239 |
 
 ## 8. Sahi 5-second chart discussions
 

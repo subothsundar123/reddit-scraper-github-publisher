@@ -100,7 +100,8 @@ def main() -> None:
             if any(t in s for t in terms): chart_counts[name] += 1
             if any(t in s for t in terms) and r.get("author_hash"):
                 author_sets[name].add(r["author_hash"])
-        top_threads.append((e, int((r.get("engagement") or {}).get("comments") or 0), len(s.split()), r.get("url"), r.get("title", "")))
+        category = match_topics(s)[0] if match_topics(s) else "Other TradingView discussion"
+        top_threads.append((e, int((r.get("engagement") or {}).get("comments") or 0), len(s.split()), category))
 
     # Chart and performance questions also include non-TV community signals.
     for r in all_rows:
@@ -126,9 +127,9 @@ def main() -> None:
     out += ["", "## 6. Discussions about TradingView and broker charts", "", "| Topic | Matching discussions | Unique authors |", "|---|---:|---:|"]
     for k in ("TradingView", "Groww Chart", "Sahi Chart", "Dhan Chart"): out.append(f"| {k} | {chart_counts[k]} | {len(author_sets[k]) if author_sets[k] else 'Not available'} |")
     out += ["", "Author counts use the anonymized author hash when the source exposes it; they are not inferred from thread counts."]
-    out += ["", "## 7. Top 50 discussions by engagement, frequency, comments and length", "", "| Rank | Topic/title | Engagement | Comments | Length (words) |", "|---:|---|---:|---:|---:|"]
-    for i, (e, comments, length, url, title) in enumerate(sorted(top_threads, reverse=True)[:50], 1):
-        out.append(f"| {i} | {title.replace('|','/')} | {e} | {comments} | {length} |")
+    out += ["", "## 7. Top 50 discussions by engagement, frequency, comments and length", "", "| Rank | Topic category | Engagement | Comments | Length (words) |", "|---:|---|---:|---:|---:|"]
+    for i, (e, comments, length, category) in enumerate(sorted(top_threads, reverse=True)[:50], 1):
+        out.append(f"| {i} | {category} | {e} | {comments} | {length} |")
     out += ["", "## 8. Sahi 5-second chart discussions", "", f"Matching discussions: **{chart_counts['Sahi 5-second Chart']}**", "", "## 9. Loading and performance issues", "", f"Matching discussions: **{chart_counts['Loading/performance issues']}**", "", "## Verification links", ""]
     out += [f"- {u}" for u in LINKS]
     path = ROOT / "reports" / f"tradingview-community-analysis-{AS_OF}.md"; path.parent.mkdir(exist_ok=True); path.write_text("\n".join(out) + "\n", encoding="utf-8")
