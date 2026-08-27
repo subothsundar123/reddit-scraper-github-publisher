@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys
 import re
 from docx import Document
 from docx.enum.section import WD_SECTION
@@ -9,8 +10,8 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "reports" / "tradingview-community-analysis-2026-08-27.md"
-OUT = ROOT / "reports" / "TradingView_Community_Analysis_2026-08-27.docx"
+SRC = Path(sys.argv[1]) if len(sys.argv)>1 else ROOT / "reports" / "tradingview-community-analysis-2026-08-27.md"
+OUT = Path(sys.argv[2]) if len(sys.argv)>2 else ROOT / "reports" / "TradingView_Community_Analysis_2026-08-27.docx"
 
 def set_cell_shading(cell, fill):
     tcPr = cell._tc.get_or_add_tcPr(); shd = OxmlElement('w:shd'); shd.set(qn('w:fill'), fill); tcPr.append(shd)
@@ -54,10 +55,13 @@ def main():
         s=styles[name]; s.font.name='Calibri'; s.font.size=Pt(size); s.font.bold=True; s.font.color.rgb=RGBColor.from_string(color); s.paragraph_format.space_before=Pt(before); s.paragraph_format.space_after=Pt(after)
     footer = sec.footer.paragraphs[0]; footer.alignment=WD_ALIGN_PARAGRAPH.RIGHT; footer.add_run('TradingView and Community Analysis').font.size=Pt(9)
     lines = SRC.read_text(encoding='utf-8').splitlines(); i=0
-    title = doc.add_paragraph(); title.alignment=WD_ALIGN_PARAGRAPH.CENTER; title.paragraph_format.space_after=Pt(4); rr=title.add_run('TradingView and Community Analysis'); rr.bold=True; rr.font.size=Pt(23); rr.font.color.rgb=RGBColor(0x0B,0x25,0x45)
-    sub=doc.add_paragraph(); sub.alignment=WD_ALIGN_PARAGRAPH.CENTER; sub.paragraph_format.space_after=Pt(18); sr=sub.add_run('Data through 27 August 2026'); sr.font.size=Pt(12); sr.font.color.rgb=RGBColor(0x55,0x55,0x55)
+    report_title = lines[0].lstrip('# ').strip() if lines and lines[0].startswith('# ') else 'Community Analysis'
+    title = doc.add_paragraph(); title.alignment=WD_ALIGN_PARAGRAPH.CENTER; title.paragraph_format.space_after=Pt(4); rr=title.add_run(report_title); rr.bold=True; rr.font.size=Pt(23); rr.font.color.rgb=RGBColor(0x0B,0x25,0x45)
+    sub=doc.add_paragraph(); sub.alignment=WD_ALIGN_PARAGRAPH.CENTER; sub.paragraph_format.space_after=Pt(18); sr=sub.add_run('Research window: 29 May to 27 August 2026'); sr.font.size=Pt(12); sr.font.color.rgb=RGBColor(0x55,0x55,0x55)
     while i < len(lines):
         line=lines[i]
+        if line.startswith('Research window:'):
+            i+=1; continue
         if not line.strip(): i+=1; continue
         if line.startswith('# '): i+=1; continue
         if line.startswith('## '): doc.add_heading(line[3:], level=1); i+=1; continue
