@@ -19,12 +19,14 @@ Positive/negative counts are based on feature-related wording in the collected t
 
 ## 2. Groww Chart, Sahi Chart and Dhan Chart discussions
 
-| Chart/topic | Relevant discussions | What the discussion indicates |
-|---|---:|---|
-| Groww Chart | 2 | Users compare chart speed, usability, indicators and reliability. |
-| Sahi Chart | 0 | No matching discussion found in the current snapshots. |
-| Dhan Chart | 45 | Users compare chart speed, usability, indicators and reliability. |
-| Sahi 5-second Chart | 0 | No matching discussion found in the current snapshots. |
+These are keyword matches across the corpus, not verified unique people. A YouTube title or broker page is product evidence, not community sentiment.
+
+| Chart/topic | Corpus matches | Source mix | What can be concluded |
+|---|---:|---|---|
+| Groww Chart | 4 | youtube: 2, manual_web_research: 2 | Needs community-specific collection before claiming user preference. |
+| Sahi Chart | 0 | No matching source | No matching record in the current snapshots. |
+| Dhan Chart | 46 | community_forum: 24, youtube: 21, manual_web_research: 1 | Needs community-specific collection before claiming user preference. |
+| Sahi 5-second Chart | 0 | No matching source | No matching record in the current snapshots. |
 
 ## 3. Indicator mentions ranked by frequency
 
@@ -257,10 +259,10 @@ Positive/negative counts are based on feature-related wording in the collected t
 
 | Topic | Matching discussions | Unique authors |
 |---|---:|---:|
-| TradingView | 1268 | 1276 |
-| Groww Chart | 2 | Not available |
+| TradingView | 1272 | 1276 |
+| Groww Chart | 4 | Not available |
 | Sahi Chart | 0 | Not available |
-| Dhan Chart | 45 | Not available |
+| Dhan Chart | 46 | Not available |
 
 Author counts use the anonymized author hash when the source exposes it; they are not inferred from thread counts.
 
@@ -321,19 +323,25 @@ Author counts use the anonymized author hash when the source exposes it; they ar
 
 ## 8. Sahi 5-second chart discussions
 
-Matching discussions: **0**
+Matching records: **0**. Sahi publicly describes a 5-second chart in Scalper Mode, but the current TradingView-community corpus contains no matching user discussion.
 
 ## 9. Loading and performance issues
 
-Matching discussions: **1452**
+Matching records: **1453**. This is a broad keyword signal across sources and is not a platform-specific incident count.
+
+## 10. Source validation
+
+TradingView does have a native options-chain product today, including calls-only, puts-only and straddle views, expiry/strike/spread filters, bid/ask, Greeks and implied volatility. Option-chain mentions in this report describe discussion themes; they do not mean TradingView lacks an option chain.
+
+Groww, Dhan and Sahi chart claims are product evidence from official pages. They are separate from community sentiment counts.
 
 ## Verification links
 
-- https://in.tradingview.com/ideas/
-- https://in.tradingview.com/ideas/options/
-- https://in.tradingview.com/ideas/optionchain/
-- https://in.tradingview.com/ideas/niftyoptions/
-- https://in.tradingview.com/ideas/banknifty/
-- https://in.tradingview.com/ideas/niftystrategy/
-- https://in.tradingview.com/ideas/optionbuying/
-- https://in.tradingview.com/symbols/NSE-NIFTY/ideas/
+- https://www.tradingview.com/support/solutions/43000760837-options-chain-overview/
+- https://www.tradingview.com/features/
+- https://groww.in/groww-charts
+- https://dhan.co/tradingview/
+- https://www.sahi.com/video-guide/en/all-about-the-sahi-scalper-mode-sahiapp
+- https://www.reddit.com/r/NSEbets/comments/1rwbk91/trading_charts_performance_analysis_fyers_vs_sahi/
+- https://www.reddit.com/r/NSEbets/comments/1tqwpit/groww_glitch/
+- https://www.reddit.com/r/IndianStockMarket/comments/1ntib7f/ama_with_the_dhan_team/

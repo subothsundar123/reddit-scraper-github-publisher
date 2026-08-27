@@ -3,7 +3,7 @@
   "source": "manual_research_enriched",
   "posts": 0,
   "comments": 0,
-  "signals": 658,
+  "signals": 665,
   "tradingview_signals": 147,
   "subreddits": {},
   "source_methods": {},
@@ -16,7 +16,8 @@
     "community_nodebb_json": 20,
     "community_sitemap_html": 8,
     "manual_tradingview_search": 11,
-    "manual_indexed_reddit_search": 1
+    "manual_indexed_reddit_search": 4,
+    "manual_web_research": 7
   },
   "signal_sources": {
     "github": 201,
@@ -24,7 +25,7 @@
     "broker_docs": 7,
     "youtube": 255,
     "community_forum": 84,
-    "manual_web_research": 12
+    "manual_web_research": 19
   },
   "signal_channels": {
     "FiniexTestingIDE": 1,
