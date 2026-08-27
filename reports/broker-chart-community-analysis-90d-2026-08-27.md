@@ -4,7 +4,7 @@ Research window: 29 May to 27 August 2026
 
 ## 1. Scope and evidence
 
-This report combines the available local corpus with fresh public web research. Sources include Reddit-indexed pages, public community forums, YouTube titles/descriptions, TradingView ideas and official broker pages. Reddit API collection was rate-limited during part of the window, so the counts below are source-record matches, not a census of all users. A zero means no matching record was found in the collected corpus; it does not mean the product or feature does not exist.
+This report combines the available local corpus with fresh public web research. Sources include Reddit-indexed pages, public community forums, YouTube titles/descriptions, TradingView ideas and official broker pages. X/Twitter was checked through public indexed search, but no reliable, date-valid broker-chart posts were available for counting; there is no authenticated X API feed in this dataset. Reddit API collection was rate-limited during part of the window, so the counts below are source-record matches, not a census of all users. A zero means no matching record was found in the collected corpus; it does not mean the product or feature does not exist.
 
 The local TradingView feed has reliable coverage from 22 July onward. Earlier dates in the 90-day window have limited or no TradingView records.
 
@@ -19,12 +19,12 @@ The local TradingView feed has reliable coverage from 22 July onward. Earlier da
 
 ## 3. Community corpus coverage by broker
 
-| Topic | Community/forum records | YouTube records | Official/manual records | TradingView records | What this means |
-|---|---:|---:|---:|---:|---|
-| Groww chart | 63 | 143 | 8 | 17 | Strong video/product visibility; community evidence is smaller and includes both usability and lag themes. |
-| Dhan chart | 879 | 242 | 37 | 1 | Most visible in the collected corpus; discussion spans chart execution, reliability, options and data quality. |
-| Sahi chart | 23 | 142 | 2 | 1 | Feature visibility is high in video content, but community sample is too small for frequency claims. |
-| TradingView | 175 | 169 | 14 | 633 | Largest native TradingView discussion base; it should not be treated as broker-specific sentiment. |
+| Topic | Community/forum records | YouTube records | Official/manual records | TradingView records | X/Twitter records | What this means |
+|---|---:|---:|---:|---:|---:|---|
+| Groww chart | 63 | 143 | 8 | 17 | 0 | Strong video/product visibility; community evidence is smaller and includes both usability and lag themes. |
+| Dhan chart | 879 | 242 | 37 | 1 | 0 | Most visible in the collected corpus; discussion spans chart execution, reliability, options and data quality. |
+| Sahi chart | 23 | 142 | 2 | 1 | 0 | Feature visibility is high in video content, but community sample is too small for frequency claims. |
+| TradingView | 175 | 169 | 14 | 633 | 0 | Largest native TradingView discussion base; it should not be treated as broker-specific sentiment. |
 
 ## 4. What people like
 
