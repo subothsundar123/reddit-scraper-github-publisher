@@ -38,6 +38,10 @@
     "iceberg GTT AMO order modification",
     "technical and option chain alerts",
     "bid ask price on option chain and chart"
+    ,"closing auction session indicative close broker app"
+    ,"CAS indicative close market depth dashboard"
+    ,"pre-open session indicative opening price market depth broker"
+    ,"pre-open auction order imbalance India broker app"
   ],
   "api_queries": [
     "Nubra API",

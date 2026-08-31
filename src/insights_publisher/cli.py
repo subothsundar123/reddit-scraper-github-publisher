@@ -99,6 +99,8 @@ TOPIC_TAGS = {
     "alerts": ["technical alert", "indicator alert", "option chain alert", "oi alert", "iv alert"],
     "advanced_orders": ["iceberg", "after market order", "amo", "order type modification"],
     "strategy_risk": ["strategy level", "p&l based sl", "pnl based sl", "risk reward sl", "strategy portfolio"],
+    "closing_auction": ["closing auction", "closing auction session", "indicative close", "indicative equilibrium", "iep", "cas"],
+    "pre_open_auction": ["pre-open", "pre open", "preopen", "opening auction", "indicative opening"],
 }
 
 

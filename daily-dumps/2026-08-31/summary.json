@@ -1,0 +1,49 @@
+{
+  "collection_date": "2026-08-31",
+  "source": "manual_research_enriched",
+  "posts": 0,
+  "comments": 0,
+  "signals": 20,
+  "tradingview_signals": 0,
+  "subreddits": {},
+  "source_methods": {},
+  "signal_source_methods": {
+    "manual_exchange_research": 2,
+    "manual_competitor_research": 9,
+    "manual_community_research": 5,
+    "manual_indexed_reddit_search": 3,
+    "manual_market_research": 1
+  },
+  "signal_sources": {
+    "manual_web_research": 20
+  },
+  "signal_channels": {
+    "NSE India": 2,
+    "Zerodha": 2,
+    "Dhan Support": 1,
+    "Dhan MadeForTrade": 5,
+    "Groww": 1,
+    "5paisa": 1,
+    "ICICI Direct": 1,
+    "Kotak Neo": 1,
+    "IndianStockMarket Reddit": 2,
+    "Moneycontrol": 1,
+    "Zerodha Trading Q&A": 2,
+    "IPO India Reddit": 1
+  },
+  "tradingview_channels": {},
+  "evidence_quality": {},
+  "signal_evidence_quality": {
+    "official_exchange_documentation": 2,
+    "official_broker_documentation": 6,
+    "official_broker_community": 3,
+    "public_community_discussion": 8,
+    "public_reputable_reporting": 1
+  },
+  "engagement": {
+    "post_score_sum": 0,
+    "comment_score_sum": 0,
+    "reported_comment_sum": 0
+  },
+  "privacy": "Public text retained for analysis; direct usernames replaced with stable one-way hashes when available."
+}
