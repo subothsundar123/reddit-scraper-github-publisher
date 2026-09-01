@@ -405,7 +405,15 @@
       "comments": 0,
       "signals": 388,
       "tradingview_signals": 142
+    },
+    {
+      "collection_date": "2026-09-02",
+      "manifest": "daily-dumps/2026-09-02/manifest.json",
+      "posts": 0,
+      "comments": 0,
+      "signals": 383,
+      "tradingview_signals": 130
     }
   ],
-  "updated_at": "2026-09-01T00:03:30.021683+00:00"
+  "updated_at": "2026-09-01T22:46:44.405396+00:00"
 }
