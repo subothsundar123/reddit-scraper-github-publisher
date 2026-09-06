@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "collection_date": "2026-09-07",
+  "generated_at": "2026-09-06T22:16:14.461733+00:00",
+  "files": [
+    {
+      "path": "daily-dumps/2026-09-07/posts.jsonl.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 20
+    },
+    {
+      "path": "daily-dumps/2026-09-07/comments.jsonl.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "bytes": 20
+    },
+    {
+      "path": "daily-dumps/2026-09-07/summary.json",
+      "sha256": "760b8a633e322d7ae640e08cad1eb8ed4cb72fd097be560768e8a11fd5e09d3e",
+      "bytes": 4279
+    },
+    {
+      "path": "daily-dumps/2026-09-07/signals.jsonl.gz",
+      "sha256": "39f381ef2707f62dfbf40970c117b7db6a59a99168e563064620b1a34f5b8d85",
+      "bytes": 207873
+    },
+    {
+      "path": "daily-dumps/2026-09-07/tradingview_signals.jsonl.gz",
+      "sha256": "ca5fa73506f93cd7fb5dc9d0af07c05dcaea959f7de111b611279a01d500fd49",
+      "bytes": 101585
+    },
+    {
+      "path": "daily-dumps/2026-09-07/tradingview_summary.json",
+      "sha256": "9785684cf6a25a7e42b334fe21337d03f7e6e011839e171be8db5531adafb862",
+      "bytes": 768
+    }
+  ]
+}
