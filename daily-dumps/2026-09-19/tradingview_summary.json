@@ -1,0 +1,36 @@
+{
+  "collection_date": "2026-09-19",
+  "source": "tradingview",
+  "ideas": 141,
+  "publication_range": {
+    "earliest": "2026-09-06T05:36:23.000Z",
+    "latest": "2026-09-18T20:44:41.000Z"
+  },
+  "channels": {
+    "recent_all": 69,
+    "popular_all": 54,
+    "editors_picks": 18
+  },
+  "idea_types": {
+    "Education": 8,
+    "unknown": 36,
+    "Long": 84,
+    "Short": 13
+  },
+  "directions": {
+    "education": 44,
+    "long": 84,
+    "short": 13
+  },
+  "source_methods": {
+    "tradingview_public_html": 141
+  },
+  "evidence_quality": {
+    "public_tradingview_page": 141
+  },
+  "engagement": {
+    "boosts": 1339,
+    "comments": 79
+  },
+  "collection_scope": "All publicly accessible ideas returned by configured TradingView feeds; no keyword gate is applied."
+}
