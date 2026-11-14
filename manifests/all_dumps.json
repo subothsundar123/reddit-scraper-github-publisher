@@ -989,7 +989,15 @@
       "comments": 0,
       "signals": 365,
       "tradingview_signals": 146
+    },
+    {
+      "collection_date": "2026-11-14",
+      "manifest": "daily-dumps/2026-11-14/manifest.json",
+      "posts": 0,
+      "comments": 0,
+      "signals": 391,
+      "tradingview_signals": 151
     }
   ],
-  "updated_at": "2026-11-13T01:23:22.388400+00:00"
+  "updated_at": "2026-11-14T01:00:34.366259+00:00"
 }
